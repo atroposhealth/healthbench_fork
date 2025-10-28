@@ -1,1 +1,4 @@
-**/*_allresults.json
+*
+!cost_estimates.py
+!result_manager.py
+!readme.md

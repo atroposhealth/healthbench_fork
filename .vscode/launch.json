@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python Debugger: Module",
+            "name": "Debug Benchmark",
             "type": "debugpy",
             "request": "launch",
             "module": "src.simple_evals.simple_evals",
@@ -16,6 +16,20 @@
                 "healthbench",
                 "--examples",
                 "3"
+            ],
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Debug Result Manager",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/results/result_manager.py",
+            // "args": [
+            //     "upsert",
+            //     "${workspaceFolder}/results/5df4ba309cb03369f6663786ae6a9904385524a9",
+            // ],
+            "args": [
+                "list",
             ],
             "envFile": "${workspaceFolder}/.env"
         }
