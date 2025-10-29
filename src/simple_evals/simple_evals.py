@@ -13,6 +13,7 @@ from .sampler.chat_completion_sampler import (
     ChatCompletionSampler,
 )
 from .sampler.groq_sampler import LLAMA_4_SYSTEM_MESSAGE, GroqCompletionSampler
+from .sampler.responses_sampler import ResponsesSampler
 
 
 def main():
@@ -64,10 +65,10 @@ def main():
 
     models = {
         # # Reasoning Models
-        # "o3": ResponsesSampler(
-        #     model="o3-2025-04-16",
-        #     reasoning_model=True,
-        # ),
+        "o3": ResponsesSampler(
+            model="o3-2025-04-16",
+            reasoning_model=True,
+        ),
         # "o3-temp-1": ResponsesSampler(
         #     model="o3-2025-04-16",
         #     reasoning_model=True,
@@ -368,9 +369,9 @@ def main():
                 # "simpleqa",
                 # "browsecomp",
                 "healthbench",
-                "healthbench_hard",
-                "healthbench_consensus",
-                "healthbench_meta",
+                # "healthbench_hard",
+                # "healthbench_consensus",
+                # "healthbench_meta",
             ]
         }
 
