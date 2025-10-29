@@ -12,6 +12,7 @@ from .sampler.chat_completion_sampler import (
     OPENAI_SYSTEM_MESSAGE_API,
     ChatCompletionSampler,
 )
+from .sampler.claude_sampler import ClaudeCompletionSampler
 from .sampler.groq_sampler import LLAMA_4_SYSTEM_MESSAGE, GroqCompletionSampler
 from .sampler.responses_sampler import ResponsesSampler
 
@@ -234,6 +235,9 @@ def main():
         # "claude-3-haiku-20240307": ClaudeCompletionSampler(
         #     model="claude-3-haiku-20240307",
         # ),
+        "claude-opus-4.1": ClaudeCompletionSampler(
+            model="claude-opus-4-1-20250805",
+        ),
         # Llama models:
         "llama-3.3-70b": GroqCompletionSampler(
             model="llama-3.3-70b-versatile",

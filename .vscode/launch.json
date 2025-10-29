@@ -11,11 +11,11 @@
             "module": "src.simple_evals.simple_evals",
             "args": [
                 "--model",
-                "llama-4-scout",
+                "o3",
                 "--eval",
                 "healthbench",
                 "--examples",
-                "3"
+                "1"
             ],
             "envFile": "${workspaceFolder}/.env"
         },

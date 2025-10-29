@@ -32,6 +32,7 @@ from .sampler.chat_completion_sampler import (
     OPENAI_SYSTEM_MESSAGE_API,
     ChatCompletionSampler,
 )
+from .sampler.groq_sampler import GroqCompletionSampler
 
 INPUT_PATH = "https://openaipublic.blob.core.windows.net/simple-evals/healthbench/2025-05-07-06-14-12_oss_eval.jsonl"
 INPUT_PATH_HARD = "https://openaipublic.blob.core.windows.net/simple-evals/healthbench/hard_2025-05-08-21-00-10.jsonl"
@@ -154,7 +155,7 @@ def calculate_score(
     return overall_score
 
 
-def get_usage_dict(response_usage) -> dict[str, int | None]:
+def get_usage_dict(response_usage, sampler: SamplerBase) -> dict[str, int | None]:
     if response_usage is None:
         return {
             "input_tokens": None,
@@ -163,32 +164,35 @@ def get_usage_dict(response_usage) -> dict[str, int | None]:
             "output_reasoning_tokens": None,
             "total_tokens": None,
         }
-    return response_usage.__dict__
+    # For Llama, just convert the response_usage into a dict
+    if isinstance(sampler, GroqCompletionSampler):
+        return response_usage.__dict__
 
-    # try:
-    #     return {
-    #         "input_tokens": response_usage.input_tokens,
-    #         "input_cached_tokens": response_usage.input_tokens_details.cached_tokens
-    #         if hasattr(response_usage.input_tokens_details, "cached_tokens")
-    #         else response_usage.input_tokens_details["cached_tokens"],
-    #         "output_tokens": response_usage.output_tokens,
-    #         "output_reasoning_tokens": response_usage.output_tokens_details.reasoning_tokens
-    #         if hasattr(response_usage.output_tokens_details, "reasoning_tokens")
-    #         else response_usage.output_tokens_details["reasoning_tokens"],
-    #         "total_tokens": response_usage.total_tokens,
-    #     }
-    # except AttributeError:
-    #     return {
-    #         "input_tokens": response_usage.prompt_tokens,
-    #         "input_cached_tokens": response_usage.prompt_tokens_details.cached_tokens
-    #         if hasattr(response_usage.prompt_tokens_details, "cached_tokens")
-    #         else response_usage.prompt_tokens_details["cached_tokens"],
-    #         "output_tokens": response_usage.completion_tokens,
-    #         "output_reasoning_tokens": response_usage.completion_tokens_details.reasoning_tokens
-    #         if hasattr(response_usage.completion_tokens_details, "reasoning_tokens")
-    #         else response_usage.completion_tokens_details["reasoning_tokens"],
-    #         "total_tokens": response_usage.total_tokens,
-    #     }
+    # For other models, we need to do a little more massaging
+    try:
+        return {
+            "input_tokens": response_usage.input_tokens,
+            "input_cached_tokens": response_usage.input_tokens_details.cached_tokens
+            if hasattr(response_usage.input_tokens_details, "cached_tokens")
+            else response_usage.input_tokens_details["cached_tokens"],
+            "output_tokens": response_usage.output_tokens,
+            "output_reasoning_tokens": response_usage.output_tokens_details.reasoning_tokens
+            if hasattr(response_usage.output_tokens_details, "reasoning_tokens")
+            else response_usage.output_tokens_details["reasoning_tokens"],
+            "total_tokens": response_usage.total_tokens,
+        }
+    except AttributeError:
+        return {
+            "input_tokens": response_usage.prompt_tokens,
+            "input_cached_tokens": response_usage.prompt_tokens_details.cached_tokens
+            if hasattr(response_usage.prompt_tokens_details, "cached_tokens")
+            else response_usage.prompt_tokens_details["cached_tokens"],
+            "output_tokens": response_usage.completion_tokens,
+            "output_reasoning_tokens": response_usage.completion_tokens_details.reasoning_tokens
+            if hasattr(response_usage.completion_tokens_details, "reasoning_tokens")
+            else response_usage.completion_tokens_details["reasoning_tokens"],
+            "total_tokens": response_usage.total_tokens,
+        }
 
 
 PHYSICIAN_COMPLETION_MODES = {
@@ -500,7 +504,7 @@ class HealthBenchEval(Eval):
                 metrics=metrics,
                 example_level_metadata={
                     "score": score,
-                    "usage": get_usage_dict(response_usage),
+                    "usage": get_usage_dict(response_usage, sampler),
                     "rubric_items": rubric_items_with_grades,
                     "prompt": actual_queried_prompt_messages,
                     "completion": [dict(content=response_text, role="assistant")],

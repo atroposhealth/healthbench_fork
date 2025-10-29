@@ -9,7 +9,9 @@ from dot_slash import dot_slash
 # MODEL = "meta-llama/llama-4-maverick-17b-128e-instruct"
 
 FILEPATH = Path(
-    dot_slash("scout/healthbench_llama-4-scout_20251023_153707_allresults.json")
+    dot_slash(
+        "5df4ba309cb03369f6663786ae6a9904385524a9/scout/healthbench_llama-4-scout_20251023_153707_allresults.json"
+    )
 )
 MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
 
