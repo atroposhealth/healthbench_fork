@@ -239,6 +239,10 @@ def main():
             model="claude-opus-4-1-20250805",
         ),
         # Llama models:
+        "llama-3.1-8b": GroqCompletionSampler(
+            model="llama-3.1-8b-instant",
+            system_message=LLAMA_4_SYSTEM_MESSAGE,
+        ),
         "llama-3.3-70b": GroqCompletionSampler(
             model="llama-3.3-70b-versatile",
             system_message=LLAMA_4_SYSTEM_MESSAGE,
