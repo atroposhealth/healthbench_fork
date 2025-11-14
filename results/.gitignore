@@ -2,3 +2,6 @@
 !cost_estimates.py
 !result_manager.py
 !readme.md
+!result_extraction_run_level.ipynb
+!result_extraction_conversation_level.ipynb
+!inputs/

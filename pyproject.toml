@@ -18,6 +18,7 @@ dependencies = [
     "numpy>=2.3.3",
     "openai>=2.3.0",
     "pandas>=2.3.3",
+    "polars>=1.35.1",
     "requests>=2.32.5",
     "scipy>=1.16.2",
     "seaborn>=0.13.2",
