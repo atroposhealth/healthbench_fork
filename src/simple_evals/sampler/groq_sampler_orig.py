@@ -48,7 +48,7 @@ class GroqCompletionSampler(SamplerBase):
     def _pack_message(self, role, content):
         return {"role": str(role), "content": content}
 
-    def __call__(self, message_list: MessageList) -> SamplerResponse:
+    def __call__(self, message_list: MessageList, prompt_id: str) -> SamplerResponse:
         trial = 0
         while True:
             try:

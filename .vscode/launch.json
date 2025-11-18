@@ -11,7 +11,7 @@
             "module": "src.simple_evals.simple_evals",
             "args": [
                 "--model",
-                "o3",
+                "llama-4-scout",
                 "--eval",
                 "healthbench",
                 "--examples",

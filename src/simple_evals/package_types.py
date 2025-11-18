@@ -25,6 +25,7 @@ class SamplerBase:
     def __call__(
         self,
         message_list: MessageList,
+        prompt_id: str,
     ) -> SamplerResponse:
         raise NotImplementedError
 
