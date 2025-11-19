@@ -32,6 +32,7 @@ from .sampler.chat_completion_sampler import (
     OPENAI_SYSTEM_MESSAGE_API,
     ChatCompletionSampler,
 )
+from .sampler.groq_rag_sampler import GroqRAGCompletionSampler
 from .sampler.groq_sampler import GroqCompletionSampler
 
 INPUT_PATH = "https://openaipublic.blob.core.windows.net/simple-evals/healthbench/2025-05-07-06-14-12_oss_eval.jsonl"
@@ -166,6 +167,8 @@ def get_usage_dict(response_usage, sampler: SamplerBase) -> dict[str, int | None
         }
     # For Llama, just convert the response_usage into a dict
     if isinstance(sampler, GroqCompletionSampler):
+        return response_usage.__dict__
+    if isinstance(sampler, GroqRAGCompletionSampler):
         return response_usage.__dict__
 
     # For other models, we need to do a little more massaging
@@ -462,7 +465,7 @@ class HealthBenchEval(Eval):
                 response_usage = None
                 actual_queried_prompt_messages = prompt_messages
             else:
-                sampler_response = sampler(prompt_messages)
+                sampler_response = sampler(prompt_messages, row["prompt_id"])
                 response_text = sampler_response.response_text
                 response_dict = sampler_response.response_metadata
                 actual_queried_prompt_messages = (

@@ -13,6 +13,10 @@ from .sampler.chat_completion_sampler import (
     ChatCompletionSampler,
 )
 from .sampler.claude_sampler import ClaudeCompletionSampler
+from .sampler.groq_rag_sampler import (
+    LLAMA_4_RAG_SYSTEM_MESSAGE,
+    GroqRAGCompletionSampler,
+)
 from .sampler.groq_sampler import LLAMA_4_SYSTEM_MESSAGE, GroqCompletionSampler
 from .sampler.responses_sampler import ResponsesSampler
 
@@ -254,6 +258,16 @@ def main():
         "llama-4-maverick": GroqCompletionSampler(
             model="meta-llama/llama-4-maverick-17b-128e-instruct",
             system_message=LLAMA_4_SYSTEM_MESSAGE,
+        ),
+        "llama-4-scout-rag": GroqRAGCompletionSampler(
+            model="meta-llama/llama-4-scout-17b-16e-instruct",
+            system_message=LLAMA_4_RAG_SYSTEM_MESSAGE,
+            results_dir=output_dir,
+        ),
+        "llama-4-maverick-rag": GroqRAGCompletionSampler(
+            model="meta-llama/llama-4-maverick-17b-128e-instruct",
+            system_message=LLAMA_4_RAG_SYSTEM_MESSAGE,
+            results_dir=output_dir,
         ),
     }
 

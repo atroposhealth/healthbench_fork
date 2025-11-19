@@ -9,7 +9,7 @@ from databricks.vector_search.client import VectorSearchClient
 
 from ..package_types import MessageList, SamplerBase, SamplerResponse
 
-LLAMA_4_SYSTEM_MESSAGE = (
+LLAMA_4_RAG_SYSTEM_MESSAGE = (
     "You are a helpful assistant whose job is to answer medical questions. "
     + "Users may include results from research studies as part of their "
     + "question. If the results are relevant, take them into account when "
@@ -41,6 +41,7 @@ class GroqRAGCompletionSampler(SamplerBase):
         vector_search_client = VectorSearchClient(
             workspace_url="https://dbc-7a32c3d1-0aa9.cloud.databricks.com",
             personal_access_token=os.environ["DATABRICKS_API_KEY"],
+            disable_notice=True,
         )
         self.vector_search_index = vector_search_client.get_index(
             endpoint_name="dbdemos_vs_endpoint",
@@ -69,16 +70,16 @@ class GroqRAGCompletionSampler(SamplerBase):
             columns=["id", "case_id", "content"],
             query_text=vector_search_input,
             num_results=1,
+            disable_notice=True,
         )
         documents_and_scores = results["result"]["data_array"]
-        # Extract the match with the highest score
-        documents_and_scores.sort(lambda d_and_s: d_and_s[1], reversed=True)
+        # We are only asking for one result, so we don't need to sort by score
         vector_search_row_id, atropos_case_id, content, _ = documents_and_scores[0]
 
         # Add the Atropos content to the final message (which is always a user
         # message)
         final_message = message_list[-1]
-        final_message["content"] = f"""
+        final_message["content"] += f"""
 Here are the findings of a recent research study, in case the information is helpful:
 
 {content}
@@ -145,4 +146,3 @@ Here are the findings of a recent research study, in case the information is hel
         }
         log_file = log_dir / f"{prompt_id}.json"
         log_file.write_text(json.dumps(log_info, indent=2))
-        raise NotImplementedError()

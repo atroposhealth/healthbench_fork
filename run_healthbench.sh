@@ -1,7 +1,7 @@
 #! /bin/bash
 
 uv run python -m src.simple_evals.simple_evals \
-    --output-dir /Users/max/Developer/repos/simple-evals/results/9eb82b46b5ef7faf6ec102a989421543e84d4228/llama-3.1-8b \
+    --output-dir /Users/max/Developer/repos/HealthBench/results/66a515a50edfaa2c8f21674d4141a124b50ef286/llama-4-maverick-rag \
     --n-threads 10 \
     --eval healthbench \
-    --model llama-3.1-8b 
+    --model llama-4-scout-rag
