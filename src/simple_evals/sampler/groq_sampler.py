@@ -1,12 +1,16 @@
 import os
 import time
+from pathlib import Path
 from typing import Any
 
 import groq
+from dot_slash import dot_slash
 
 from ..package_types import MessageList, SamplerBase, SamplerResponse
 
 LLAMA_4_SYSTEM_MESSAGE = "You are a helpful assistant."
+
+LLAMA_ENHANCED_SYSTEM_MESSAGE = Path(dot_slash("enhanced_system_prompt.md")).read_text()
 
 
 class GroqCompletionSampler(SamplerBase):
