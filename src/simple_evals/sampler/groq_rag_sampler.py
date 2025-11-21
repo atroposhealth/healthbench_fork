@@ -52,13 +52,6 @@ class GroqRAGCompletionSampler(SamplerBase):
         return {"role": str(role), "content": content}
 
     def __call__(self, message_list: MessageList, prompt_id: str) -> SamplerResponse:
-        # Prepend the system message to the message_list
-        if self.system_message:
-            message_list = [
-                self._pack_message("system", self.system_message)
-            ] + message_list
-        trial = 0
-
         # Extract the conversation text to use as input to the vector search
         conversation_turns = []
         for message in message_list:
@@ -74,7 +67,16 @@ class GroqRAGCompletionSampler(SamplerBase):
         )
         documents_and_scores = results["result"]["data_array"]
         # We are only asking for one result, so we don't need to sort by score
-        vector_search_row_id, atropos_case_id, content, _ = documents_and_scores[0]
+        vector_search_row_id, atropos_case_id, content, similarity_score = (
+            documents_and_scores[0]
+        )
+
+        # Prepend the system message to the message_list
+        if self.system_message:
+            message_list = [
+                self._pack_message("system", self.system_message)
+            ] + message_list
+        trial = 0
 
         # Add the Atropos content to the final message (which is always a user
         # message)
@@ -88,7 +90,11 @@ Here are the findings of a recent research study, in case the information is hel
         # for this prompt, along with what the conversation looked like, since
         # it's hard to get that data out of the HealthBench results.
         self._log_rag_info(
-            prompt_id, message_list, vector_search_row_id, atropos_case_id
+            prompt_id,
+            message_list,
+            vector_search_row_id,
+            atropos_case_id,
+            similarity_score,
         )
 
         while True:
@@ -131,6 +137,7 @@ Here are the findings of a recent research study, in case the information is hel
         messages: MessageList,
         vector_search_row_id: str,
         atropos_case_id: str,
+        similarity_score: float,
     ):
         """
         Logs which atropos case was used in each conversation for later analysis.
@@ -142,6 +149,7 @@ Here are the findings of a recent research study, in case the information is hel
             "prompt_id": prompt_id,
             "vector_search_row_id": vector_search_row_id,
             "atropos_case_id": atropos_case_id,
+            "similarity_score": similarity_score,
             "conversation": messages,
         }
         log_file = log_dir / f"{prompt_id}.json"

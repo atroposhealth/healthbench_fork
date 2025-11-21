@@ -32,6 +32,13 @@
                 "list",
             ],
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Debug Similarity Score Backfill",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/simple_evals/error_analysis/backfill_similarity_scores.py",
+            
         }
     ]
 }
