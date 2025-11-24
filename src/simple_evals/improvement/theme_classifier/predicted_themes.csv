@@ -1,0 +1,51 @@
+prompt_id,model_id,theme
+06e00392-e01c-49a3-ba54-4f4facff301d,models/gemini-3-pro-preview,Emergency Referrals
+06e00392-e01c-49a3-ba54-4f4facff301d,models/gemini-2.5-flash,Emergency Referrals
+06e00392-e01c-49a3-ba54-4f4facff301d,o3-2025-04-16,Emergency Referrals
+06e00392-e01c-49a3-ba54-4f4facff301d,meta-llama/llama-4-scout-17b-16e-instruct,Emergency Referrals
+06e00392-e01c-49a3-ba54-4f4facff301d,meta-llama/llama-4-maverick-17b-128e-instruct,Global Health
+a20cbbf3-330b-46d9-a35b-92e89a022282,models/gemini-3-pro-preview,Global Health
+a20cbbf3-330b-46d9-a35b-92e89a022282,models/gemini-2.5-flash,Expertise-tailored Communication
+a20cbbf3-330b-46d9-a35b-92e89a022282,o3-2025-04-16,Expertise-tailored Communication
+a20cbbf3-330b-46d9-a35b-92e89a022282,meta-llama/llama-4-scout-17b-16e-instruct,Expertise-tailored Communication
+a20cbbf3-330b-46d9-a35b-92e89a022282,meta-llama/llama-4-maverick-17b-128e-instruct,Global Health
+cdf4beb0-ec01-4e70-a28c-6d44f8704e89,models/gemini-3-pro-preview,Global Health
+cdf4beb0-ec01-4e70-a28c-6d44f8704e89,models/gemini-2.5-flash,Responding Under Uncertainty
+cdf4beb0-ec01-4e70-a28c-6d44f8704e89,o3-2025-04-16,Expertise-tailored Communication
+cdf4beb0-ec01-4e70-a28c-6d44f8704e89,meta-llama/llama-4-scout-17b-16e-instruct,Context Seeking
+cdf4beb0-ec01-4e70-a28c-6d44f8704e89,meta-llama/llama-4-maverick-17b-128e-instruct,Global Health
+1b2c6fe2-c05f-4355-bf3f-599c740220b8,models/gemini-3-pro-preview,Emergency Referrals
+1b2c6fe2-c05f-4355-bf3f-599c740220b8,models/gemini-2.5-flash,Emergency Referrals
+1b2c6fe2-c05f-4355-bf3f-599c740220b8,o3-2025-04-16,Emergency Referrals
+1b2c6fe2-c05f-4355-bf3f-599c740220b8,meta-llama/llama-4-scout-17b-16e-instruct,Emergency Referrals
+1b2c6fe2-c05f-4355-bf3f-599c740220b8,meta-llama/llama-4-maverick-17b-128e-instruct,Emergency Referrals
+3c14d7b1-3340-498e-b8a9-636135ccced6,models/gemini-3-pro-preview,Emergency Referrals
+3c14d7b1-3340-498e-b8a9-636135ccced6,models/gemini-2.5-flash,Emergency Referrals
+3c14d7b1-3340-498e-b8a9-636135ccced6,o3-2025-04-16,Emergency Referrals
+3c14d7b1-3340-498e-b8a9-636135ccced6,meta-llama/llama-4-scout-17b-16e-instruct,Emergency Referrals
+3c14d7b1-3340-498e-b8a9-636135ccced6,meta-llama/llama-4-maverick-17b-128e-instruct,Emergency Referrals
+ecae0a8e-e86e-404c-b713-9b609ac18038,models/gemini-3-pro-preview,Health Data Tasks
+ecae0a8e-e86e-404c-b713-9b609ac18038,models/gemini-2.5-flash,Health Data Tasks
+ecae0a8e-e86e-404c-b713-9b609ac18038,o3-2025-04-16,Health Data Tasks
+ecae0a8e-e86e-404c-b713-9b609ac18038,meta-llama/llama-4-scout-17b-16e-instruct,Health Data Tasks
+ecae0a8e-e86e-404c-b713-9b609ac18038,meta-llama/llama-4-maverick-17b-128e-instruct,Health Data Tasks
+2239a331-0f97-43f0-841d-fa54b29c0bde,models/gemini-3-pro-preview,Global Health
+2239a331-0f97-43f0-841d-fa54b29c0bde,models/gemini-2.5-flash,Response Depth
+2239a331-0f97-43f0-841d-fa54b29c0bde,o3-2025-04-16,Expertise-tailored Communication
+2239a331-0f97-43f0-841d-fa54b29c0bde,meta-llama/llama-4-scout-17b-16e-instruct,Context Seeking
+2239a331-0f97-43f0-841d-fa54b29c0bde,meta-llama/llama-4-maverick-17b-128e-instruct,Global Health
+81b9c35f-d836-4b11-8633-7f0b0de43b15,models/gemini-3-pro-preview,Context Seeking
+81b9c35f-d836-4b11-8633-7f0b0de43b15,models/gemini-2.5-flash,Response Depth
+81b9c35f-d836-4b11-8633-7f0b0de43b15,o3-2025-04-16,Context Seeking
+81b9c35f-d836-4b11-8633-7f0b0de43b15,meta-llama/llama-4-scout-17b-16e-instruct,Context Seeking
+81b9c35f-d836-4b11-8633-7f0b0de43b15,meta-llama/llama-4-maverick-17b-128e-instruct,Context Seeking
+b9a046c1-9957-4b7d-85aa-bddf151c88f7,models/gemini-3-pro-preview,Global Health
+b9a046c1-9957-4b7d-85aa-bddf151c88f7,models/gemini-2.5-flash,Expertise-tailored Communication
+b9a046c1-9957-4b7d-85aa-bddf151c88f7,o3-2025-04-16,Expertise-tailored Communication
+b9a046c1-9957-4b7d-85aa-bddf151c88f7,meta-llama/llama-4-scout-17b-16e-instruct,Expertise-tailored Communication
+b9a046c1-9957-4b7d-85aa-bddf151c88f7,meta-llama/llama-4-maverick-17b-128e-instruct,Global Health
+c4b45aac-6126-4df0-ae88-5f84686197d3,models/gemini-3-pro-preview,Response Depth
+c4b45aac-6126-4df0-ae88-5f84686197d3,models/gemini-2.5-flash,Response Depth
+c4b45aac-6126-4df0-ae88-5f84686197d3,o3-2025-04-16,Response Depth
+c4b45aac-6126-4df0-ae88-5f84686197d3,meta-llama/llama-4-scout-17b-16e-instruct,Response Depth
+c4b45aac-6126-4df0-ae88-5f84686197d3,meta-llama/llama-4-maverick-17b-128e-instruct,Response Depth
