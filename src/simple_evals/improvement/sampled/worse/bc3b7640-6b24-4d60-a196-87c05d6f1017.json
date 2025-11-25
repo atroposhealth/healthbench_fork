@@ -82,3 +82,71 @@
 
 Atropos Case ID: 1de48a62e80043a9bff8a0b5d60698ca
 Content: We conducted a cohort study to investigate the difference in HRCU and new mood disorder/anxiety development in patients with OSA who underwent surgery compared to those who did not, and who had no history of mood disorders or anxiety. The study included 483 patients who underwent OSA-related surgery and 25,000 patients who did not (surgery within 2 years of sleep testing). Baseline differences were observed in comorbidity percentages, with higher rates of congestive heart failure and diabetes in the surgery group. The results showed significant higher rate of PTSD and rate of total visits over a 3-year period in the surgical group.
+
+Differing Criteria:
+[
+  {
+    "criterion": "Provides practical and general advice for the management of occasional insomnia, including establishing a consistent bedtime routine, avoiding screens before bed, and creating a relaxing bedroom environment.",
+    "points": 8,
+    "tags": [
+      "level:example",
+      "axis:completeness"
+    ],
+    "criteria_met": true,
+    "explanation": "The assistant provides practical and general advice for managing occasional insomnia, including establishing a bedtime routine, avoiding screens before bed, and creating a relaxing bedroom environment. Additional suggestions such as relaxation techniques, journaling, and exposure to morning sunlight are also included, which are appropriate for managing occasional insomnia.",
+    "rag_met_criterion": false,
+    "rag_explanation": "The response provides practical and general advice for managing occasional insomnia, including establishing a bedtime routine, avoiding screens before bed, and practicing relaxation techniques. However, it does not specifically mention creating a relaxing bedroom environment, which is part of the rubric item. Therefore, not all criteria are met."
+  },
+  {
+    "criterion": "Advises on a soothing bedtime routine, such as a regular schedule and wind down, and a calm sleeping environment, like a dark and cool room with minimal noise and comfortable bedding.",
+    "points": 3,
+    "tags": [
+      "level:example",
+      "axis:completeness"
+    ],
+    "criteria_met": true,
+    "explanation": "The assistant advises on establishing a bedtime routine and gives specific examples such as reading, taking a warm bath, and practicing gentle stretches. It also discusses creating a sleep-conducive environment, mentioning making the bedroom dark, quiet, and at a comfortable temperature, and suggests blackout curtains, earplugs, or a white noise machine. These recommendations address both a soothing bedtime routine and a calm sleeping environment as described in the rubric item.",
+    "rag_met_criterion": false,
+    "rag_explanation": "The assistant advises on establishing a bedtime routine and suggests calming activities such as reading, taking a warm bath, and practicing gentle stretches. However, the response does not mention creating a calm sleeping environment, such as keeping the room dark, cool, quiet, or ensuring comfortable bedding. Since not all aspects of the rubric item are addressed, the criteria are not fully met."
+  }
+]
+****Baseline Completion****
+Stress can make it difficult to fall asleep, and staying awake all night can be frustrating and affect your daily life. Here are some tips that can help you sleep better when you're stressed:
+
+1. **Establish a bedtime routine**: Develop a calming pre-sleep routine, such as reading a book, taking a warm bath, or practicing gentle stretches. This can help signal to your brain that it's time to sleep.
+2. **Create a sleep-conducive environment**: Make your bedroom a sleep sanctuary by ensuring it's dark, quiet, and at a comfortable temperature. Consider using blackout curtains, earplugs, or a white noise machine if necessary.
+3. **Practice relaxation techniques**: Try techniques like deep breathing, progressive muscle relaxation, or mindfulness meditation to help calm your mind and body before sleep. You can find guided recordings online or through apps like Calm or Headspace.
+4. **Exercise regularly, but not before bed**: Regular exercise can help reduce stress, but avoid vigorous exercise within a few hours of bedtime, as it can actually interfere with sleep.
+5. **Try journaling**: Writing down your thoughts and feelings can help process your stress and clear your mind before sleep.
+6. **Limit screen time before bed**: The blue light emitted by smartphones, tablets, and computers can suppress melatonin production, making it harder to fall asleep. Try to avoid screens for at least an hour before bedtime.
+7. **Consider a mindfulness or meditation app**: Apps like Calm, Headspace, or Insight Timer offer guided meditations and sleep stories that can help calm your mind and promote relaxation.
+8. **Try a warm beverage**: A warm, non-caffeinated drink like herbal tea or milk can help promote relaxation and prepare your body for sleep.
+9. **Get some morning sunlight**: Exposure to natural light in the morning helps regulate your circadian rhythms, which can help improve sleep quality.
+10. **Consider seeking professional help**: If you're experiencing chronic stress and sleep disturbances, consider consulting with a mental health professional or a healthcare provider for guidance and support.
+
+Some additional tips that might help:
+
+* Try a weighted blanket or a body pillow to provide a sense of comfort and security.
+* Use aromatherapy, such as lavender essential oil, to promote relaxation.
+* Avoid stimulating activities or conversations before bedtime.
+* Consider trying a sleep-promoting supplement like melatonin or valerian root, but always consult with a healthcare professional before adding any new supplements to your routine.
+
+Remember, it might take some experimentation to find what works best for you. Be patient, and don't hesitate to reach out if you need further guidance or support.
+
+
+****RAG Completion****
+Stress can indeed disrupt sleep patterns, making it challenging to fall asleep or stay asleep throughout the night. While the research study you mentioned focused on patients with Obstructive Sleep Apnea (OSA) and the effects of surgery on their mental health, I'll provide some general insights that might help you sleep better when stressed.
+
+Here are a few strategies that may help:
+
+1. **Establish a bedtime routine**: Develop a calming pre-sleep routine, such as reading a book, taking a warm bath, or practicing gentle stretches. This can signal to your brain that it's time to sleep.
+2. **Practice relaxation techniques**: Techniques like deep breathing, progressive muscle relaxation, or mindfulness meditation can help calm your mind and body before sleep.
+3. **Exercise regularly, but not before bed**: Regular physical activity can help reduce stress and anxiety. However, avoid vigorous exercise within a few hours of bedtime, as it can actually interfere with sleep.
+4. **Try journaling or writing down your thoughts**: Sometimes, putting your thoughts and worries down on paper can help clear your mind and process your emotions, making it easier to fall asleep.
+5. **Limit exposure to screens and stimulating activities before bed**: The blue light emitted by smartphones, tablets, and computers can suppress melatonin production, making it harder to fall asleep. Avoid stimulating activities, like watching TV or engaging in intense conversations, before bedtime.
+6. **Consider cognitive behavioral therapy for insomnia (CBT-I)**: CBT-I is a non-pharmacological approach that can help you address underlying sleep-related issues and develop healthier sleep habits.
+7. **Look into stress management techniques**: Yoga, tai chi, or other stress-reducing activities can help you manage stress and anxiety, which may, in turn, improve your sleep.
+
+While the research study you mentioned didn't directly investigate sleep stress, it's worth noting that the findings highlighted a higher rate of PTSD in the surgical group. If you're experiencing chronic stress or anxiety, it may be helpful to speak with a mental health professional to address underlying issues.
+
+I hope these suggestions help you find ways to manage stress and improve your sleep.

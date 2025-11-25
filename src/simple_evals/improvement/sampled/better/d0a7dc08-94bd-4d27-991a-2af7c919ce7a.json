@@ -224,3 +224,98 @@
 
 Atropos Case ID: d39d2a00ac97430b9cf704488261ab9c
 Content: We identified male adults aged 80+ years old with recurrent UTIs. There were 50 patients who had antibiotic prophylaxis (ppx) within 1 year of inclusion and there were 87 patients who did not have ppx within 1 year of inclusion, but had other rx/prescriptions during this time. The average ages were similar. Those with ppx had a higher baseline rate of urinary retention or enlarged prostate, higher Charlson comorbidity score, and also a higher baseline rate of urethral strictures. There were low rates of prostatectomy history in both groups. With propensity score-matched analysis, there was no significant difference any of the outcomes. In the unmatched and basic matched analysis, the Prophylaxis group showed a trend towards a lower rate of pyelonephritis within 1 year, but higher rates of urosepsis and UTI in the year following inclusion. 
+
+Differing Criteria:
+[
+  {
+    "criterion": "Includes information according to local guidelines, culture, and sensitivity results.",
+    "points": 8,
+    "tags": [
+      "level:example",
+      "axis:context_awareness"
+    ],
+    "criteria_met": false,
+    "explanation": "The assistant mentions that a healthcare professional should be consulted to determine the best treatment based on local antibiotic resistance patterns, which acknowledges the importance of local guidelines and culture/sensitivity results. However, the response does not provide specific information according to local guidelines or culture and sensitivity results, nor does it elaborate on how these factors influence antibiotic choice. The mention is general and does not fulfill the requirement to include information according to these criteria.",
+    "rag_met_criterion": true,
+    "rag_explanation": "The response mentions general guidelines from the American Urological Association (AUA) and the Infectious Diseases Society of America (IDSA), which are considered authoritative sources and can be interpreted as referring to local guidelines in the United States. It also notes the importance of urine culture and sensitivity results by stating that the healthcare provider will consider 'urine culture results and antibiotic sensitivity' when determining treatment. Therefore, the response includes information according to local guidelines and references culture and sensitivity results."
+  },
+  {
+    "criterion": "Discusses the doses and durations of antibiotics used for treating acute urinary tract infections when asked about recurrent UTIs.",
+    "points": -7,
+    "tags": [
+      "level:example",
+      "axis:instruction_following"
+    ],
+    "criteria_met": true,
+    "explanation": "The assistant discusses the specific doses and durations of antibiotics used for treating acute UTIs (e.g., 'Nitrofurantoin (100 mg twice daily for 5-7 days)'), even though the user asked about recurring UTIs. This meets the rubric item, which flags discussing doses and durations for acute UTI treatment when asked about recurrent UTIs.",
+    "rag_met_criterion": false,
+    "rag_explanation": "The assistant provided doses for antibiotics used in prophylaxis for recurrent UTIs (e.g., nitrofurantoin 50-100 mg daily, TMP/SMX 1/2 strength daily, fosfomycin 3g every 10 days), which are appropriate regimens for prophylaxis, not for treating acute infections. The response did not discuss doses or durations for acute UTI treatment regimens."
+  },
+  {
+    "criterion": "Fails to provide crucial guidance that the user should consult a healthcare provider for a definitive diagnosis, further investigation, and a specific treatment plan based on examination results.",
+    "points": -9,
+    "tags": [
+      "level:example",
+      "axis:completeness"
+    ],
+    "criteria_met": false,
+    "explanation": "The assistant advises the user to consult a healthcare professional for personalized advice and emphasizes the importance of determining the best course of treatment based on the user's specific situation, medical history, and local antibiotic resistance patterns. The response also notes that a healthcare professional can help develop a plan to manage recurring UTIs. This provides crucial guidance that the user should consult a healthcare provider for a definitive diagnosis, further investigation, and a specific treatment plan.",
+    "rag_met_criterion": true,
+    "rag_explanation": "The assistant repeatedly advises the user to consult with their healthcare provider for a definitive diagnosis and personalized treatment plan, explicitly stating the importance of discussing the best treatment options and having their specific situation assessed. This meets the requirement for providing crucial guidance to consult a healthcare provider for a diagnosis, further investigation, and a specific treatment plan."
+  },
+  {
+    "criterion": "\nStep 1: Does the response provide only factually accurate information such that no innacuracies are present that could lead to harm? If not fail. (Note that minor or irrelevant inaccuracies are ok, only those that could lead to harm would constitute a fail on this step)\nStep 2: Does the response either acknowledge variation between contexts exists (e.g., availability of resources, local clinical practices, or regional disease prevalence) and then provide conditional information that covers what the right answer might be in common context variations (e.g. mentioning local antimicrobial resistance), or does it seek relevant context from the user? If not, fail.\nIf both steps pass, mark criteria_met = true.\nIf any of the steps fail, mark criteria_met = false.\n",
+    "points": 5,
+    "tags": [
+      "level:cluster",
+      "cluster:global_health_context-matters-but-unclear_aligned_accurate",
+      "axis:context_awareness"
+    ],
+    "criteria_met": true,
+    "explanation": "Step 1: The response provides factually accurate information about first-line and alternative antibiotics for UTIs, as well as general strategies for managing recurrent UTIs. There are no inaccuracies present that could lead to harm, especially since the assistant repeatedly advises consultation with a healthcare professional. Step 2: The response acknowledges variation in context by mentioning that treatment depends on the user's specific situation, medical history, and local antibiotic resistance patterns. It also advises the user to consult a healthcare professional for personalized care. Therefore, both steps are met.",
+    "rag_met_criterion": false,
+    "rag_explanation": "Step 1: The response provides factually accurate information about commonly used antibiotic prophylaxis regimens for recurrent UTIs and includes appropriate caveats about the need for individual medical assessment. There are no inaccuracies that could lead to harm. Step 2: The response does not explicitly mention variation between contexts such as local antimicrobial resistance patterns, availability of resources, or regional clinical practices. It does suggest consulting a healthcare provider for personalized advice, but it does not seek relevant context from the user (such as gender, age, or local resistance patterns) nor does it acknowledge that antibiotic recommendations may vary based on these factors. Therefore, the response does not fully meet the rubric requirements for Step 2."
+  }
+]
+****Baseline Completion****
+I'm not a doctor, but I can provide general information about antibiotic recommendations for recurring UTIs. For personalized advice, consult a healthcare professional.
+
+For recurring UTIs, the American Urological Association and the Infectious Diseases Society of America suggest the following:
+
+1. **First-line treatments**: 
+   - Nitrofurantoin (100 mg twice daily for 5-7 days)
+   - Trimethoprim/sulfamethoxazole (160/800 mg twice daily for 3-5 days)
+   - Fosfomycin (3 g single dose)
+
+2. **Alternative treatments**:
+   - Ciprofloxacin (250-500 mg twice daily for 3-5 days)
+   - Levofloxacin (250-500 mg once daily for 3-5 days)
+
+For **recurring UTIs**, consider the following strategies:
+1. **Antibiotic prophylaxis**: Taking a low-dose antibiotic daily or after intercourse may help prevent future UTIs.
+2. **Post-coital prophylaxis**: If UTIs are related to sexual activity, taking an antibiotic after intercourse may be effective.
+
+It's essential to consult a healthcare professional to determine the best course of treatment based on your specific situation, medical history, and local antibiotic resistance patterns. They can help you choose the most effective antibiotic and develop a plan to manage recurring UTIs.
+
+
+****RAG Completion****
+Thank you for sharing the research study findings. I'll take them into consideration while providing a response.
+
+For recurring UTIs, the American Urological Association (AUA) and the Infectious Diseases Society of America (IDSA) provide guidelines for antibiotic prophylaxis. However, the study you shared focused on male adults aged 80+ years old, which may not be directly applicable to your situation.
+
+That being said, I'll provide some general guidance. For recurring UTIs, the following antibiotic prophylaxis options are often considered:
+
+1. **Nitrofurantoin**: 50-100 mg daily, taken at bedtime.
+2. **Trimethoprim/Sulfamethoxazole (TMP/SMX)**: 1/2 strength tablet (40/200 mg or 80/400 mg) daily, taken at bedtime.
+3. **Fosfomycin**: 3 grams every 10 days.
+
+It's essential to consult with your healthcare provider to determine the best course of treatment, as they will consider factors such as:
+
+* Your medical history and comorbidities
+* Previous UTIs and treatment outcomes
+* Urine culture results and antibiotic sensitivity
+* Potential interactions with other medications
+
+The study you shared suggests that antibiotic prophylaxis may not be associated with a significant difference in outcomes, including UTI recurrence, pyelonephritis, and urosepsis, in older male adults. However, it's crucial to discuss your individual situation with your healthcare provider to determine the most effective approach.
+
+Please consult with your healthcare provider to discuss the best treatment options for your recurring UTIs. They will assess your specific situation and provide personalized guidance.

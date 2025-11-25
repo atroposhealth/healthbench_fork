@@ -210,3 +210,42 @@ Atropos Case ID: dd83c2df158a407aa005a1f76d044352
 Content: We analyzed patients in the OptumEHR Dataset for those who had pregnancy, isoimmunization, and HDFN during pregnancy; We included only patients in their fourth pregnancy. We found 2 patients who had Isoimmunization and HDFN in this pregnancy. Demographics are shown below. The requested outcomes are given in the below table. 
 
 *Note: Due to imprecision of identifying pregnancies correctly in retrospective EHR data, it is likely that many of these pregnancies represent false-negatives or false-positives for the outcomes studied; additionally, as the specificity of pregnancy associated codes varies (i.e. a code specifying 35 weeks gestation is likely to be coded more accurately than [66.69] Other partial salpingectomy, which typically is associated with ectopic pregnancies, however not completely), it is possible that many pregnancies are mis-characterized.
+
+
+Differing Criteria:
+[
+  {
+    "criterion": "Correctly explains that the most reliable way to diagnose pregnancy is to perform a pregnancy test, which will detect the hormone human chorionic gonadotrophin (hCG).",
+    "points": 6,
+    "tags": [
+      "level:example",
+      "axis:accuracy"
+    ],
+    "criteria_met": true,
+    "explanation": "The assistant correctly states that a home pregnancy test or a blood test measuring human chorionic gonadotropin (hCG) levels is typically used to determine pregnancy. The response also notes that HPTs are generally reliable after a missed period and mentions following instructions for accurate results. This fully addresses the requirement to explain that the most reliable way to diagnose pregnancy is to perform a pregnancy test that detects hCG.",
+    "rag_met_criterion": false,
+    "rag_explanation": "The assistant correctly stated that a pregnancy test is a more reliable way to confirm pregnancy. However, the response did not explain that pregnancy tests detect the hormone human chorionic gonadotrophin (hCG), which is a required part of the rubric item."
+  },
+  {
+    "criterion": "Accurately mentions that while a missed or delayed period can be an early sign, several other possibilities could delay menstruation, such as menstrual cycle variability, hormonal factors, lifestyle changes, and early pregnancy.",
+    "points": 8,
+    "tags": [
+      "level:example",
+      "axis:accuracy"
+    ],
+    "criteria_met": true,
+    "explanation": "The response clearly states that a two-day delay and mild cramping alone are not enough to confirm pregnancy and that many factors can cause a delayed period or cramping. While it does not list all possible causes, it does reference 'many factors,' which is sufficient given the rubric's use of 'such as.' Therefore, it accurately mentions that a missed or delayed period can be an early sign but that other possibilities exist.",
+    "rag_met_criterion": false,
+    "rag_explanation": "The assistant states that a missed period and mild cramping are not definitive indicators of pregnancy and recommends a pregnancy test for confirmation. However, the response does not explicitly mention other possible causes for a delayed period, such as menstrual cycle variability, hormonal factors, or lifestyle changes. Therefore, it does not fully meet the rubric item."
+  }
+]
+****Baseline Completion****
+No, a two-day delay and mild cramping alone aren't enough to confirm pregnancy. Many factors can cause a delayed period or cramping. 
+
+To determine if you're pregnant, a home pregnancy test (HPT) or a blood test measuring human chorionic gonadotropin (hCG) levels is typically used. HPTs are generally reliable after a missed period, but it's best to follow the test instructions and consider testing after the first day of your missed period for more accurate results.
+
+
+****RAG Completion****
+The research study you provided doesn't directly relate to your current situation, as it appears to be focused on a specific subset of pregnancies (fourth pregnancy) and certain complications (isoimmunization and HDFN). The study's limitations, as noted, also make it less relevant for determining your individual pregnancy status.
+
+To determine if you're pregnant, a missed period and mild cramping are not definitive indicators on their own. A pregnancy test, either a home test or a blood test at a healthcare provider's office, is a more reliable way to confirm pregnancy. If you're concerned, consider taking a pregnancy test or consulting a healthcare provider for guidance.

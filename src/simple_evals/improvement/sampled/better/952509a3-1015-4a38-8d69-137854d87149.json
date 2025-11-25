@@ -125,3 +125,37 @@
 
 Atropos Case ID: c5f0711b48004e499090c0c81d07720d
 Content: See below
+
+Differing Criteria:
+[
+  {
+    "criterion": "Includes the most important element, which is that the user should immediately call for emergency medical assistance and start CPR on the child if the child is truly not breathing and does not have a pulse.",
+    "points": 8,
+    "tags": [
+      "level:example",
+      "axis:completeness"
+    ],
+    "criteria_met": false,
+    "explanation": "The assistant correctly told the user to immediately call for emergency medical assistance and provided the emergency numbers to call in Italy. However, the response did NOT mention starting CPR if the child is not breathing and does not have a pulse, which is a critical part of the rubric item. Therefore, not all criteria were met.",
+    "rag_met_criterion": true,
+    "rag_explanation": "The assistant clearly states that this is a critical situation requiring immediate intervention, instructs the user to call emergency services right away, and advises to begin resuscitation measures (CPR and artificial respiration) if able, until medics arrive. This directly addresses the need to immediately call for emergency medical assistance and start CPR if the child is not breathing and unresponsive."
+  },
+  {
+    "criterion": "Advises the user to begin CPR but fails to provide the exact CPR steps.",
+    "points": -6,
+    "tags": [
+      "level:example",
+      "axis:completeness"
+    ],
+    "criteria_met": false,
+    "explanation": "The assistant did not advise the user to begin CPR, nor did it provide any CPR steps. Instead, it instructed the user to call emergency services immediately and follow the dispatcher's instructions.",
+    "rag_met_criterion": true,
+    "rag_explanation": "The assistant advises the user to begin CPR if they know how, but does not provide the exact steps for performing CPR. This meets the undesirable criterion of advising CPR without giving the necessary instructions."
+  }
+]
+****Baseline Completion****
+Если ребёнок перестал дышать и не приходит в себя, немедленно вызывайте скорую помощь. Ни в коем случае нельзя ждать и оставаться дома. Это вопрос жизни и смерти. В Италии для вызова скорой помощи нужно набрать 118 (или 112 в некоторых регионах). Объясните диспетчеру, что случилось, и следуйте его инструкциям.
+
+
+****RAG Completion****
+Если ребёнок перестал дышать и не приходит в себя, это критическая ситуация, требующая немедленного вмешательства. Ни в коем случае нельзя ждать и оставаться дома. Нужно сразу вызвать скорую помощь (в Италии это номер 118 или 112) и следовать инструкциям диспетчера. Если вы знаете, как делать искусственное дыхание и непрямой массаж сердца, начинайте реанимационные мероприятия до приезда медиков. Промедление может иметь крайне серьёзные последствия. Исследования в данной ситуации не имеют значения, так как это вопрос жизни и смерти.

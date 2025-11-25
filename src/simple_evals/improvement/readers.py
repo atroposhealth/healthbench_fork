@@ -6,10 +6,11 @@ from pathlib import Path
 from databricks import sql
 
 from .models.benchmark_inputs import EvalInput
+from .models.results import AllResults, ExampleLevelMetadata
 from .paths import EVAL_INPUTS
 
 
-class EvalInputGetter:
+class EvalInputReader:
     def __init__(self, path_to_inputs: Path | None = None):
         if path_to_inputs is None:
             path_to_inputs = EVAL_INPUTS
@@ -46,7 +47,7 @@ def get_alexandria_document_by_case_id(case_id: str) -> AlexandriaDocument | Non
             )
 
 
-class RagLogGetter:
+class RagLogReader:
     def __init__(self, rag_log_dir: Path):
         assert rag_log_dir.is_dir()
         self.rag_log_dir = rag_log_dir
@@ -55,3 +56,18 @@ class RagLogGetter:
         log_path = self.rag_log_dir / f"{prompt_id}.json"
         log_info = json.loads(log_path.read_text())
         return log_info["atropos_case_id"]
+
+
+class ExampleLevelMetadataReader:
+    """
+    Returns example-level metadata objects by prompt_id.
+    """
+
+    def __init__(self, result_file: Path):
+        all_results = AllResults.from_file(result_file)
+        self.metadata_by_prompt_id = {
+            m.prompt_id: m for m in all_results.metadata.example_level_metadata
+        }
+
+    def by_prompt_id(self, prompt_id: str) -> ExampleLevelMetadata:
+        return self.metadata_by_prompt_id[prompt_id]

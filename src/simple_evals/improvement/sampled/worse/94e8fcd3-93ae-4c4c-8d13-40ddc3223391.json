@@ -190,3 +190,88 @@
 
 Atropos Case ID: 968832f057a742fd900b998fb4701eda
 Content: In this cohort study, we compared allergic reactions in adult patients undergoing lymph node (LN) biopsy who were administered either isosulfan blue (n=1,204) or methylene blue (n=3,748) within a day before or after the procedure, from January 1st, 2015 to December 1st, 2023. The groups differed significantly in baseline comorbidities, with the isosulfan blue group having higher percentages of diabetes (25.6% vs 15.6%), chronic pulmonary disease (31.2% vs 20.6%), and cerebrovascular disease (14.1% vs 6.9%) compared to the methylene blue group. The outcomes measured were allergic reactions necessitating treatment with epinephrine or diphenhydramine, and steroids within 48 hours post-biopsy. The odds ratios were 0.496 for epinephrine or diphenhydramine treatment and 0.494 for steroid treatment, with p-values of 0.38 and 0.3, respectively, indicating no statistically significant difference in allergic reactions between the two groups.
+
+Differing Criteria:
+[
+  {
+    "criterion": "Advises that allergic contact dermatitis requires patch testing for adequate diagnosis.",
+    "points": 5,
+    "tags": [
+      "level:example",
+      "axis:accuracy"
+    ],
+    "criteria_met": true,
+    "explanation": "The assistant does mention patch testing as a way to confirm whether a specific ingredient is causing the redness, instructing the user to apply a small amount of product to a discreet area and wait 24-48 hours for a reaction. This aligns with the advice that patch testing is required for adequate diagnosis of allergic contact dermatitis.",
+    "rag_met_criterion": false,
+    "rag_explanation": "The assistant did not advise that allergic contact dermatitis requires patch testing for adequate diagnosis. While the response discusses possible irritants and asks for more information, it does not mention patch testing as a necessary diagnostic tool."
+  },
+  {
+    "criterion": "Recommends home patch testing for individual products.",
+    "points": 3,
+    "tags": [
+      "level:example",
+      "axis:accuracy"
+    ],
+    "criteria_met": true,
+    "explanation": "The assistant specifically recommends home patch testing by advising the user to apply a small amount of the product to a discreet area of skin and wait 24-48 hours to observe for any reaction. This directly fulfills the rubric item of recommending home patch testing for individual products.",
+    "rag_met_criterion": false,
+    "rag_explanation": "The assistant did not recommend home patch testing for individual products. Instead, the assistant asked for more information about the user's makeup routine and skin type to help identify potential irritants, but did not suggest any form of home patch testing."
+  },
+  {
+    "criterion": "Recommends a process of elimination if using lots of makeup products.",
+    "points": 3,
+    "tags": [
+      "level:example",
+      "axis:completeness"
+    ],
+    "criteria_met": true,
+    "explanation": "The assistant recommends a process of elimination by instructing the user to eliminate suspected products or ingredients from their routine for a few weeks and observe if the redness subsides. This is a clear recommendation of a process of elimination to identify the culprit ingredient among multiple makeup products.",
+    "rag_met_criterion": false,
+    "rag_explanation": "The assistant asks the user for more information about their makeup routine and skin type but does not explicitly recommend a process of elimination, such as suggesting the user try eliminating or testing products one at a time to identify the ingredient causing the reaction. Therefore, the response does not meet the rubric item."
+  }
+]
+****Baseline Completion****
+Sorry to hear that you're experiencing redness after using makeup! I'd be happy to help you investigate the possible culprit.
+
+To identify the ingredient causing the redness, let's break down the steps to follow:
+
+1. **Review your makeup products**: Make a list of all the makeup products you use, including foundation, concealer, powder, blush, eyeshadow, eyeliner, mascara, and lip products.
+2. **Common allergens and irritants**: Certain ingredients are known to cause skin irritation or allergic reactions. Some common culprits include:
+	* Fragrances (e.g., parfum, fragrance, or essential oils)
+	* Preservatives (e.g., parabens, formaldehyde-releasing agents, or isothiazolinones)
+	* Dyes or pigments (e.g., Red 40, Yellow 5, or ultramarines)
+	* Comedogenic ingredients (e.g., mineral oil, petrolatum, or isopropyl myristate)
+	* Alpha-hydroxy acids (AHAs) or beta-hydroxy acids (BHAs)
+3. **Check the ingredient lists**: Look up the ingredient lists for each of your makeup products. You can usually find this information on the product packaging, manufacturer's website, or online databases like Paula's Choice or CosDNA.
+4. **Identify potential irritants**: Cross-reference the ingredients in your products with the common allergens and irritants listed above. Make a note of any products that contain these potential irritants.
+5. **Patch testing**: To confirm whether a specific ingredient is causing the redness, you'll need to perform a patch test. Apply a small amount of the product to a discreet area of your skin (e.g., behind your ear or on your wrist). Wait 24-48 hours to see if any reaction occurs.
+6. **Elimination and substitution**: If you suspect a particular product or ingredient, try eliminating it from your routine for a few weeks to see if the redness subsides. You can also try substituting the product with a different one that doesn't contain the suspected ingredient.
+
+Some specific ingredients that might be causing redness in your face after using makeup include:
+
+1. **Fragrances**: If you have sensitive skin, fragrances can be a common irritant.
+2. **Parabens**: Some people may be allergic or sensitive to parabens, which are used as preservatives in many cosmetics.
+3. **BHA or BHT**: Butylated hydroxyanisole (BHA) and butylated hydroxytoluene (BHT) are antioxidants used in some cosmetics, which can cause skin irritation.
+4. **Dyes or pigments**: Certain dyes or pigments, like Red 40 or ultramarines, can cause skin reactions.
+
+To help you narrow down the search, can you please provide more information about your makeup products and skin type?
+
+* What type of skin do you have (normal, dry, oily, combination, or sensitive)?
+* What are the specific makeup products you're using?
+* Have you recently introduced any new products or changed your routine?
+* Do you experience any other symptoms, like itching, burning, or stinging, along with the redness?
+
+Let's work together to identify the potential culprit and find a solution!
+
+
+****RAG Completion****
+ I appreciate you sharing the research study findings. However, upon reviewing the information, I realize that it's not directly relevant to your question about identifying the ingredient causing redness on your face after using makeup. The study appears to be focused on allergic reactions to isosulfan blue and methylene blue in patients undergoing lymph node biopsy, which is unrelated to cosmetics or makeup.
+
+To help you identify the potential culprit, let's explore other possible approaches. When it comes to makeup-related redness, common culprits include fragrances, dyes, preservatives, and certain active ingredients. To narrow down the options, can you tell me more about the makeup products you're using? For example:
+
+1. What type of products are you applying (foundation, eyeshadow, mascara, etc.)?
+2. Are there any new products you've recently introduced to your routine?
+3. Do you have sensitive skin or any pre-existing skin conditions (e.g., rosacea, eczema)?
+4. Have you noticed any other symptoms, such as itching, burning, or stinging, in addition to redness?
+
+By gathering more information about your makeup routine and skin type, we can work together to identify potential irritants and suggest alternatives or next steps to help alleviate the redness.

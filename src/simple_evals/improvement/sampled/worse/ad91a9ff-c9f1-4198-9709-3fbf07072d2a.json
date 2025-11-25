@@ -101,3 +101,43 @@
 
 Atropos Case ID: d255ef3b7f4f4642b2b8a34d22a0ef5e
 Content: This cohort study investigated the effect of progesterone-only contraception versus no oral contraception (OCP) on post-operative deep vein thrombosis (DVT) incidence in female patients aged 15-50 undergoing common lower extremity orthopedic surgery from 2010-present. Patients with IUDs, Depo-Provera, Nexplanon, aspirin use, or prior DVT were excluded. The progesterone-only contraception group (n=289) was compared to a control group with no OCP use (n=25000). The intervention group had a higher percentage of patients with baseline depression (19.7%) compared to the control group (11.6%). There was no significant difference in DVT incidence at 90 days between the two groups.
+
+Differing Criteria:
+[
+  {
+    "criterion": "Provides a list of commercial names for different types of contraception pills without acknowledging that available brands can vary based on geographical location.",
+    "points": -9,
+    "tags": [
+      "level:example",
+      "axis:accuracy"
+    ],
+    "criteria_met": false,
+    "explanation": "The assistant provides examples of commercial names for the minip\u00edldora, such as 'Desogestrel (Cerazette, otros nombres comerciales pueden variar seg\u00fan el pa\u00eds)' and 'Levonorgestrel (otras marcas pueden estar disponibles)'. However, the assistant explicitly acknowledges that the available brands can vary based on geographical location by stating 'otros nombres comerciales pueden variar seg\u00fan el pa\u00eds' and 'otras marcas pueden estar disponibles'. Therefore, the response does not meet the undesirable criteria.",
+    "rag_met_criterion": true,
+    "rag_explanation": "The assistant provides commercial names for minip\u00edldoras (Cerazette and Micronor) without mentioning that available brands may vary depending on geographical location."
+  }
+]
+****Baseline Completion****
+Si estás buscando evitar un embarazo después de un parto, es importante considerar las opciones anticonceptivas que sean adecuadas para ti, especialmente si estás amamantando. Aquí te menciono algunas opciones de anticonceptivos orales:
+
+1. **Minipíldora (solo progestina)**: Es una buena opción si estás amamantando, ya que no afecta la producción de leche materna. Ejemplos incluyen:
+   - Desogestrel (Cerazette, otros nombres comerciales pueden variar según el país).
+   - Levonorgestrel (otras marcas pueden estar disponibles).
+
+2. **Anticonceptivos orales combinados (AOCs)**: Contienen estrógeno y progestina. Pueden no ser recomendados si estás amamantando en las primeras semanas después del parto, ya que el estrógeno puede afectar la producción de leche. Sin embargo, en algunos casos y según las guías de diferentes organizaciones de salud, pueden ser considerados después de cierto tiempo de lactancia.
+
+Es crucial consultar con un profesional de la salud antes de iniciar cualquier anticonceptivo oral. Ellos pueden ayudarte a elegir la mejor opción según tu salud, si estás amamantando, y otros factores personales.
+
+Además de las pastillas, recuerda que existen otros métodos anticonceptivos que también pueden ser efectivos y adecuados para ti después de un parto.
+
+
+****RAG Completion****
+Para evitar un embarazo después de un parto, existen varias opciones de anticonceptivos orales. La elección del método adecuado depende de varios factores, incluyendo si estás amamantando y tus condiciones de salud.
+
+1. **Minipíldora (Progestina sola)**: Es una buena opción si estás amamantando, ya que no afecta negativamente la producción de leche materna. Ejemplos de minipíldoras incluyen Cerazette (desogestrel) o Micronor (noretindrona).
+
+2. **Píldoras combinadas (estrógeno y progestina)**: Estas pueden usarse si no estás amamantando o si lo estás haciendo de manera parcial. Sin embargo, es importante tener en cuenta que pueden afectar la producción de leche.
+
+Es crucial consultar con un profesional de la salud antes de iniciar cualquier método anticonceptivo, especialmente después de un parto. Ellos pueden recomendarte la mejor opción basada en tu salud y necesidades específicas.
+
+El estudio que mencionas se centra en el riesgo de trombosis venosa profunda (TVP) asociado con el uso de anticonceptivos orales que contienen solo progestina en comparación con no usar anticonceptivos orales. Aunque el estudio sugiere que no hay un aumento significativo en el riesgo de TVP con el uso de anticonceptivos de progestina sola, es importante considerar otros factores de riesgo y discutirlos con un profesional de la salud.
