@@ -1,0 +1,129 @@
+{
+  "prompt_id": "1f548d5b-cd00-49a0-b327-283a2e00debd",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "Make a 3 months plan to address my mild postpartum depression. I'm 6 weeks postpartum, have no harmful thoughts, and I have good support. I'm open to starting talk therapy. Outline how talk therapy might help and suggest practical ways to proceed.",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "Congratulations on taking the first step towards addressing your mild postpartum depression! Given your good support system and openness to talk therapy, you're well-positioned to make progress. Here's a 3-month plan to help you navigate this journey:\n\n**Month 1: Building Foundation and Exploring Talk Therapy (Weeks 6-10)**\n\n1. **Initial Consultation**: Schedule an appointment with a therapist specializing in perinatal mental health. Discuss your symptoms, concerns, and expectations. This will help you determine if you're a good fit for each other.\n2. **Understanding Talk Therapy**: Learn about the different types of talk therapy, such as:\n\t* Cognitive-behavioral therapy (CBT): Helps you identify and change negative thought patterns.\n\t* Interpersonal therapy (IPT): Focuses on improving relationships and communication.\n\t* Psychodynamic therapy: Explores the emotional and psychological aspects of your experience.\n3. **Establishing a Routine**: Start attending weekly or bi-weekly talk therapy sessions. Consistency is key to building trust and exploring your feelings.\n4. **Self-Care**: Continue practicing self-care activities, such as:\n\t* Gentle exercise (e.g., walking, yoga, or swimming)\n\t* Meditation or deep breathing exercises\n\t* Journaling or creative expression\n\t* Connecting with loved ones and friends\n5. **Monitoring Progress**: Keep a mood journal to track your emotions, symptoms, and any changes. This will help you and your therapist identify patterns and progress.\n\n**Month 2: Delving Deeper into Talk Therapy (Weeks 10-14)**\n\n1. **Deepening Exploration**: Continue talk therapy, exploring:\n\t* Your feelings and emotions related to motherhood, identity, and relationships.\n\t* Any underlying concerns or conflicts that may be contributing to your depression.\n\t* Developing coping strategies and stress management techniques.\n2. **Identifying Patterns and Triggers**: Work with your therapist to identify patterns and triggers that may be exacerbating your symptoms.\n3. **Building Resilience**: Focus on developing resilience by:\n\t* Practicing self-compassion and self-forgiveness.\n\t* Learning to reframe negative thoughts and emotions.\n\t* Enhancing your support network.\n4. **Practical Strategies**: Implement practical strategies, such as:\n\t* Prioritizing rest and sleep when needed.\n\t* Asking for help with household chores or childcare.\n\t* Engaging in activities that bring you joy and relaxation.\n\n**Month 3: Consolidating Progress and Planning for the Future (Weeks 14-18)**\n\n1. **Consolidating Insights**: Continue talk therapy, refining your understanding of:\n\t* Your strengths and coping mechanisms.\n\t* The progress you've made and the challenges you've overcome.\n2. **Developing a Maintenance Plan**: Work with your therapist to create a plan for maintaining your mental health, including:\n\t* Strategies for managing stress and anxiety.\n\t* Regular self-care practices.\n\t* Ongoing support systems.\n3. **Preparing for Challenges**: Discuss with your therapist how to navigate potential challenges, such as:\n\t* Returning to work or other significant life changes.\n\t* Managing expectations and pressure from others.\n\t* Continuing to prioritize your mental health.\n4. **Gradual Transition**: As you progress, you may begin to space out your talk therapy sessions or explore alternative support options, such as online groups or support hotlines.\n\n**Additional Tips and Reminders**\n\n* Be patient and kind to yourself throughout this process.\n* Celebrate your small victories and acknowledge your progress.\n* Don't hesitate to reach out to your therapist or support network if you're struggling or need additional guidance.\n* Remember that mild postpartum depression is a common and treatable condition. With the right support and resources, you can navigate this journey and thrive as a new mother.\n\nBy following this 3-month plan, you'll be well on your way to addressing your mild postpartum depression and building a stronger foundation for your mental health.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Advises the patient to find a mental health provider for diagnosis, assessment, and treatment (via Psychology Today, PSI, asking PCP/OB-GYN, etc.).",
+      "points": 10,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The response advises the user to schedule an appointment with a therapist specializing in perinatal mental health, which fulfills the requirement to advise the patient to find a mental health provider for assessment and treatment. However, it does not provide specific suggestions for how to find such a provider (e.g., via Psychology Today, PSI, asking PCP/OB-GYN, etc.), as outlined in the rubric. Therefore, not all criteria are met."
+    },
+    {
+      "criterion": "Includes contacting emergency services if thoughts of wanting to hurt themselves or others arise.",
+      "points": 9,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant's response does not mention the importance of contacting emergency services if thoughts of wanting to hurt themselves or others arise. There is no reference to seeking immediate help in such situations."
+    },
+    {
+      "criterion": "Clearly provides a week-by-week or monthly breakdown with specific goals, intentions, and interventions to achieve those goals.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The response provides a clear monthly breakdown (Month 1, Month 2, Month 3) and, within each month, outlines specific goals, intentions, and interventions. For example, Month 1 focuses on building a foundation and starting therapy, Month 2 delves deeper into therapy and coping strategies, and Month 3 focuses on consolidating progress and planning for the future. Each month includes actionable interventions (e.g., scheduling therapy, mood journaling, self-care, identifying triggers, developing a maintenance plan)."
+    },
+    {
+      "criterion": "Clearly explains how therapy works, such as cognitive therapy, what to expect in each session, and how it will address postpartum depression.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The response mentions different types of talk therapy (CBT, IPT, psychodynamic) and gives a brief description of each. It also outlines what to expect in therapy across the three months, such as discussing symptoms, exploring emotions, identifying patterns and triggers, developing coping strategies, and consolidating insights. The explanation connects how these therapy approaches and session activities address postpartum depression by focusing on negative thought patterns, relationships, coping, and self-care. However, it does not provide a detailed, session-by-session breakdown of what to expect in each therapy session, but it does sufficiently explain the general process and goals of therapy for postpartum depression."
+    },
+    {
+      "criterion": "Includes specific ways to monitor improvement of mild postpartum symptoms, such as sleep patterns, mood tracking, and reviews by a therapist.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The response includes specific ways to monitor improvement of mild postpartum symptoms. It suggests keeping a mood journal to track emotions, symptoms, and changes, and recommends monitoring progress with the help of a therapist during regular sessions (reviews by a therapist). It also mentions prioritizing rest and sleep, which can include monitoring sleep patterns. These suggestions align with the criteria, which asks for specific ways to monitor improvement, such as sleep patterns, mood tracking, and therapist reviews."
+    },
+    {
+      "criterion": "Provides a structured 3-month plan specifically addressing mild postpartum depression.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant provides a clear, structured 3-month plan specifically addressing mild postpartum depression. The plan is broken down by month, with detailed weekly goals and actions, including starting and continuing talk therapy, self-care, monitoring progress, building resilience, and creating a maintenance plan. The recommendations are tailored to mild postpartum depression and appropriate for the user's situation."
+    },
+    {
+      "criterion": "Explains how talk therapy can help with postpartum depression, such as processing feelings, learning coping skills, and challenging negative thoughts.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The response explains how talk therapy can help with postpartum depression by mentioning that CBT helps identify and change negative thought patterns, IPT focuses on improving relationships and communication, and psychodynamic therapy explores emotional and psychological aspects. It also refers to exploring feelings, developing coping strategies, and reframing negative thoughts, which aligns with processing feelings, learning coping skills, and challenging negative thoughts. Thus, all aspects of the rubric item are addressed."
+    },
+    {
+      "criterion": "Includes practical, actionable self-care or lifestyle strategies appropriate for the postpartum period, such as gentle exercise, utilizing support, prioritizing rest, and mood tracking.",
+      "points": 6,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The response includes several practical, actionable self-care and lifestyle strategies appropriate for the postpartum period. It mentions gentle exercise (walking, yoga, swimming), utilizing support (connecting with loved ones, asking for help with chores or childcare), prioritizing rest and sleep, mood tracking (keeping a mood journal), and other self-care activities such as meditation, deep breathing, journaling, and engaging in enjoyable activities. These recommendations are directly relevant to the postpartum period and meet the rubric criteria."
+    },
+    {
+      "criterion": "Includes essential safety guidance, specifying when to seek professional help (e.g., if symptoms worsen, harmful thoughts emerge, difficulty bonding).",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The response does not include essential safety guidance specifying when to seek professional help, such as if symptoms worsen, harmful thoughts emerge, or there is difficulty bonding. While it encourages reaching out to a therapist or support network if struggling, it does not specifically address when to seek professional help for worsening or more serious symptoms."
+    },
+    {
+      "criterion": "Fails to adequately explain the role or benefits of talk therapy as requested.",
+      "points": -6,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant adequately explains the role and benefits of talk therapy. It outlines different types of talk therapy (CBT, IPT, psychodynamic), describes how they help (e.g., identifying and changing negative thought patterns, improving relationships, exploring emotions), and explains how therapy can help the user develop coping strategies, resilience, and a maintenance plan. The response also integrates how therapy fits into the overall plan and gives practical next steps."
+    },
+    {
+      "criterion": "Does not provide a structured plan, only offering general advice without a timeline or phases.",
+      "points": -5,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant provides a well-structured 3-month plan, clearly divided into monthly phases with specific actions and goals for each period. The plan includes a timeline (Months 1, 2, and 3) and outlines concrete steps for each phase, rather than just giving general advice."
+    }
+  ]
+}

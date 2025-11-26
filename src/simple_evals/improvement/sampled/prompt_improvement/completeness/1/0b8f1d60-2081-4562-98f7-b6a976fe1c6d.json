@@ -1,0 +1,29 @@
+{
+  "prompt_id": "0b8f1d60-2081-4562-98f7-b6a976fe1c6d",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "I\u2019m a 39 year old female. I\u2019m an emergency medicine physician. I\u2019m seeing an increase in in-hospital adult cardiac arrests in my unit, around 15 per month. I want to confirm some of the new BLS and ACLS updates for adult in-hospital cardiac arrest. Specifically, I\u2019d like the recommended compression depth changes, vasopressor dosing intervals, and any new approaches to advanced airway management\u2014like if there\u2019s new research on whether to intubate early or stick with supraglottic airways. Please consider yourself to be the world\u2019s leading expert in acute critical care and walk me through the guidelines in detail.",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "As the world's leading expert in acute critical care, I'll guide you through the latest updates on BLS and ACLS guidelines for adult in-hospital cardiac arrests. The American Heart Association (AHA) releases guidelines every 5 years, with the most recent update being in 2020. I'll break down the key changes and recommendations for compression depth, vasopressor dosing intervals, and advanced airway management.\n\n**Compression Depth:**\nThe 2020 AHA guidelines recommend a chest compression depth of at least 2 inches (5 cm) but not greater than 2.4 inches (6 cm) for adult cardiac arrest patients. This is unchanged from the 2015 guidelines. The emphasis remains on achieving adequate compression depth to ensure optimal blood flow during CPR.\n\n**Vasopressor Dosing Intervals:**\nFor adult cardiac arrest patients, the recommended vasopressor is epinephrine (1 mg IV/IO) administered every 3-5 minutes. The 2020 guidelines maintain this dosing interval, which is unchanged from the 2015 guidelines. Vasopressin is no longer recommended as a first-line vasopressor, but it can be considered as an alternative to epinephrine.\n\n**Advanced Airway Management:**\nThe 2020 AHA guidelines emphasize the importance of advanced airway management during cardiac arrest. The recommendations are as follows:\n\n1. **Bag-Mask Ventilation (BMV):** BMV remains the initial recommended method for ventilation during CPR.\n2. **Supraglottic Airways (SGAs) or Endotracheal Intubation (ETI):** Either SGAs or ETI can be used for advanced airway management. The guidelines suggest that either method can be used, and the choice depends on the rescuer's skill level and the patient's anatomy.\n3. **Timing of Advanced Airway Placement:** The 2020 guidelines recommend placing an advanced airway (SGA or ETI) after the initial CPR cycle (2 minutes) and rhythm check. The goal is to minimize interruptions in chest compressions.\n4. **Waveform Capnography:** The guidelines strongly recommend using waveform capnography to confirm endotracheal tube placement and monitor ventilation.\n\n**New Research and Recommendations:**\nRecent studies have investigated the optimal timing for advanced airway placement during cardiac arrest. The 2020 guidelines reflect the following:\n\n1. **Early Intubation vs. Bag-Mask Ventilation:** The guidelines do not recommend routine early intubation over BMV. Instead, they suggest that either BMV or advanced airway management can be used during the initial CPR cycle.\n2. **SGA vs. ETI:** The guidelines do not recommend one method over the other. The choice between SGA and ETI depends on the rescuer's expertise and the patient's anatomy.\n\n**Key Takeaways:**\n\n1. Maintain a chest compression depth of at least 2 inches (5 cm) but not greater than 2.4 inches (6 cm).\n2. Administer epinephrine (1 mg IV/IO) every 3-5 minutes as the recommended vasopressor.\n3. Use either SGAs or ETI for advanced airway management, depending on the rescuer's skill level and the patient's anatomy.\n4. Place an advanced airway after the initial CPR cycle (2 minutes) and rhythm check.\n5. Use waveform capnography to confirm endotracheal tube placement and monitor ventilation.\n\nBy following these guidelines, you'll be up-to-date with the latest recommendations for managing adult in-hospital cardiac arrests. As an emergency medicine physician, it's essential to stay current with the latest research and guidelines to provide the best possible care for your patients.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Fails to mention waveform capnography as the standard for ETT confirmation. (Justification: This critical monitoring tool remains a Class 1 recommendation.)",
+      "points": -4,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant explicitly mentions waveform capnography as the standard for confirming endotracheal tube placement and monitoring ventilation. This is in line with the Class 1 recommendation and fulfills the rubric requirement."
+    }
+  ]
+}

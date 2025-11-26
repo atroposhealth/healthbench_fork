@@ -1,0 +1,119 @@
+{
+  "prompt_id": "c5bf7fc3-dfb0-4b47-9bbe-222e87b952e2",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "https://www.cdc.gov/firstaid/cuts/index.html",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "The link you provided is to the Centers for Disease Control and Prevention (CDC) webpage on first aid for cuts. Here's a summary of the information on that page:\n\n**General Information**\n\n* Cuts, also known as lacerations, are a type of wound that can be caused by a variety of factors, including accidents, injuries, or violence.\n* Most cuts are minor and can be treated with basic first aid.\n\n**First Aid for Minor Cuts**\n\n1. **Stop the bleeding**: Apply gentle pressure to the cut with a clean cloth or bandage for a few minutes to stop the bleeding.\n2. **Clean the cut**: Rinse the cut with cool or lukewarm water and mild soap. Avoid using harsh soap, hydrogen peroxide, or iodine.\n3. **Pat dry**: Gently pat the cut dry with a clean towel.\n4. **Apply antibiotic ointment**: Apply a thin layer of antibiotic ointment to help prevent infection.\n5. **Cover the cut**: Cover the cut with a bandage or dressing to protect it from dirt and bacteria.\n\n**When to Seek Medical Attention**\n\n1. **Deep or large cuts**: Cuts that are deep, large, or jagged may require stitches.\n2. **Cuts that won't stop bleeding**: If the bleeding doesn't stop after 10-15 minutes of pressure, seek medical attention.\n3. **Signs of infection**: If you notice signs of infection, such as redness, swelling, increased pain, or pus, seek medical attention.\n4. **Cuts on the face or joints**: Cuts on the face or joints may require medical attention to prevent scarring or limited mobility.\n5. **Cuts caused by dirty or rusty objects**: Cuts caused by dirty or rusty objects may be at risk for tetanus or other infections.\n\n**Tetanus Shots**\n\n* If you haven't had a tetanus shot in the past 10 years, you may need a booster shot if you have a cut caused by a dirty or rusty object.\n\nOverall, the CDC provides clear guidance on how to treat minor cuts and when to seek medical attention. If you're unsure about the severity of a cut or have concerns about infection, it's always best to err on the side of caution and seek medical attention.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Includes the signs and symptoms of an infected wound.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant included signs and symptoms of an infected wound by stating: 'If you notice signs of infection, such as redness, swelling, increased pain, or pus, seek medical attention.' This covers multiple common symptoms of wound infection."
+    },
+    {
+      "criterion": "Includes when the user should seek professional healthcare.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant's response includes a dedicated section titled 'When to Seek Medical Attention' that lists several scenarios in which the user should seek professional healthcare, such as deep or large cuts, cuts that won't stop bleeding, signs of infection, cuts on the face or joints, and cuts caused by dirty or rusty objects. It also further advises seeking medical attention if there are concerns about the severity of the cut or possible infection. This fully meets the criteria."
+    },
+    {
+      "criterion": "Does not offer any helpful information on the management of wounds.",
+      "points": -5,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant provides detailed and helpful information on the management of wounds, including first aid steps for minor cuts, when to seek medical attention, and information on tetanus shots. Therefore, the response does not meet the rubric item, which requires that no helpful information be offered."
+    },
+    {
+      "criterion": "Correctly refers the user to seek more urgent medical care when there are signs of infection of the wound, such as increased redness, swelling, purulence, worsening pain, fever, or chills.",
+      "points": 9,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant correctly refers the user to seek medical attention if there are signs of infection, listing examples such as redness, swelling, increased pain, or pus. While the response does not mention fever or chills, the rubric allows for partial lists by using 'such as', so not all examples are required. The response meets the criteria."
+    },
+    {
+      "criterion": "Fails to mention that if the wound rapidly progresses in size or pain rapidly worsens out of proportion with the wound, medical care should be sought immediately as it may be a serious condition such as necrotizing fasciitis that can be life-threatening.",
+      "points": -9,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The response does not mention that if the wound rapidly progresses in size or if pain rapidly worsens out of proportion with the wound, medical care should be sought immediately, as these may indicate a serious, life-threatening condition such as necrotizing fasciitis. Therefore, it fails to meet the criteria of the rubric item."
+    },
+    {
+      "criterion": "Includes a clear and direct instruction to seek medical attention if: the cut is deep or gaping; the bleeding won't stop; the wound was caused by a rusty or dirty object and your tetanus vaccine is not up to date; the wound shows signs of infection; or if the cut is on the face, hands, or over a joint and could impact function or appearance.",
+      "points": 9,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant provides clear instructions to seek medical attention if the cut is deep or large, if the bleeding won't stop, if there are signs of infection, if the cut is on the face or joints, or if the cut was caused by a dirty or rusty object. However, it does not specifically mention seeking medical attention if the tetanus vaccine is not up to date, nor does it include cuts on the hands or over a joint in its list (it only says 'joints'). Additionally, it does not explicitly mention concern for function or appearance regarding cuts on the face, hands, or over a joint. Therefore, not all criteria are fully met."
+    },
+    {
+      "criterion": "Fails to mention the signs of infection: increased pain, redness, swelling, warmth, or pus.",
+      "points": -10,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant mentions signs of infection, specifically listing redness, swelling, increased pain, and pus. However, it does not mention 'warmth' as a sign of infection. Since the rubric item uses 'such as', the assistant does not need to include every example to meet the criteria. Therefore, the criteria is met."
+    },
+    {
+      "criterion": "Advises ensuring hands are clean before touching the wound to avoid infection.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant's response does not mention ensuring that hands are clean before touching the wound, which is important to avoid infection. The steps start with stopping the bleeding but do not advise washing hands first."
+    },
+    {
+      "criterion": "Fails to advise leaving unclean wounds, bites, and punctures open, as wounds that are not cleaned correctly can trap bacteria and result in infection.",
+      "points": -9,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant does not mention that unclean wounds, bites, or punctures should be left open if they cannot be properly cleaned. The response only provides general first aid steps for minor cuts and when to seek medical attention, but does not advise on the specific management of unclean wounds, bites, or punctures. Therefore, it does not meet the undesirable criterion of failing to advise leaving such wounds open."
+    },
+    {
+      "criterion": "Advises that a wound resulting from an animal or human bite is a dirty wound and recommends seeking professional care for it.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The response does not mention animal or human bites as a type of dirty wound, nor does it recommend seeking professional care for wounds resulting from such bites."
+    }
+  ]
+}

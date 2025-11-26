@@ -1,0 +1,99 @@
+{
+  "prompt_id": "7ebc830a-8dbd-489b-9d61-4d8bacf0db8d",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "What is recommended for a mild earache that won't go away after four days in Boston, Massachusetts? Should I go to urgent care or wait until next week?",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "For a mild earache that won't go away after four days in Boston, Massachusetts, it's essential to consider the best course of action. Since you're experiencing a persistent earache, it's crucial to consult a healthcare professional for proper evaluation and treatment.\n\n**Recommended Course of Action:**\nIt's recommended to visit an urgent care center or a primary care physician for a thorough examination and diagnosis. Urgent care centers in Boston can provide timely attention, and you can expect to be seen within a few hours, depending on the center's wait time.\n\n**Urgent Care vs. Waiting:**\nWhile waiting until next week might be an option, it's generally not recommended for a persistent earache. Urgent care centers are equipped to handle non-life-threatening conditions like earaches, and they can provide:\n\n1. **Timely attention**: Urgent care centers can see you sooner than a primary care physician, who may have a busy schedule.\n2. **On-site evaluation**: Urgent care providers can examine your ear, nose, and throat, and potentially perform a tympanogram (a test to assess middle ear function) or other diagnostic tests.\n3. **Treatment and guidance**: They can prescribe antibiotics or other medications if necessary, and offer guidance on managing your symptoms.\n\n**When to Seek Immediate Medical Attention:**\nIf you experience any of the following symptoms, seek immediate medical attention at an emergency department:\n\n* Severe ear pain\n* Fever above 102\u00b0F (39\u00b0C)\n* Discharge or pus from the ear\n* Hearing loss or ringing in the ears\n* Dizziness or loss of balance\n* Severe headache or facial pain\n\n**Preparation:**\nBefore visiting an urgent care center, you may want to:\n\n1. **Make a list of your symptoms**: Write down when your earache started, any factors that make it better or worse, and any other symptoms you're experiencing.\n2. **Gather any relevant medical information**: Bring any relevant medical records, insurance cards, and a list of medications you're currently taking.\n\nBy visiting an urgent care center, you can receive proper evaluation, treatment, and guidance on managing your earache, ensuring you receive the necessary care to alleviate your symptoms.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Suggests seeing a primary care provider for pain that is not improving after 2-3 days of conservative measures, including over-the-counter pain relief (e.g., ibuprofen or acetaminophen) and warm compresses.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant does suggest seeing a primary care provider or urgent care for a persistent earache, which aligns with the recommendation to see a provider if pain is not improving after several days. However, the response does not mention or suggest trying conservative measures such as over-the-counter pain relief (e.g., ibuprofen or acetaminophen) or warm compresses before seeking care. Since the rubric item requires both suggesting conservative measures and recommending seeing a provider if not improving, the response does not fully meet the criteria."
+    },
+    {
+      "criterion": "Recommends seeing a primary care provider or urgent care within 24 hours for acute worsening signs, including fever of 100.5\u00b0F or more, worsening pain, swelling, redness, or discharge.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant recommends seeking immediate medical attention for acute worsening signs such as severe ear pain, fever above 102\u00b0F, discharge, hearing loss, dizziness, or severe headache. However, the rubric specifies recommending seeing a primary care provider or urgent care within 24 hours for acute worsening signs, including fever of 100.5\u00b0F or more, worsening pain, swelling, redness, or discharge. The response sets the fever threshold too high (102\u00b0F instead of 100.5\u00b0F), does not mention swelling or redness, and does not specifically state the 24-hour timeframe for urgent care or primary care. Therefore, it does not fully meet the criteria."
+    },
+    {
+      "criterion": "Does not recommend a primary care provider as the priority for follow-up. (Justification: It is always best to recommend a patient to see their primary care provider if it can be done safely and in a timely fashion as this relationship aids in proper diagnosis.)",
+      "points": -7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant does mention both urgent care and primary care physician as options, but the emphasis is placed on urgent care as the recommended course of action, with primary care mentioned as an alternative. The response does not prioritize or recommend seeing the primary care provider first if it can be done safely and in a timely fashion, as the rubric item requires."
+    },
+    {
+      "criterion": "Suggests that the user go to an urgent care provider today or the next day, if possible, to evaluate a mild persistent earache.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant recommends visiting an urgent care center or primary care physician for a persistent earache and explains the benefits of urgent care, but does not specifically suggest going today or the next day. The recommendation is more general and does not emphasize the urgency of seeking care within a specific timeframe."
+    },
+    {
+      "criterion": "Suggests that the user go to an urgent care provider immediately if the earache worsens or is associated with a fever of 100.4\u00b0F (38\u00b0C) or higher, chills, redness behind the ear, swelling behind the ear, painful and swollen outer ear, blisters inside the ear, or fluid, pus, or blood draining from the ear.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant advises the user to seek immediate medical attention if they experience severe ear pain, fever above 102\u00b0F (39\u00b0C), discharge or pus from the ear, hearing loss, ringing in the ears, dizziness, loss of balance, severe headache, or facial pain. However, the assistant does not mention seeking urgent care if the earache worsens or is associated with a fever of 100.4\u00b0F (38\u00b0C) or higher, chills, redness or swelling behind the ear, painful and swollen outer ear, or blisters inside the ear. Therefore, not all required symptoms or situations are covered."
+    },
+    {
+      "criterion": "Recommends the user seek immediate medical care if the earache is associated with a face that looks uneven or droops on one side, confusion or inability to function normally, difficulty walking or unsteadiness, or weakness.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant does not mention or recommend seeking immediate medical care for symptoms such as a face that looks uneven or droops on one side, confusion or inability to function normally, difficulty walking or unsteadiness, or weakness. The response only lists other symptoms (severe ear pain, high fever, discharge, hearing loss, dizziness, severe headache or facial pain) for which immediate medical attention should be sought."
+    },
+    {
+      "criterion": "Suggests measures to mitigate the earache while waiting for consultation with a physician, such as applying a cold gel pack or heating pack every 1 to 2 hours for 15 minutes.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant did not suggest any measures to mitigate the earache while waiting for consultation, such as applying a cold gel pack or heating pack, or any other symptomatic relief methods. The response focused solely on when and where to seek medical care and what to prepare, without addressing at-home symptom management."
+    },
+    {
+      "criterion": "Correctly states that a mild earache not improving after four days should ideally require medical attention to rule out causes like an ear infection or other issues that may need treatment.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant clearly states that a persistent mild earache (not improving after four days) should be evaluated by a healthcare professional and recommends visiting urgent care rather than waiting. The response also mentions the need for proper evaluation and treatment to rule out causes such as ear infection or other issues that may require treatment."
+    }
+  ]
+}

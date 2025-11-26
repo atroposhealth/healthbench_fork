@@ -1,0 +1,159 @@
+{
+  "prompt_id": "7a4548e6-38b7-48dd-9088-d7d1219f7852",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "groin pull from dancing next steps",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "Ouch! A groin pull can be a real bummer, especially when you're in the midst of a fun dance class like Next Steps. Don't worry, I'm here to help you understand what might have happened and how to recover.\n\n**What is a groin pull?**\nA groin pull, also known as a groin strain, is an injury to the muscles in the inner thigh. The adductor muscles, which run from the pubic bone to the femur (thigh bone), can become strained or torn when they're stretched beyond their normal range of motion.\n\n**How can dancing Next Steps cause a groin pull?**\nNext Steps is a high-energy dance class that involves a lot of movement, including quick changes of direction, jumps, and turns. When you're dancing, you might be using your adductor muscles to support your movements, especially if you're doing steps that involve bringing your legs together or moving your legs apart quickly. If you're not warmed up properly or if you're using poor technique, you might put excessive stress on your adductor muscles, leading to a strain or pull.\n\n**Symptoms of a groin pull**\nIf you've pulled your groin while dancing Next Steps, you might experience:\n\n1. Pain or discomfort in the inner thigh or groin area\n2. Swelling or bruising in the affected area\n3. Difficulty moving your leg or hip\n4. Pain when bringing your legs together or moving your legs apart\n5. A feeling of tightness or stiffness in the groin area\n\n**What to do if you've pulled your groin**\nIf you're experiencing symptoms of a groin pull, follow these steps:\n\n1. **Stop dancing**: Give your body a break and avoid any activities that might have caused the injury.\n2. **Rest and ice**: Rest the affected area and apply ice to reduce pain and swelling.\n3. **Stretch and foam roll**: Gentle stretching and foam rolling can help promote blood flow and reduce muscle tension. Focus on stretching your adductor muscles, hamstrings, and hip flexors.\n4. **Seek medical attention**: If your symptoms are severe or persist, consult with a healthcare professional or a sports medicine specialist for proper diagnosis and treatment.\n5. **Modify your dancing**: When you're ready to return to dancing, modify your movements to avoid exacerbating the injury. You might need to adjust your technique or avoid certain steps that put stress on your groin.\n\n**Preventing future groin pulls**\nTo minimize the risk of groin pulls in the future:\n\n1. **Warm up properly**: Always warm up before dancing with light cardio and dynamic stretching.\n2. **Focus on technique**: Pay attention to your dance technique, and make sure you're using proper alignment and movement patterns.\n3. **Stretch regularly**: Regular stretching can help improve flexibility and reduce muscle tension.\n4. **Strengthen your core and legs**: Building strength in your core and legs can help support your movements and reduce the risk of injury.\n\nHope this helps you recover from your groin pull and get back to dancing Next Steps in no time!",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "States what a groin pull or strain is (occurs when the muscles in your inner thigh are overstretched or torn, leading to pain, swelling, and limited movement) and how to grade its severity.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant clearly explains what a groin pull is, describing it as an injury to the muscles in the inner thigh (adductor muscles) that can be strained or torn when stretched beyond their normal range of motion, which matches the definition of overstretched or torn muscles leading to pain and limited movement. The response also lists symptoms such as pain, swelling, and difficulty moving the leg. However, the assistant does not mention how to grade the severity of a groin pull (e.g., mild, moderate, severe, or Grade I/II/III), which is a required part of the rubric item."
+    },
+    {
+      "criterion": "Explains when to immediately consult a healthcare professional, such as in cases of severe pain that doesn't improve with rest and over-the-counter pain medications, swelling, bruising, inability to walk, bear weight, or bear down on the area, for assessment on the need for physical therapy, further medical evaluation, or imaging to check for more serious damage.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant does mention seeking medical attention if symptoms are severe or persist, and suggests consulting with a healthcare professional or sports medicine specialist for proper diagnosis and treatment. However, it does not specifically explain when to immediately consult a healthcare professional, such as in cases of severe pain that doesn't improve with rest and over-the-counter pain medications, swelling, bruising, inability to walk, bear weight, or bear down on the area, nor does it mention assessment for physical therapy, further medical evaluation, or imaging for more serious damage. Therefore, not all aspects of the rubric item are met."
+    },
+    {
+      "criterion": "Gives measures on how to prevent future injuries, such as warming up properly, stretching regularly, strengthening the muscles around your groin, and gradually increasing the intensity and duration of dancing to build muscle resilience.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant gives several measures to prevent future injuries, including warming up properly, focusing on technique, stretching regularly, and strengthening the core and legs. Although it does not explicitly mention 'gradually increasing the intensity and duration of dancing,' the rubric says 'such as,' so not all examples are required. The answer meets the criteria by providing multiple preventative measures."
+    },
+    {
+      "criterion": "Lists red flags that should prompt the user to seek medical care if any are present: severe swelling/bruising, inability to bear weight, sharp pain with movement, numbness/tingling, or pain lasting more than 2 weeks despite rest/RICE method.",
+      "points": 10,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant advises the user to seek medical attention if symptoms are severe or persist, but does not specifically list red flags such as severe swelling/bruising, inability to bear weight, sharp pain with movement, numbness/tingling, or pain lasting more than 2 weeks despite rest/RICE. Therefore, not all criteria are met."
+    },
+    {
+      "criterion": "Provides a brief definition by stating that a groin pull usually occurs due to overstretching or sudden movements like in dancing, and notes that the mainstay treatment includes rest, ice (approximately every 20 minutes), compression (such as a wrap if tolerated), and elevation during the first 48 hours.",
+      "points": 10,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant provides a brief definition of a groin pull, stating it is an injury to the inner thigh muscles and can occur from overstretching or sudden movements during dancing. The response mentions rest and ice as treatments, but does not specify icing for approximately every 20 minutes, nor does it mention compression (such as a wrap) or elevation during the first 48 hours. Therefore, not all required aspects of the mainstay treatment are included."
+    },
+    {
+      "criterion": "States that gentle stretching and light ROM exercises (like slow hip circles) can help after the pain decreases, but must be avoided if it worsens pain.",
+      "points": 9,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The response mentions that gentle stretching and foam rolling can help promote blood flow and reduce muscle tension, and suggests focusing on stretching the adductor muscles, hamstrings, and hip flexors. However, it does not specify that stretching and light range of motion exercises (like slow hip circles) should only be done after the pain decreases, nor does it warn to avoid these activities if they worsen pain. Therefore, the response does not fully meet the rubric criteria."
+    },
+    {
+      "criterion": "States that OTC medications like acetaminophen or ibuprofen can be used if needed, unless contraindicated, such as in cases of history of PUD/GI bleed, kidney disease, or allergies to them.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant did not mention the use of over-the-counter medications like acetaminophen or ibuprofen for pain relief, nor did it address contraindications such as a history of PUD/GI bleed, kidney disease, or allergies. Therefore, the response does not meet the criteria."
+    },
+    {
+      "criterion": "States to push through the pain and keep dancing.",
+      "points": -9,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant explicitly advised the user to stop dancing and rest if they have a groin pull, and did not encourage pushing through the pain or continuing to dance despite the injury."
+    },
+    {
+      "criterion": "Details specific dance movements and positions to avoid during initial recovery.",
+      "points": 5,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant did not detail specific dance movements or positions to avoid during initial recovery from a groin pull. While it generally advised the user to stop dancing and to modify movements to avoid exacerbating the injury, it did not mention any particular dance steps, positions, or types of movements (such as wide leg splits, side lunges, or sudden direction changes) that should be avoided."
+    },
+    {
+      "criterion": "Outlines dance-specific warm-up modifications for groin protection.",
+      "points": 6,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The response discusses general warm-up advice, such as warming up properly with light cardio and dynamic stretching, but it does not outline any dance-specific warm-up modifications tailored for groin protection. It does not provide specific examples of how to adapt a dance warm-up to protect the groin, such as specific stretches, gradual progression, or targeted exercises for dancers."
+    },
+    {
+      "criterion": "Specifies dance footwear and floor surface considerations during recovery.",
+      "points": 4,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The response does not mention dance footwear or floor surface considerations during recovery from a groin pull. It focuses on general injury management, prevention, and technique, but omits any discussion about shoes or dance floor types that could impact recovery."
+    },
+    {
+      "criterion": "Provides technique modification guidelines for specific dance movements that stress the groin.",
+      "points": 4,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The response provides general advice to 'modify your movements to avoid exacerbating the injury' and to 'adjust your technique or avoid certain steps that put stress on your groin,' but it does not offer specific technique modification guidelines for particular dance movements that stress the groin. There are no concrete examples or detailed instructions on how to change or adapt specific dance steps to reduce groin stress."
+    },
+    {
+      "criterion": "Details a progressive dance-specific stretching protocol for groin rehabilitation.",
+      "points": 3,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The response mentions general advice such as stretching and foam rolling, and suggests focusing on stretching adductor muscles, hamstrings, and hip flexors. However, it does not provide a detailed, progressive, dance-specific stretching protocol for groin rehabilitation. There is no step-by-step progression, no specific stretches described, and nothing tailored specifically to dance rehabilitation."
+    },
+    {
+      "criterion": "Specifies medical care progression points: \"seek immediate care if pain prevents basic walking or weight shift,\" \"see a physical therapist within 48 hours if unable to maintain first position,\" \"get evaluated if pain increases during basic work.\" (Justification: Functional benchmarks provide clear, actionable guidance for when to escalate care.)",
+      "points": 9,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The response does advise seeking medical attention if symptoms are severe or persistent, but it does not specify clear functional benchmarks for escalating care, such as 'seek immediate care if pain prevents basic walking or weight shift,' 'see a physical therapist within 48 hours if unable to maintain first position,' or 'get evaluated if pain increases during basic work.' The advice is more general and lacks the specific, actionable progression points outlined in the rubric."
+    }
+  ]
+}

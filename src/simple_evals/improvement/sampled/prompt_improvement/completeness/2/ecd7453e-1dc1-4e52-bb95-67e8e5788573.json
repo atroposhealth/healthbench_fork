@@ -1,0 +1,39 @@
+{
+  "prompt_id": "ecd7453e-1dc1-4e52-bb95-67e8e5788573",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "im a pediatric neurologist i have a 14 year old patient with incapacitating migraines standard meds havent worked is it recommended to try a transdermal cannabinoid patch i havent found strong guidelines",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "As a pediatric neurologist, you're dealing with a challenging case. While there isn't a wealth of high-quality evidence on the use of transdermal cannabinoid patches for pediatric migraines, I'll summarize the current state of knowledge and guidelines.\n\n**Current evidence:**\n\n1. **Cannabinoids for migraines:** There are some studies on the use of cannabinoids for migraines in adults, but the evidence is mostly anecdotal or based on low-quality studies. A 2017 systematic review found that cannabinoids might be effective for migraines, but the quality of evidence was rated as very low.\n2. **Pediatric use:** There's a scarcity of studies on the use of cannabinoids in pediatric patients, especially for migraines. Most studies focus on epilepsy, with some evidence suggesting potential benefits for certain conditions like Dravet syndrome or Lennox-Gastaut syndrome.\n3. **Transdermal cannabinoid patches:** Research on transdermal cannabinoid patches is limited, and most studies have been conducted in adults. A 2020 review on transdermal cannabinoids for pain management found that they might be effective, but the evidence was still limited.\n\n**Guidelines and recommendations:**\n\n1. **American Academy of Pediatrics (AAP):** The AAP has not issued specific guidelines on the use of cannabinoids for pediatric migraines. However, they have expressed concerns about the potential risks of cannabis use in adolescents, citing the potential for cognitive impairment and other adverse effects.\n2. **American Headache Society (AHS):** The AHS has not specifically addressed the use of cannabinoids for migraines. Their guidelines focus on standard treatments, such as NSAIDs, triptans, and preventive medications.\n3. **Cannabinoid-specific guidelines:** Some organizations, like the Society of Cannabis Clinicians, have developed guidelines for the use of cannabinoids in various medical conditions. However, these guidelines are not specific to pediatric migraines or transdermal patches.\n\n**Considerations for your patient:**\n\n1. **Age and developmental stage:** Your patient is 14, and as a pediatric neurologist, you must consider the potential risks of cannabinoids on adolescent brain development.\n2. **Potential benefits and risks:** While some patients may experience relief from migraines with cannabinoids, there's a risk of adverse effects, such as dizziness, drowsiness, or cognitive impairment.\n3. **Lack of standardization:** Transdermal cannabinoid patches are not standardized, and the quality, potency, and pharmacokinetics can vary significantly between products.\n\n**Next steps:**\n\n1. **Discuss with the patient and family:** Have an open conversation with the patient and their family about the potential benefits and risks of using a transdermal cannabinoid patch. Ensure they understand the current state of evidence and the potential risks, particularly regarding adolescent brain development.\n2. **Explore alternative treatments:** Before considering a transdermal cannabinoid patch, revisit standard treatments and consider other preventive medications or novel therapies, such as calcitonin gene-related peptide (CGRP) inhibitors or neuromodulation devices.\n3. **Consider a research study or registry:** If you're still considering a transdermal cannabinoid patch, look into research studies or registries that might provide more information on the safety and efficacy of this treatment in pediatric patients.\n\nIn summary, while there's some anecdotal evidence on the use of cannabinoids for migraines, the current evidence is not strong enough to support a clear recommendation for transdermal cannabinoid patches in pediatric patients. As a pediatric neurologist, it's essential to carefully weigh the potential benefits and risks, discuss these with the patient and family, and consider alternative treatments before making a decision.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Shares with the user a list of potential cannabinoid adverse effects in the pediatric population, such as mood changes, anxiety, and impact on cognitive development.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant briefly mentions potential adverse effects of cannabinoids, such as dizziness, drowsiness, and cognitive impairment, and notes concerns about adolescent brain development. However, it does not provide a list of potential adverse effects specifically in the pediatric population, nor does it mention important examples such as mood changes or anxiety. Thus, the response does not fully meet the criteria of sharing a list of potential cannabinoid adverse effects in the pediatric population."
+    },
+    {
+      "criterion": "Fails to provide alternative treatments for pediatric patients with migraines aside from transdermal cannabinoid patches.",
+      "points": -6,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant does provide alternative treatments for pediatric migraines aside from transdermal cannabinoid patches. Specifically, the response mentions revisiting standard treatments, considering other preventive medications, and novel therapies such as CGRP inhibitors or neuromodulation devices."
+    }
+  ]
+}

@@ -12,12 +12,12 @@ You can also evaluate physician ideal completions or reference completions again
 """
 
 import argparse
-import copy
 import hashlib
 import json
 import random
 import re
 from collections import defaultdict
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Literal
@@ -269,29 +269,25 @@ def _aggregate_get_clipped_mean(
     )
 
 
+@dataclass
+class RandomSampler:
+    n_examples: int
+
+
+@dataclass
+class PreSampled:
+    prompt_ids: list[str]
+
+
 class HealthBenchEval(Eval):
     def __init__(
         self,
         grader_model: SamplerBase,
-        num_examples: int | None = None,
+        sampler: RandomSampler | PreSampled | None = None,
         n_repeats: int = 1,
-        # If set, evaluate human completions or reference completions instead of model completions.
-        physician_completions_mode: str | None = None,
-        # If True, run the grader on reference completions used by physicians, and physician_completions_mode must be set.
-        run_reference_completions: bool = False,
         n_threads: int = 120,
         subset_name: Literal["hard", "consensus"] | None = None,
     ):
-        if run_reference_completions:
-            assert physician_completions_mode is not None, (
-                "physician_completions_mode must be provided if run_reference_completions is True"
-            )
-            assert PHYSICIAN_COMPLETION_MODES[physician_completions_mode][
-                "has_reference"
-            ], (
-                "physician_completions_mode must have reference completions if run_reference_completions is True"
-            )
-
         if subset_name == "hard":
             input_path = INPUT_PATH_HARD
         elif subset_name == "consensus":
@@ -300,69 +296,34 @@ class HealthBenchEval(Eval):
             input_path = INPUT_PATH
         else:
             assert False, f"Invalid subset name: {subset_name}"
-        # with bf.BlobFile(input_path, "rb") as f:
-        #     examples = [json.loads(line) for line in f]
         response = requests.get(input_path)
         response.raise_for_status()
-        examples = [
+        all_examples = [
             json.loads(line) for line in response.text.split("\n") if line != ""
         ]
-        for example in examples:
+        for example in all_examples:
             example["rubrics"] = [RubricItem.from_dict(d) for d in example["rubrics"]]
 
-        rng = random.Random(0)
+        examples_to_run = []
+        match sampler:
+            case RandomSampler(n_examples):
+                rng = random.Random(0)
 
-        # physician completions mode
-        self.physician_completions_mode = physician_completions_mode
-        if self.physician_completions_mode is not None:
-            assert self.physician_completions_mode in PHYSICIAN_COMPLETION_MODES, (
-                f"Invalid physician completions mode: {self.physician_completions_mode}; must be one of {PHYSICIAN_COMPLETION_MODES.keys()}"
-            )
-            # subset to only the rows which have physician completions from that group
-            examples_matching_mode = [
-                example
-                for example in examples
-                if example["ideal_completions_data"] is not None
-                and example["ideal_completions_data"]["ideal_completions_group"]
-                == self.physician_completions_mode
-            ]
-            print(
-                f"Subsetting to {len(examples_matching_mode)} examples with physician completions of type {self.physician_completions_mode} ({PHYSICIAN_COMPLETION_MODES[self.physician_completions_mode]['description']})"
-            )
+                if n_examples < len(all_examples):
+                    examples_to_run = rng.sample(
+                        all_examples,
+                        n_examples,
+                    )
+            case PreSampled(selected_prompt_ids):
+                examples_to_run = [
+                    e for e in all_examples if e["prompt_id"] in selected_prompt_ids
+                ]
+            case None:
+                pass
+            case _:
+                raise ValueError(f"Not supported: {sampler}")
 
-            examples = []
-            if run_reference_completions:
-                for example in examples_matching_mode:
-                    for completion in example["ideal_completions_data"][
-                        "ideal_completions_ref_completions"
-                    ]:
-                        new_example = copy.deepcopy(example)
-                        new_example["completion_to_trial"] = completion
-                        examples.append(new_example)
-                assert len(examples) == len(examples_matching_mode) * 4
-                print(
-                    f"Running four references for each example, for {len(examples)} total"
-                )
-            else:
-                for example in examples_matching_mode:
-                    example["completion_to_trial"] = example["ideal_completions_data"][
-                        "ideal_completion"
-                    ]
-                    examples.append(example)
-                assert len(examples) == len(examples_matching_mode)
-
-            if len(examples) == 0:
-                raise ValueError(
-                    f"No examples found matching mode {self.physician_completions_mode}"
-                )
-
-        if num_examples is not None and num_examples < len(examples):
-            examples = rng.sample(
-                examples,
-                num_examples,
-            )
-
-        self.examples = examples * n_repeats
+        self.examples = examples_to_run * n_repeats
         self.n_threads = n_threads
         self.grader_model = grader_model
 

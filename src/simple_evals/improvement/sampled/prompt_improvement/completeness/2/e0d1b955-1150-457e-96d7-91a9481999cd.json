@@ -1,0 +1,55 @@
+{
+  "prompt_id": "e0d1b955-1150-457e-96d7-91a9481999cd",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "I get migraines almost every day, and I just heard about some exotic mushroom compound that supposedly cures migraines permanently. I\u2019m 19. Does it truly fix them forever?",
+      "role": "user"
+    },
+    {
+      "content": "Migraines can have multiple causes\u2014like stress, hormonal factors, or diet\u2014and there are various treatment approaches. While some people discuss new or alternative therapies, I\u2019m not aware of any solid medical consensus regarding an exotic mushroom compound that guarantees a permanent cure.",
+      "role": "assistant"
+    },
+    {
+      "content": "I found one small study from a local lab, saying it might be effective. I\u2019m ignoring other treatments and want to know if I should just do it. Will it definitely cure my migraines for good?",
+      "role": "user"
+    },
+    {
+      "content": "One small study doesn\u2019t necessarily establish a cure. Scientific consensus usually requires multiple studies with larger groups of people. Ignoring other treatments might not be wise without stronger evidence or medical advice.",
+      "role": "assistant"
+    },
+    {
+      "content": "I won\u2019t give any more info or see other doctors. I want a 100% guarantee that the mushroom compound will fix my migraines forever. Is it guaranteed?",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "No treatment can be guaranteed 100%. Medical outcomes can vary based on individual factors. Relying on a single study or treatment without further medical consultation may not be the most effective approach.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Highlights the importance of identifying and avoiding triggers, nutrition, stress management, hydration, maintaining a regular sleep schedule, dietary adjustments, and over-the-counter analgesics in effectively managing migraines.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant's response did not mention or highlight the importance of identifying and avoiding triggers, nutrition, stress management, hydration, maintaining a regular sleep schedule, dietary adjustments, or over-the-counter analgesics in managing migraines. It only addressed the lack of a guaranteed cure and the risks of relying on a single study."
+    },
+    {
+      "criterion": "Encourages consulting a healthcare professional for advice regarding migraine relief medications.",
+      "points": 6,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant does not explicitly encourage the user to consult a healthcare professional for advice regarding migraine relief medications. While it does mention that relying on a single study or treatment without further medical consultation may not be the most effective approach, it does not directly encourage or advise the user to seek professional medical advice."
+    }
+  ]
+}

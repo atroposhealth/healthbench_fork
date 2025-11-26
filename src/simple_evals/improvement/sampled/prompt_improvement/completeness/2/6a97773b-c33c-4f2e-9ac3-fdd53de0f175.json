@@ -1,0 +1,79 @@
+{
+  "prompt_id": "6a97773b-c33c-4f2e-9ac3-fdd53de0f175",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "cardiac rehab progress note for my patients documenting exercise tolerance vitals pre and post changes in meds or symptoms",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "Here's a sample cardiac rehab progress note that you can use as a template:\n\n**Cardiac Rehab Progress Note**\n\n**Patient Name:** [Insert patient's name]\n**Date:** [Insert date]\n**Session Number:** [Insert session number]\n\n**Pre-Exercise Assessment:**\n\n* **Vital Signs:**\n\t+ Heart Rate (HR): [Insert HR] bpm\n\t+ Blood Pressure (BP): [Insert BP] mmHg\n\t+ Oxygen Saturation (SpO2): [Insert SpO2]%\n* **Symptoms:** [Insert any symptoms reported by the patient, e.g., chest pain, shortness of breath, dizziness]\n* **Medications:** [List any changes in medications since the last session]\n\n**Exercise Session:**\n\n* **Exercise Type:** [Insert type of exercise, e.g., treadmill, stationary bike, resistance training]\n* **Duration:** [Insert duration of exercise] minutes\n* **Intensity:** [Insert intensity of exercise, e.g., low, moderate, high]\n* **Workload:** [Insert workload or resistance level]\n\n**Post-Exercise Assessment:**\n\n* **Vital Signs:**\n\t+ HR: [Insert HR] bpm\n\t+ BP: [Insert BP] mmHg\n\t+ SpO2: [Insert SpO2]%\n* **Symptoms:** [Insert any symptoms reported by the patient during or after exercise]\n* **Exercise Tolerance:** [Insert any changes in exercise tolerance, e.g., improved, decreased]\n\n**Progress and Observations:**\n\n* **Changes in Exercise Tolerance:** [Insert any changes in exercise tolerance, e.g., increased duration or intensity]\n* **Changes in Vitals:** [Insert any notable changes in vital signs, e.g., decreased BP or HR]\n* **Symptoms:** [Insert any changes in symptoms, e.g., decreased frequency or severity]\n* **Medication Changes:** [Insert any changes in medications and the patient's response]\n\n**Plan:**\n\n* **Continue with current exercise program:** [Yes/No]\n* **Modify exercise program:** [Insert any changes to the exercise program, e.g., increase intensity or duration]\n* **Monitor:** [Insert any specific parameters to monitor, e.g., BP, HR, symptoms]\n\n**Goals:**\n\n* **Short-term goals:** [Insert short-term goals, e.g., increase exercise duration by 5 minutes]\n* **Long-term goals:** [Insert long-term goals, e.g., achieve a certain level of exercise intensity or duration]\n\n**Next Session:**\n\n* **Scheduled for:** [Insert date and time of next session]\n\nHere's an example of a completed progress note:\n\n**Cardiac Rehab Progress Note**\n\n**Patient Name:** John Doe\n**Date:** 02/22/2023\n**Session Number:** 6\n\n**Pre-Exercise Assessment:**\n\n* **Vital Signs:**\n\t+ HR: 80 bpm\n\t+ BP: 120/80 mmHg\n\t+ SpO2: 98%\n* **Symptoms:** Denies any symptoms\n* **Medications:** No changes since last session\n\n**Exercise Session:**\n\n* **Exercise Type:** Treadmill\n* **Duration:** 30 minutes\n* **Intensity:** Moderate\n* **Workload:** 4.0 METs\n\n**Post-Exercise Assessment:**\n\n* **Vital Signs:**\n\t+ HR: 120 bpm\n\t+ BP: 140/90 mmHg\n\t+ SpO2: 98%\n* **Symptoms:** Reports mild fatigue\n* **Exercise Tolerance:** Improved, able to walk for 30 minutes without discomfort\n\n**Progress and Observations:**\n\n* **Changes in Exercise Tolerance:** Increased duration by 5 minutes\n* **Changes in Vitals:** BP increased by 20 mmHg, within expected range\n* **Symptoms:** Denies any symptoms during exercise\n* **Medication Changes:** None\n\n**Plan:**\n\n* **Continue with current exercise program:** Yes\n* **Modify exercise program:** Increase intensity to high on the treadmill\n* **Monitor:** BP and HR during exercise\n\n**Goals:**\n\n* **Short-term goals:** Increase exercise duration by 5 minutes by next session\n* **Long-term goals:** Achieve a peak MET level of 7.0\n\n**Next Session:**\n\n* **Scheduled for:** 02/24/2023 at 10:00 AM",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Ensures that the note clearly includes essential elements for cardiac rehabilitation documentation: the patient's name, date of the session, exercise tolerance, vital signs before, during, and after exercise (including blood pressure, heart rate, METs level achieved, and heart rate recovery), as well as any modifications to the treatment or medication plan based on the session.",
+      "points": 2,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The response provides a detailed template and a completed example progress note that includes the patient's name, date of the session, exercise tolerance, and vital signs before and after exercise (heart rate, blood pressure, SpO2). It also includes METs level achieved and mentions heart rate recovery in the context of post-exercise assessment. Modifications to the exercise program and medication plan based on the session are also documented. All essential elements specified in the rubric are present."
+    },
+    {
+      "criterion": "Organizes cardiac rehab progress notes into major headings, including demographic information, diagnosis, pre-exercise vitals, exercise details, vitals during exercise and post-exercise, symptoms, and plan for follow-up.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant's response organizes the cardiac rehab progress note into major headings, including demographic information (Patient Name, Date, Session Number), pre-exercise vitals (vital signs before exercise), exercise details (type, duration, intensity, workload), post-exercise vitals (vital signs after exercise), symptoms (before, during, and after exercise), and plan for follow-up (plan and next session). However, it does not include a specific heading for 'diagnosis' or 'vitals during exercise.' While the template is thorough, the absence of these two headings means not all criteria are met."
+    },
+    {
+      "criterion": "Describes the type of exercise, duration, intensity, MET level, and documents exercise tolerance.",
+      "points": 6,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The response describes the type of exercise (e.g., treadmill), duration (e.g., 30 minutes), intensity (e.g., moderate), MET level (e.g., 4.0 METs and a goal of 7.0 METs), and documents exercise tolerance (e.g., 'Improved, able to walk for 30 minutes without discomfort'). All required elements are present."
+    },
+    {
+      "criterion": "Includes documentation of pre-exercise vitals such as blood pressure, heart rate, and oxygen saturation. Vitals during and post-exercise, along with any symptoms, should also be documented.",
+      "points": 6,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The response provides a template and a completed example that include documentation of pre-exercise vitals (blood pressure, heart rate, oxygen saturation), as well as post-exercise vitals and symptoms. The template and example specifically list these measurements both before and after exercise, and include a section for symptoms during and after exercise. Therefore, all aspects of the rubric item are met."
+    },
+    {
+      "criterion": "Includes any barriers to participation such as knee pain and documents any clinical observations, such as the patient appearing distressed during the session. Additionally, includes a plan for the next cardiac rehab session and documents any follow-up with other healthcare providers, such as a cardiologist.",
+      "points": 5,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The response provides a detailed template and example for a cardiac rehab progress note, including sections for exercise tolerance, vitals, symptoms, medication changes, and a plan for the next session. However, it does not explicitly include documentation of barriers to participation (such as knee pain) or clinical observations (such as the patient appearing distressed during the session). Additionally, while it includes a plan for the next session, it does not mention any follow-up with other healthcare providers, such as a cardiologist. Therefore, not all criteria are met."
+    },
+    {
+      "criterion": "Fails to include documentation of any changes in medication, such as new medications, discontinued medications, or dose changes since the last session. This is important as certain medications, such as beta blockers, can affect exercise tolerance or heart rate response to exercise.",
+      "points": -5,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant's response includes a specific section for documenting medication changes ('Medications: [List any changes in medications since the last session]') in the template and provides an example progress note where medication changes are noted ('No changes since last session' and 'Medication Changes: None'). This shows that documentation of any changes in medication, such as new medications, discontinued medications, or dose changes, is included as required by the rubric."
+    }
+  ]
+}

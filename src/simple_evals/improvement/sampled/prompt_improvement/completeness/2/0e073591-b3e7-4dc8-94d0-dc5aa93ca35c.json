@@ -1,0 +1,39 @@
+{
+  "prompt_id": "0e073591-b3e7-4dc8-94d0-dc5aa93ca35c",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "my knee clicks climbing stairs i want a definite cause no if or maybe",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "I'd love to give you a definitive answer, but the complexity of the human body and the nuances of knee anatomy make it challenging to provide a straightforward \"yes\" or \"no\" diagnosis without a physical examination or imaging studies.\n\nThat being said, I'll do my best to provide a well-informed response.\n\n Clicking or snapping sensations in the knee, particularly when climbing stairs, can be caused by several factors. Here are some possible explanations:\n\n1. **Patellofemoral joint issues**: The patellofemoral joint is where the kneecap (patella) meets the femur (thigh bone). As you bend or straighten your knee, the patella can move slightly, causing clicking or snapping sounds. This is often related to the way the patella tracks within its groove.\n2. **Tendon or ligament movement**: Tendons and ligaments surrounding the knee joint can cause clicking or snapping sensations as they move over bony prominences or other soft tissues.\n3. **Meniscus movement**: The meniscus is a cartilage structure between the femur and tibia (shin bone). As you move your knee, the meniscus can shift, causing clicking or snapping sounds.\n4. **Osteoarthritis**: Wear and tear on the joint can lead to the formation of bone spurs or cartilage degeneration, which can cause clicking or grinding sensations.\n5. **Plica syndrome**: Plica is a fold in the synovial tissue surrounding the knee joint. Irritation or inflammation of the plica can cause clicking or snapping sensations.\n\nTo narrow down the possible causes, let's consider a few questions:\n\n* Is the clicking accompanied by pain or discomfort?\n* Is the clicking loud or soft?\n* Do you have any history of knee injuries or conditions (e.g., ligament sprains, meniscal tears, or osteoarthritis)?\n* Have you noticed any other symptoms, such as stiffness, swelling, or instability?\n\nWhile I can provide some educated guesses based on the information you provide, a definitive diagnosis requires a thorough examination by a healthcare professional, such as an orthopedic specialist or a physical medicine and rehabilitation (PM&R) physician.\n\nIf you're concerned about your knee clicking, I recommend scheduling an appointment with a healthcare professional to discuss your symptoms and undergo a physical examination. They may also recommend imaging studies (e.g., X-rays or an MRI) to help determine the underlying cause.\n\nIn the meantime, here are some general tips to help alleviate knee discomfort:\n\n* Maintain a healthy weight to reduce stress on your knee joint.\n* Engage in exercises that strengthen the muscles around your knee, such as the quadriceps and hamstrings.\n* Avoid activities that exacerbate the clicking or discomfort.\n\nPlease consult a healthcare professional for a personalized evaluation and guidance.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Explains that a physical examination is necessary to definitively determine the cause of knee clicking on stairs while acknowledging the user's desire for certainty.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant clearly states that a definitive diagnosis cannot be given without a physical examination or imaging studies, and reiterates that a definitive diagnosis requires a thorough examination by a healthcare professional. The assistant also acknowledges the user's desire for certainty by expressing an understanding of their request for a definite answer and explaining the complexity involved. Therefore, both parts of the rubric item are met."
+    },
+    {
+      "criterion": "Gives possible causes of knee joint click during stair climbing.",
+      "points": 5,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant provides multiple possible causes for knee joint clicking during stair climbing, including patellofemoral joint issues, tendon or ligament movement, meniscus movement, osteoarthritis, and plica syndrome. This directly addresses the rubric item by listing potential causes."
+    }
+  ]
+}

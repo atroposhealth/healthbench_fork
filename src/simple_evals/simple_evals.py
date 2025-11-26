@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 
 from . import common
-from .healthbench_eval import HealthBenchEval
+from .healthbench_eval import HealthBenchEval, PreSampled, RandomSampler
 from .healthbench_meta_eval import HealthBenchMetaEval
 from .sampler.chat_completion_sampler import (
     OPENAI_SYSTEM_MESSAGE_API,
@@ -59,6 +59,11 @@ def main():
         "--examples", type=int, help="Number of examples to use (overrides default)"
     )
     parser.add_argument(
+        "--examples-list",
+        type=Path,
+        help="Specific examples to use (takes priority over --examples).",
+    )
+    parser.add_argument(
         "--output-dir",
         type=str,
         help="Directory to write the output results.",
@@ -66,342 +71,70 @@ def main():
     )
 
     args = parser.parse_args()
+    print(f"Running with args {args}")
 
     # Ensure the output directory exists
     output_dir = Path(args.output_dir)
     if not output_dir.is_dir():
         output_dir.mkdir(parents=True)
 
-    models = {
-        # # Reasoning Models
-        "o3": ResponsesSampler(
-            model="o3-2025-04-16",
-            reasoning_model=True,
-        ),
-        # "o3-temp-1": ResponsesSampler(
-        #     model="o3-2025-04-16",
-        #     reasoning_model=True,
-        #     temperature=1.0,
-        # ),
-        # "o3_high": ResponsesSampler(
-        #     model="o3-2025-04-16",
-        #     reasoning_model=True,
-        #     reasoning_effort="high",
-        # ),
-        # "o3_low": ResponsesSampler(
-        #     model="o3-2025-04-16",
-        #     reasoning_model=True,
-        #     reasoning_effort="low",
-        # ),
-        # # Default == Medium
-        # "o4-mini": ResponsesSampler(
-        #     model="o4-mini-2025-04-16",
-        #     reasoning_model=True,
-        # ),
-        # "o4-mini_high": ResponsesSampler(
-        #     model="o4-mini-2025-04-16",
-        #     reasoning_model=True,
-        #     reasoning_effort="high",
-        # ),
-        # "o4-mini_low": ResponsesSampler(
-        #     model="o4-mini-2025-04-16",
-        #     reasoning_model=True,
-        #     reasoning_effort="low",
-        # ),
-        # "o1-pro": ResponsesSampler(
-        #     model="o1-pro",
-        #     reasoning_model=True,
-        # ),
-        # "o1": OChatCompletionSampler(
-        #     model="o1",
-        # ),
-        # "o1_high": OChatCompletionSampler(
-        #     model="o1",
-        #     reasoning_effort="high",
-        # ),
-        # "o1_low": OChatCompletionSampler(
-        #     model="o1",
-        #     reasoning_effort="low",
-        # ),
-        # "o1-preview": OChatCompletionSampler(
-        #     model="o1-preview",
-        # ),
-        # "o1-mini": OChatCompletionSampler(
-        #     model="o1-mini",
-        # ),
-        # # Default == Medium
-        # "o3-mini": OChatCompletionSampler(
-        #     model="o3-mini",
-        # ),
-        # "o3-mini_high": OChatCompletionSampler(
-        #     model="o3-mini",
-        #     reasoning_effort="high",
-        # ),
-        # "o3-mini_low": OChatCompletionSampler(
-        #     model="o3-mini",
-        #     reasoning_effort="low",
-        # ),
-        # # GPT-4.1 models
-        # "gpt-4.1": ChatCompletionSampler(
-        #     model="gpt-4.1-2025-04-14",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        #     max_tokens=2048,
-        # ),
-        # "gpt-4.1-temp-1": ChatCompletionSampler(
-        #     model="gpt-4.1-2025-04-14",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        #     max_tokens=2048,
-        #     temperature=1.0,
-        # ),
-        # "gpt-4.1-mini": ChatCompletionSampler(
-        #     model="gpt-4.1-mini-2025-04-14",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        #     max_tokens=2048,
-        # ),
-        # "gpt-4.1-nano": ChatCompletionSampler(
-        #     model="gpt-4.1-nano-2025-04-14",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        #     max_tokens=2048,
-        # ),
-        # # GPT-4o models
-        # "gpt-4o": ChatCompletionSampler(
-        #     model="gpt-4o",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        #     max_tokens=2048,
-        # ),
-        # "gpt-4o-2024-11-20": ChatCompletionSampler(
-        #     model="gpt-4o-2024-11-20",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        #     max_tokens=2048,
-        # ),
-        # "gpt-4o-2024-08-06": ChatCompletionSampler(
-        #     model="gpt-4o-2024-08-06",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        #     max_tokens=2048,
-        # ),
-        # "gpt-4o-2024-08-06-temp-1": ChatCompletionSampler(
-        #     model="gpt-4o-2024-08-06",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        #     max_tokens=2048,
-        #     temperature=1.0,
-        # ),
-        # "gpt-4o-2024-05-13": ChatCompletionSampler(
-        #     model="gpt-4o-2024-05-13",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        #     max_tokens=2048,
-        # ),
-        # "gpt-4o-mini": ChatCompletionSampler(
-        #     model="gpt-4o-mini-2024-07-18",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        #     max_tokens=2048,
-        # ),
-        # # GPT-4.5 model
-        # "gpt-4.5-preview": ChatCompletionSampler(
-        #     model="gpt-4.5-preview-2025-02-27",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        #     max_tokens=2048,
-        # ),
-        # # GPT-4-turbo model
-        # "gpt-4-turbo-2024-04-09": ChatCompletionSampler(
-        #     model="gpt-4-turbo-2024-04-09",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        # ),
-        # # GPT-4 model
-        # "gpt-4-0613": ChatCompletionSampler(
-        #     model="gpt-4-0613",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        # ),
-        # # GPT-3.5 Turbo model
-        # "gpt-3.5-turbo-0125": ChatCompletionSampler(
-        #     model="gpt-3.5-turbo-0125",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        # ),
-        # "gpt-3.5-turbo-0125-temp-1": ChatCompletionSampler(
-        #     model="gpt-3.5-turbo-0125",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
-        #     temperature=1.0,
-        # ),
-        # # Chatgpt models:
-        # "chatgpt-4o-latest": ChatCompletionSampler(
-        #     model="chatgpt-4o-latest",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_CHATGPT,
-        #     max_tokens=2048,
-        # ),
-        # "gpt-4-turbo-2024-04-09_chatgpt": ChatCompletionSampler(
-        #     model="gpt-4-turbo-2024-04-09",
-        #     system_message=OPENAI_SYSTEM_MESSAGE_CHATGPT,
-        # ),
-        # # Claude models:
-        # "claude-3-opus-20240229_empty": ClaudeCompletionSampler(
-        #     model="claude-3-opus-20240229",
-        #     system_message=CLAUDE_SYSTEM_MESSAGE_LMSYS,
-        # ),
-        # "claude-3-7-sonnet-20250219": ClaudeCompletionSampler(
-        #     model="claude-3-7-sonnet-20250219",
-        #     system_message=CLAUDE_SYSTEM_MESSAGE_LMSYS,
-        # ),
-        # "claude-3-haiku-20240307": ClaudeCompletionSampler(
-        #     model="claude-3-haiku-20240307",
-        # ),
-        "claude-opus-4.1": ClaudeCompletionSampler(
-            model="claude-opus-4-1-20250805",
-        ),
-        # Llama models:
-        "llama-3.1-8b": GroqCompletionSampler(
-            model="llama-3.1-8b-instant",
-            system_message=LLAMA_4_SYSTEM_MESSAGE,
-        ),
-        "llama-3.3-70b": GroqCompletionSampler(
-            model="llama-3.3-70b-versatile",
-            system_message=LLAMA_4_SYSTEM_MESSAGE,
-        ),
-        "llama-4-scout": GroqCompletionSampler(
-            model="meta-llama/llama-4-scout-17b-16e-instruct",
-            system_message=LLAMA_4_SYSTEM_MESSAGE,
-        ),
-        "llama-4-maverick": GroqCompletionSampler(
-            model="meta-llama/llama-4-maverick-17b-128e-instruct",
-            system_message=LLAMA_4_SYSTEM_MESSAGE,
-        ),
-        "llama-4-scout-rag": GroqRAGCompletionSampler(
-            model="meta-llama/llama-4-scout-17b-16e-instruct",
-            system_message=LLAMA_4_RAG_SYSTEM_MESSAGE,
-            results_dir=output_dir,
-        ),
-        "llama-4-maverick-rag": GroqRAGCompletionSampler(
-            model="meta-llama/llama-4-maverick-17b-128e-instruct",
-            system_message=LLAMA_4_RAG_SYSTEM_MESSAGE,
-            results_dir=output_dir,
-        ),
-        "llama-4-scout-enhanced-prompt": GroqCompletionSampler(
-            model="meta-llama/llama-4-scout-17b-16e-instruct",
-            system_message=LLAMA_ENHANCED_SYSTEM_MESSAGE,
-        ),
-        "llama-4-maverick-enhanced-prompt": GroqCompletionSampler(
-            model="meta-llama/llama-4-maverick-17b-128e-instruct",
-            system_message=LLAMA_ENHANCED_SYSTEM_MESSAGE,
-        ),
-    }
-
     if args.list_models:
         print("Available models:")
-        for model_name in models.keys():
+        for model_name in available_models.keys():
             print(f" - {model_name}")
         return
 
+    # Get the models that the user requested
     if args.model:
         models_chosen = args.model.split(",")
         for model_name in models_chosen:
-            if model_name not in models:
+            if model_name not in available_models:
                 print(f"Error: Model '{model_name}' not found.")
                 return
-        models = {model_name: models[model_name] for model_name in models_chosen}
+        models_to_evaluate = {
+            model_name: available_models[model_name] for model_name in models_chosen
+        }
 
-    print(f"Running with args {args}")
+    # Only use 10 examples if debug mode is on
+    n_examples: int | None = args.examples
+    if args.debug:
+        n_examples = 10
+        # If debug mode is on, don't use the provided list of samples
+        args.examples_list = None
+    example_sampler = get_example_sampler(n_examples, args.examples_list)
 
     grading_sampler = ChatCompletionSampler(
         model="gpt-4.1-2025-04-14",
         system_message=OPENAI_SYSTEM_MESSAGE_API,
         max_tokens=2048,
     )
-    equality_checker = ChatCompletionSampler(model="gpt-4-turbo-preview")
-    # ^^^ used for fuzzy matching, just for math
 
-    def get_evals(eval_name, debug_mode):
-        num_examples = (
-            args.examples if args.examples is not None else (5 if debug_mode else None)
-        )
-        # Set num_examples = None to reproduce full evals
-        match eval_name:
-            # case "mmlu":
-            #     return MMLUEval(num_examples=1 if debug_mode else num_examples)
-            # case "math":
-            #     return MathEval(
-            #         equality_checker=equality_checker,
-            #         num_examples=num_examples,
-            #         n_repeats=1 if debug_mode else args.n_repeats or 10,
-            #     )
-            # case "gpqa":
-            #     return GPQAEval(
-            #         n_repeats=1 if debug_mode else args.n_repeats or 10,
-            #         num_examples=num_examples,
-            #     )
-            # case "mgsm":
-            #     return MGSMEval(
-            #         num_examples_per_lang=10 if debug_mode else num_examples or 250
-            #     )
-            # case "drop":
-            #     return DropEval(
-            #         num_examples=10 if debug_mode else num_examples,
-            #         train_samples_per_prompt=3,
-            #     )
-            # case "humaneval":
-            #     return HumanEval(num_examples=10 if debug_mode else num_examples)
-            # case "simpleqa":
-            #     return SimpleQAEval(
-            #         grader_model=grading_sampler,
-            #         num_examples=10 if debug_mode else num_examples,
-            #     )
-            # case "browsecomp":
-            #     return BrowseCompEval(
-            #         grader_model=grading_sampler,
-            #         num_examples=10 if debug_mode else num_examples,
-            #     )
-            case "healthbench":
-                return HealthBenchEval(
-                    grader_model=grading_sampler,
-                    num_examples=10 if debug_mode else num_examples,
-                    n_repeats=args.n_repeats or 1,
-                    n_threads=args.n_threads or 1,
-                    subset_name=None,
-                )
-            case "healthbench_hard":
-                return HealthBenchEval(
-                    grader_model=grading_sampler,
-                    num_examples=10 if debug_mode else num_examples,
-                    n_repeats=args.n_repeats or 1,
-                    n_threads=args.n_threads or 1,
-                    subset_name="hard",
-                )
-            case "healthbench_consensus":
-                return HealthBenchEval(
-                    grader_model=grading_sampler,
-                    num_examples=10 if debug_mode else num_examples,
-                    n_repeats=args.n_repeats or 1,
-                    n_threads=args.n_threads or 1,
-                    subset_name="consensus",
-                )
-            case "healthbench_meta":
-                return HealthBenchMetaEval(
-                    grader_model=grading_sampler,
-                    num_examples=10 if debug_mode else num_examples,
-                    n_repeats=args.n_repeats or 1,
-                    n_threads=args.n_threads or 1,
-                )
-            case _:
-                raise Exception(f"Unrecognized eval type: {eval_name}")
-
+    # Get the evals that the user requested
+    evals_to_run: dict[str, HealthBenchEval | HealthBenchMetaEval] = {}
     if args.eval:
-        evals_list = args.eval.split(",")
-        evals = {}
-        for eval_name in evals_list:
+        requested_evals = args.eval.split(",")
+        for requested_eval_name in requested_evals:
             try:
-                evals[eval_name] = get_evals(eval_name, args.debug)
+                evals_to_run[requested_eval_name] = get_evaluation(
+                    requested_eval_name,
+                    grading_sampler=grading_sampler,
+                    example_sampler=example_sampler,
+                    n_repeats=args.n_repeats,
+                    n_threads=args.n_threads,
+                )
             except Exception:
-                print(f"Error: eval '{eval_name}' not found.")
+                print(f"Error: eval '{requested_eval_name}' not found.")
                 return
     else:
-        evals = {
-            eval_name: get_evals(eval_name, args.debug)
+        evals_to_run = {
+            eval_name: get_evaluation(
+                eval_name,
+                grading_sampler=grading_sampler,
+                example_sampler=example_sampler,
+                n_repeats=args.n_repeats,
+                n_threads=args.n_threads,
+            )
             for eval_name in [
-                # "mmlu",
-                # "math",
-                # "gpqa",
-                # "mgsm",
-                # "drop",
-                # "humaneval",
-                # "simpleqa",
-                # "browsecomp",
                 "healthbench",
                 # "healthbench_hard",
                 # "healthbench_consensus",
@@ -409,17 +142,17 @@ def main():
             ]
         }
 
-    print(evals)
+    print(evals_to_run)
     debug_suffix = "_DEBUG" if args.debug else ""
     print(debug_suffix)
     mergekey2resultpath = {}
-    print(f"Running the following evals: {list(evals.keys())}")
-    print(f"Running evals for the following models: {list(models.keys())}")
+    print(f"Running the following evals: {list(evals_to_run.keys())}")
+    print(f"Running evals for the following models: {list(models_to_evaluate.keys())}")
 
     now = datetime.now()
     date_str = now.strftime("%Y%m%d_%H%M%S")
-    for model_name, sampler in models.items():
-        for eval_name, eval_obj in evals.items():
+    for model_name, sampler in models_to_evaluate.items():
+        for eval_name, eval_obj in evals_to_run.items():
             result = eval_obj(sampler)
             # ^^^ how to use a sampler
             file_stem = f"{eval_name}_{model_name}"
@@ -474,6 +207,272 @@ def main():
     print(merge_metrics_df.to_markdown())
     return merge_metrics
 
+
+def get_example_sampler(
+    n_examples: int | None, pre_sampled_list: Path | None
+) -> RandomSampler | PreSampled | None:
+    if n_examples is None and pre_sampled_list is None:
+        return None
+    if pre_sampled_list is not None:
+        prompt_ids = []
+        with pre_sampled_list.open() as file:
+            for line in file.readlines():
+                line = line.strip()
+                if line == "":
+                    continue
+                prompt_ids.append(line)
+        return PreSampled(prompt_ids)
+    assert n_examples is not None
+    return RandomSampler(n_examples)
+
+
+def get_evaluation(
+    eval_name: str,
+    grading_sampler: ChatCompletionSampler,
+    example_sampler: RandomSampler | PreSampled | None,
+    n_repeats: int = 1,
+    n_threads: int = 1,
+):
+    # Set num_examples = None to reproduce full evals
+    match eval_name:
+        case "healthbench":
+            return HealthBenchEval(
+                grader_model=grading_sampler,
+                sampler=example_sampler,
+                n_repeats=n_repeats,
+                n_threads=n_threads,
+                subset_name=None,
+            )
+        case "healthbench_hard":
+            return HealthBenchEval(
+                grader_model=grading_sampler,
+                sampler=example_sampler,
+                n_repeats=n_repeats,
+                n_threads=n_threads,
+                subset_name="hard",
+            )
+        case "healthbench_consensus":
+            return HealthBenchEval(
+                grader_model=grading_sampler,
+                sampler=example_sampler,
+                n_repeats=n_repeats,
+                n_threads=n_threads,
+                subset_name="consensus",
+            )
+        case _:
+            raise Exception(f"Unrecognized eval type: {eval_name}")
+
+
+available_models = {
+    # # Reasoning Models
+    "o3": ResponsesSampler(
+        model="o3-2025-04-16",
+        reasoning_model=True,
+    ),
+    # "o3-temp-1": ResponsesSampler(
+    #     model="o3-2025-04-16",
+    #     reasoning_model=True,
+    #     temperature=1.0,
+    # ),
+    # "o3_high": ResponsesSampler(
+    #     model="o3-2025-04-16",
+    #     reasoning_model=True,
+    #     reasoning_effort="high",
+    # ),
+    # "o3_low": ResponsesSampler(
+    #     model="o3-2025-04-16",
+    #     reasoning_model=True,
+    #     reasoning_effort="low",
+    # ),
+    # # Default == Medium
+    # "o4-mini": ResponsesSampler(
+    #     model="o4-mini-2025-04-16",
+    #     reasoning_model=True,
+    # ),
+    # "o4-mini_high": ResponsesSampler(
+    #     model="o4-mini-2025-04-16",
+    #     reasoning_model=True,
+    #     reasoning_effort="high",
+    # ),
+    # "o4-mini_low": ResponsesSampler(
+    #     model="o4-mini-2025-04-16",
+    #     reasoning_model=True,
+    #     reasoning_effort="low",
+    # ),
+    # "o1-pro": ResponsesSampler(
+    #     model="o1-pro",
+    #     reasoning_model=True,
+    # ),
+    # "o1": OChatCompletionSampler(
+    #     model="o1",
+    # ),
+    # "o1_high": OChatCompletionSampler(
+    #     model="o1",
+    #     reasoning_effort="high",
+    # ),
+    # "o1_low": OChatCompletionSampler(
+    #     model="o1",
+    #     reasoning_effort="low",
+    # ),
+    # "o1-preview": OChatCompletionSampler(
+    #     model="o1-preview",
+    # ),
+    # "o1-mini": OChatCompletionSampler(
+    #     model="o1-mini",
+    # ),
+    # # Default == Medium
+    # "o3-mini": OChatCompletionSampler(
+    #     model="o3-mini",
+    # ),
+    # "o3-mini_high": OChatCompletionSampler(
+    #     model="o3-mini",
+    #     reasoning_effort="high",
+    # ),
+    # "o3-mini_low": OChatCompletionSampler(
+    #     model="o3-mini",
+    #     reasoning_effort="low",
+    # ),
+    # # GPT-4.1 models
+    # "gpt-4.1": ChatCompletionSampler(
+    #     model="gpt-4.1-2025-04-14",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    #     max_tokens=2048,
+    # ),
+    # "gpt-4.1-temp-1": ChatCompletionSampler(
+    #     model="gpt-4.1-2025-04-14",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    #     max_tokens=2048,
+    #     temperature=1.0,
+    # ),
+    # "gpt-4.1-mini": ChatCompletionSampler(
+    #     model="gpt-4.1-mini-2025-04-14",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    #     max_tokens=2048,
+    # ),
+    # "gpt-4.1-nano": ChatCompletionSampler(
+    #     model="gpt-4.1-nano-2025-04-14",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    #     max_tokens=2048,
+    # ),
+    # # GPT-4o models
+    # "gpt-4o": ChatCompletionSampler(
+    #     model="gpt-4o",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    #     max_tokens=2048,
+    # ),
+    # "gpt-4o-2024-11-20": ChatCompletionSampler(
+    #     model="gpt-4o-2024-11-20",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    #     max_tokens=2048,
+    # ),
+    # "gpt-4o-2024-08-06": ChatCompletionSampler(
+    #     model="gpt-4o-2024-08-06",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    #     max_tokens=2048,
+    # ),
+    # "gpt-4o-2024-08-06-temp-1": ChatCompletionSampler(
+    #     model="gpt-4o-2024-08-06",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    #     max_tokens=2048,
+    #     temperature=1.0,
+    # ),
+    # "gpt-4o-2024-05-13": ChatCompletionSampler(
+    #     model="gpt-4o-2024-05-13",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    #     max_tokens=2048,
+    # ),
+    # "gpt-4o-mini": ChatCompletionSampler(
+    #     model="gpt-4o-mini-2024-07-18",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    #     max_tokens=2048,
+    # ),
+    # # GPT-4.5 model
+    # "gpt-4.5-preview": ChatCompletionSampler(
+    #     model="gpt-4.5-preview-2025-02-27",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    #     max_tokens=2048,
+    # ),
+    # # GPT-4-turbo model
+    # "gpt-4-turbo-2024-04-09": ChatCompletionSampler(
+    #     model="gpt-4-turbo-2024-04-09",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    # ),
+    # # GPT-4 model
+    # "gpt-4-0613": ChatCompletionSampler(
+    #     model="gpt-4-0613",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    # ),
+    # # GPT-3.5 Turbo model
+    # "gpt-3.5-turbo-0125": ChatCompletionSampler(
+    #     model="gpt-3.5-turbo-0125",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    # ),
+    # "gpt-3.5-turbo-0125-temp-1": ChatCompletionSampler(
+    #     model="gpt-3.5-turbo-0125",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+    #     temperature=1.0,
+    # ),
+    # # Chatgpt models:
+    # "chatgpt-4o-latest": ChatCompletionSampler(
+    #     model="chatgpt-4o-latest",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_CHATGPT,
+    #     max_tokens=2048,
+    # ),
+    # "gpt-4-turbo-2024-04-09_chatgpt": ChatCompletionSampler(
+    #     model="gpt-4-turbo-2024-04-09",
+    #     system_message=OPENAI_SYSTEM_MESSAGE_CHATGPT,
+    # ),
+    # # Claude models:
+    # "claude-3-opus-20240229_empty": ClaudeCompletionSampler(
+    #     model="claude-3-opus-20240229",
+    #     system_message=CLAUDE_SYSTEM_MESSAGE_LMSYS,
+    # ),
+    # "claude-3-7-sonnet-20250219": ClaudeCompletionSampler(
+    #     model="claude-3-7-sonnet-20250219",
+    #     system_message=CLAUDE_SYSTEM_MESSAGE_LMSYS,
+    # ),
+    # "claude-3-haiku-20240307": ClaudeCompletionSampler(
+    #     model="claude-3-haiku-20240307",
+    # ),
+    "claude-opus-4.1": ClaudeCompletionSampler(
+        model="claude-opus-4-1-20250805",
+    ),
+    # Llama models:
+    "llama-3.1-8b": GroqCompletionSampler(
+        model="llama-3.1-8b-instant",
+        system_message=LLAMA_4_SYSTEM_MESSAGE,
+    ),
+    "llama-3.3-70b": GroqCompletionSampler(
+        model="llama-3.3-70b-versatile",
+        system_message=LLAMA_4_SYSTEM_MESSAGE,
+    ),
+    "llama-4-scout": GroqCompletionSampler(
+        model="meta-llama/llama-4-scout-17b-16e-instruct",
+        system_message=LLAMA_4_SYSTEM_MESSAGE,
+    ),
+    "llama-4-maverick": GroqCompletionSampler(
+        model="meta-llama/llama-4-maverick-17b-128e-instruct",
+        system_message=LLAMA_4_SYSTEM_MESSAGE,
+    ),
+    "llama-4-scout-rag": GroqRAGCompletionSampler(
+        model="meta-llama/llama-4-scout-17b-16e-instruct",
+        system_message=LLAMA_4_RAG_SYSTEM_MESSAGE,
+        results_dir=output_dir,
+    ),
+    "llama-4-maverick-rag": GroqRAGCompletionSampler(
+        model="meta-llama/llama-4-maverick-17b-128e-instruct",
+        system_message=LLAMA_4_RAG_SYSTEM_MESSAGE,
+        results_dir=output_dir,
+    ),
+    "llama-4-scout-enhanced-prompt": GroqCompletionSampler(
+        model="meta-llama/llama-4-scout-17b-16e-instruct",
+        system_message=LLAMA_ENHANCED_SYSTEM_MESSAGE,
+    ),
+    "llama-4-maverick-enhanced-prompt": GroqCompletionSampler(
+        model="meta-llama/llama-4-maverick-17b-128e-instruct",
+        system_message=LLAMA_ENHANCED_SYSTEM_MESSAGE,
+    ),
+}
 
 if __name__ == "__main__":
     main()

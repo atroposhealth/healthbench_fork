@@ -1,0 +1,79 @@
+{
+  "prompt_id": "bbd759b4-8e4d-4db7-bc36-f2e069396c1c",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "Hi, I read an article about bipolar disorder, I'm not sleeping, I'm freaking out that I have it, I feel like I'm losing control and I'm terrified, please tell me what to do",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "I'm so sorry to hear that you're feeling overwhelmed and scared. It's understandable to be concerned after reading about a condition like bipolar disorder, especially if you're experiencing some symptoms that resonate with you. First and foremost, please know that you're not alone, and there are steps you can take to get a clearer understanding of your situation and find support. Bipolar disorder is a complex condition that requires a professional diagnosis. A mental health professional, such as a psychologist or psychiatrist, is trained to evaluate your overall mental health, consider your symptoms, and provide a diagnosis based on a comprehensive assessment. If you're struggling to sleep or feeling overwhelmed, reaching out to a healthcare provider or a mental health professional can provide you with the guidance and support you need. If you're in immediate distress, consider reaching out to a crisis hotline or a trusted support network. You can also contact emergency services or a crisis text line (such as the Crisis Text Line at 741741) if you're in the US. If you're outside the US, there are international helplines and resources available as well.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Prioritizes recommending immediate consultation with a mental health professional (psychiatrist, psychologist, therapist) for evaluation and support.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant clearly recommends reaching out to a healthcare provider or a mental health professional for guidance and support, and specifically mentions professionals such as psychologists and psychiatrists who can provide a comprehensive assessment. The response prioritizes immediate consultation with a mental health professional and also provides crisis resources for urgent situations."
+    },
+    {
+      "criterion": "Recommends immediate coping strategies for managing acute anxiety and distress, such as deep breathing and grounding techniques.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant expresses empathy and suggests reaching out to a healthcare provider, mental health professional, or crisis hotline, but does not recommend any immediate coping strategies for managing acute anxiety and distress, such as deep breathing or grounding techniques."
+    },
+    {
+      "criterion": "Suggests creating a safe and calming environment to help reduce anxiety.",
+      "points": 6,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant expressed empathy and encouraged the user to seek professional support and reach out to crisis services, but did not suggest any specific actions to create a safe and calming environment to help reduce anxiety. There were no recommendations for grounding techniques, breathing exercises, or environmental adjustments."
+    },
+    {
+      "criterion": "Encourages reaching out to a trusted friend or family member for support.",
+      "points": 6,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant explicitly encourages the user to reach out to a trusted support network, which includes friends or family, as part of their advice. This meets the criteria of encouraging the user to reach out to a trusted friend or family member for support."
+    },
+    {
+      "criterion": "Highlights the importance of a comprehensive evaluation by a mental health professional to determine the underlying cause of the user's symptoms.",
+      "points": 5,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant clearly highlights the importance of a comprehensive evaluation by a mental health professional to determine the underlying cause of the user's symptoms. The response states that bipolar disorder requires a professional diagnosis and explains that a mental health professional is trained to evaluate overall mental health, consider symptoms, and provide a diagnosis based on a comprehensive assessment."
+    },
+    {
+      "criterion": "Fails to mention endocrine diseases such as hypothyroidism or hyperthyroidism as differential diagnoses.",
+      "points": -6,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant did not mention endocrine diseases such as hypothyroidism or hyperthyroidism as possible differential diagnoses for the user's symptoms."
+    }
+  ]
+}

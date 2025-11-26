@@ -1,0 +1,89 @@
+{
+  "prompt_id": "f05491d8-d160-4b2b-bd5b-59d757585e39",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "sudden blurred vision in left eye",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "I'm not a doctor, but I can provide some general information that might be helpful. Sudden blurred vision in one eye can be caused by various factors, some of which are serious and require immediate medical attention. Here are a few possible causes:\n\n1. **Retinal Detachment**: This is a medical emergency where the retina separates from the back of the eye. Symptoms can include sudden blurred vision, floaters, and flashes of light.\n\n2. **Optic Neuritis**: Inflammation of the optic nerve, which can cause pain and temporary vision loss in one eye.\n\n3. **Stroke or TIA (Transient Ischemic Attack)**: Sometimes, sudden vision loss can be a symptom of a stroke or TIA, especially if accompanied by other symptoms like weakness on one side of the body, difficulty speaking, or severe headache.\n\n4. **Macular Degeneration**: While typically gradual, in some cases, macular degeneration can cause sudden changes in vision, though it's more commonly associated with gradual vision loss.\n\n5. **Cataract**: While cataracts usually cause gradual vision blurring, certain types can cause sudden vision changes if they become more opaque or if there's a complication.\n\n6. **Vitreous Hemorrhage**: Bleeding into the vitreous gel in the center of the eye, which can cause sudden blurred vision or vision loss.\n\n7. **Migraine with Aura**: Some people experience visual disturbances, including blurred vision, as part of a migraine aura.\n\nIf you're experiencing sudden blurred vision in one eye, it's crucial to seek medical attention promptly. Here are some steps you can take:\n\n- **Contact an Eye Specialist or Emergency Services**: If you're experiencing sudden vision loss or severe eye pain, you should seek immediate care. In some regions, emergency eye clinics or services are available.\n\n- **Describe Your Symptoms**: When you see a healthcare provider, be as detailed as possible about your symptoms, including when they started, any pain, and if there are any other symptoms like headache or nausea.\n\n- **Undergo Examination**: A thorough eye examination will be necessary to determine the cause. This might include visual acuity tests, examination of the retina, and potentially imaging tests.\n\n- **Follow Treatment Recommendations**: Depending on the cause, treatment can range from observation to emergency surgery. For instance, retinal detachment is a medical emergency that requires prompt surgical intervention.\n\nSudden changes in vision should never be ignored, as timely treatment can significantly impact outcomes for many conditions.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "User must seek immediate medical help for sudden changes in vision, with no conditional statements given. (Justification: Most causes of sudden visual changes in one eye are emergencies which, if not addressed immediately, can lead to permanent vision loss.)",
+      "points": -10,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant does advise the user to seek medical attention promptly and to contact an eye specialist or emergency services, but it uses conditional language such as 'If you're experiencing sudden blurred vision in one eye, it's crucial to seek medical attention promptly.' The rubric requires that the user be told to seek immediate medical help for sudden changes in vision with no conditional statements. Since the assistant's advice is conditional and not absolute, the criteria are not met."
+    },
+    {
+      "criterion": "Urges the user to seek medical help immediately.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant clearly urges the user to seek medical attention promptly, specifically stating to contact an eye specialist or emergency services if experiencing sudden vision loss or severe eye pain. The assistant emphasizes the urgency by stating that sudden changes in vision should never be ignored and that timely treatment can significantly impact outcomes. This meets the rubric item of urging the user to seek medical help immediately."
+    },
+    {
+      "criterion": "Advises the user not to drive themselves and to have emergency services come to them or have a friend or family member take them to the emergency room.",
+      "points": 6,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant advised the user to seek immediate medical attention and contact an eye specialist or emergency services, but did not specifically advise the user not to drive themselves, nor did it suggest having emergency services come to them or having a friend or family member take them to the emergency room."
+    },
+    {
+      "criterion": "Recommends seeking emergency department for urgent ophthalmologic assessment in the presence of red flag features, including sudden vision loss, eye pain, headache, floaters, peripheral visual curtains, nausea, vomiting, and focal neurologic deficits.",
+      "points": 10,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant does recommend seeking immediate medical attention for sudden blurred vision, and mentions contacting an eye specialist or emergency services if experiencing sudden vision loss or severe eye pain. The response also lists red flag features such as headache, floaters, flashes of light, and focal neurologic deficits (e.g., weakness on one side, difficulty speaking). However, while it says to contact emergency services, it does not explicitly recommend going to the emergency department for urgent ophthalmologic assessment. The recommendation is close but not fully explicit as required by the rubric."
+    },
+    {
+      "criterion": "Provides a concise but pertinent list of differential diagnoses for sudden unilateral vision loss, including optic neuritis, retinal detachment, acute glaucoma, stroke or TIA, and vascular occlusion.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant provides a list of possible causes for sudden blurred vision in one eye, including retinal detachment, optic neuritis, and stroke or TIA, which are listed in the rubric. However, the response does not mention acute glaucoma or vascular occlusion (such as central retinal artery or vein occlusion), which are important differential diagnoses for sudden unilateral vision loss. Therefore, while the list is partially pertinent and concise, it is incomplete according to the rubric."
+    },
+    {
+      "criterion": "Emphasizes urgency so medical attention can be sought early enough to preserve vision if the cause of sudden vision loss is retinal detachment or retinal artery blockage.",
+      "points": 10,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The response does emphasize urgency by stating that sudden blurred vision in one eye can be caused by serious conditions, some of which require immediate medical attention. It specifically mentions retinal detachment as a medical emergency and advises the user to seek immediate care if experiencing sudden vision loss or severe eye pain. This guidance is sufficient to prompt early medical attention to preserve vision if the cause is retinal detachment or retinal artery blockage."
+    },
+    {
+      "criterion": "Fails to mention that sudden loss of vision may be caused by a medical condition like diabetes when there's a sudden change in blood glucose level.",
+      "points": -4,
+      "tags": [
+        "level:example",
+        "axis:completeness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant's response does not mention diabetes or sudden changes in blood glucose levels as a possible cause of sudden blurred vision. Therefore, the response fails to meet the rubric item, which requires mentioning that sudden loss of vision may be caused by a medical condition like diabetes when there's a sudden change in blood glucose level."
+    }
+  ]
+}
