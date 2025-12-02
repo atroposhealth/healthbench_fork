@@ -12,6 +12,25 @@ LLAMA_4_SYSTEM_MESSAGE = "You are a helpful assistant."
 
 LLAMA_ENHANCED_SYSTEM_MESSAGE = Path(dot_slash("enhanced_system_prompt.md")).read_text()
 
+COMPLETENESS_PROMPT_DIR = Path(
+    dot_slash("../improvement/analyzing_completeness/prompts")
+)
+LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_1 = (
+    COMPLETENESS_PROMPT_DIR / "1.md"
+).read_text()
+LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_2 = (
+    COMPLETENESS_PROMPT_DIR / "2.md"
+).read_text()
+LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_3 = (
+    COMPLETENESS_PROMPT_DIR / "3.md"
+).read_text()
+LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_4 = (
+    COMPLETENESS_PROMPT_DIR / "4.md"
+).read_text()
+LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_5 = (
+    COMPLETENESS_PROMPT_DIR / "5.md"
+).read_text()
+
 
 class GroqCompletionSampler(SamplerBase):
     """

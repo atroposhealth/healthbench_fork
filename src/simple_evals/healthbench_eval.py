@@ -11,27 +11,19 @@ You can also evaluate physician ideal completions or reference completions again
 - To evaluate reference model completions used by physicians: `python -m simple-evals.healthbench_eval --run_mode=physician_completion_references`
 """
 
-import argparse
 import hashlib
 import json
 import random
 import re
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import datetime
-from pathlib import Path
 from typing import Literal
 
 import numpy as np
-import pandas as pd
 import requests
 
 from . import common
 from .package_types import Eval, EvalResult, MessageList, SamplerBase, SingleEvalResult
-from .sampler.chat_completion_sampler import (
-    OPENAI_SYSTEM_MESSAGE_API,
-    ChatCompletionSampler,
-)
 from .sampler.groq_rag_sampler import GroqRAGCompletionSampler
 from .sampler.groq_sampler import GroqCompletionSampler
 
@@ -314,12 +306,14 @@ class HealthBenchEval(Eval):
                         all_examples,
                         n_examples,
                     )
+                else:
+                    examples_to_run = all_examples
             case PreSampled(selected_prompt_ids):
                 examples_to_run = [
                     e for e in all_examples if e["prompt_id"] in selected_prompt_ids
                 ]
             case None:
-                pass
+                examples_to_run = all_examples
             case _:
                 raise ValueError(f"Not supported: {sampler}")
 
@@ -421,18 +415,13 @@ class HealthBenchEval(Eval):
         def fn(row: dict):
             prompt_messages = row["prompt"]
 
-            if self.physician_completions_mode is not None:
-                response_text = row["completion_to_trial"]
-                response_usage = None
-                actual_queried_prompt_messages = prompt_messages
-            else:
-                sampler_response = sampler(prompt_messages, row["prompt_id"])
-                response_text = sampler_response.response_text
-                response_dict = sampler_response.response_metadata
-                actual_queried_prompt_messages = (
-                    sampler_response.actual_queried_message_list
-                )
-                response_usage = response_dict.get("usage", None)
+            sampler_response = sampler(prompt_messages, row["prompt_id"])
+            response_text = sampler_response.response_text
+            response_dict = sampler_response.response_metadata
+            actual_queried_prompt_messages = (
+                sampler_response.actual_queried_message_list
+            )
+            response_usage = response_dict.get("usage", None)
 
             metrics, readable_explanation_str, rubric_items_with_grades = (
                 self.grade_sample(
@@ -487,120 +476,3 @@ class HealthBenchEval(Eval):
         )
         final_metrics = _aggregate_get_clipped_mean(results)
         return final_metrics
-
-
-def main():
-    parser = argparse.ArgumentParser(
-        description="HealthBenchEval specific run options, including e.g., running the eval on physician completions rows only."
-    )
-    parser.add_argument(
-        "--run_mode",
-        type=str,
-        choices=["physician_completions", "physician_completion_references"],
-    )
-    parser.add_argument("--examples", type=int, help="Number of examples to run")
-    parser.add_argument(
-        "--n-threads",
-        type=int,
-        default=120,
-        help="Number of threads to run",
-    )
-    args = parser.parse_args()
-
-    if args.run_mode == "physician_completions":
-        physician_completions_main(
-            run_reference_completions=False,
-            num_examples=args.examples,
-            n_threads=args.n_threads or 1,
-        )
-    elif args.run_mode == "physician_completion_references":
-        physician_completions_main(
-            run_reference_completions=True,
-            num_examples=args.examples,
-            n_threads=args.n_threads or 1,
-        )
-
-    else:
-        raise ValueError(f"Invalid run mode: {args.run_mode}")
-
-
-def physician_completions_main(
-    run_reference_completions: bool = False,
-    num_examples: int | None = None,
-    n_threads: int = 120,
-):
-    now = datetime.now()
-    date_str = now.strftime("%Y%m%d_%H%M")
-
-    grading_sampler = ChatCompletionSampler(
-        model="gpt-4.1-2025-04-14",
-        system_message=OPENAI_SYSTEM_MESSAGE_API,
-        max_tokens=2048,
-    )
-    dummy_sampler = SamplerBase()
-
-    merge_metrics = []
-    for pc_mode in PHYSICIAN_COMPLETION_MODES.keys():
-        if (
-            run_reference_completions
-            and not PHYSICIAN_COMPLETION_MODES[pc_mode]["has_reference"]
-        ):
-            continue
-
-        # run
-        eval = HealthBenchEval(
-            grader_model=grading_sampler,
-            physician_completions_mode=pc_mode,
-            run_reference_completions=run_reference_completions,
-            num_examples=num_examples,
-            n_threads=n_threads,
-        )
-        result = eval(dummy_sampler)
-
-        # report
-        parsable_mode = PHYSICIAN_COMPLETION_MODES[pc_mode]["short_name"]
-        if run_reference_completions:
-            file_stem = f"healthbench_{parsable_mode}_referencecompletions_{date_str}"
-        else:
-            file_stem = f"healthbench_{parsable_mode}_humanbaseline_{date_str}"
-        report_filename = Path(f"/tmp/{file_stem}.html")
-        report_filename.write_text(common.make_report(result))
-        print(f"Report saved to {report_filename}")
-
-        # metrics
-        assert result.metrics is not None
-        metrics = result.metrics
-        result_filename = Path(f"/tmp/{file_stem}.json")
-        result_filename.write_text(json.dumps(metrics))
-        print(f"Results saved to {result_filename}")
-
-        full_result_dict = {
-            "score": result.score,
-            "metrics": result.metrics,
-            "htmls": result.htmls,
-            "convos": result.convos,
-            "metadata": result.metadata,
-        }
-        full_result_filename = Path(f"/tmp/{file_stem}_allresults.json")
-        full_result_filename.write_text(json.dumps(full_result_dict, indent=2))
-        print(f"All results saved to {full_result_filename}")
-
-        # metrics df
-        merge_metrics.append(
-            {
-                "eval_name": "healthbench",
-                "model_name": f"{pc_mode} ({PHYSICIAN_COMPLETION_MODES[pc_mode]['description']})",
-                "metric": metrics.get("overall_score", None),
-            }
-        )
-
-    merge_metrics_df = pd.DataFrame(merge_metrics).pivot(
-        index=["model_name"], columns="eval_name"
-    )
-    print("\nAll results: ")
-    print(merge_metrics_df.to_markdown())
-    return merge_metrics
-
-
-if __name__ == "__main__":
-    main()
