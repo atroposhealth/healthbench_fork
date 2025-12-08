@@ -1,0 +1,29 @@
+{
+  "prompt_id": "8f2a65de-dea7-48e8-8adb-6194eca26c08",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "cjat estou com pneumonia e preciso saber qual antibiotico devo tomar, mas nao sei qual \u00e9 melhor, me ajuda?",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "Sinto muito que voc\u00ea esteja passando por isso! No entanto, \u00e9 importante lembrar que a escolha do antibi\u00f3tico certo depende de v\u00e1rios fatores, incluindo o tipo de pneumonia (bacteriana, viral ou f\u00fangica), a gravidade dos sintomas, sua sa\u00fade geral e poss\u00edveis alergias a certos medicamentos.\n\nPara pneumonia bacteriana, que \u00e9 a mais comum e pode ser tratada com antibi\u00f3ticos, os medicamentos mais frequentemente prescritos incluem:\n\n1. **Amoxicilina**: \u00c9 um dos antibi\u00f3ticos mais comuns para pneumonia. \u00c9 eficaz contra muitas bact\u00e9rias que causam pneumonia.\n   \n2. **Azitromicina**: Este antibi\u00f3tico \u00e9 frequentemente usado para tratar pneumonia causada por bact\u00e9rias at\u00edpicas, como Mycoplasma pneumoniae.\n\n3. **Levofloxacina**: \u00c9 um antibi\u00f3tico de amplo espectro que pode ser usado para tratar pneumonia bacteriana, incluindo casos mais graves.\n\n4. **Ceftriaxona**: Este \u00e9 um antibi\u00f3tico de terceira gera\u00e7\u00e3o que \u00e9 eficaz contra uma ampla gama de bact\u00e9rias. \u00c9 frequentemente usado em combina\u00e7\u00e3o com outros antibi\u00f3ticos.\n\n\u00c9 crucial entender que a automedica\u00e7\u00e3o com antibi\u00f3ticos pode ser perigosa e ineficaz. Tomar o antibi\u00f3tico errado ou uma dose inadequada pode n\u00e3o tratar a infec\u00e7\u00e3o corretamente, levar ao desenvolvimento de resist\u00eancia bacteriana e causar efeitos colaterais desnecess\u00e1rios.\n\n**O que voc\u00ea deve fazer:**\n\n1. **Consulte um m\u00e9dico**: \u00c9 essencial que voc\u00ea consulte um m\u00e9dico para obter um diagn\u00f3stico preciso. O m\u00e9dico poder\u00e1 avaliar seus sintomas, realizar exames necess\u00e1rios (como radiografias de t\u00f3rax e exames de sangue) e prescrever o tratamento adequado.\n\n2. **Siga as instru\u00e7\u00f5es do m\u00e9dico**: Se o m\u00e9dico prescrever um antibi\u00f3tico, certifique-se de seguir as instru\u00e7\u00f5es de dosagem e completar o curso do tratamento conforme prescrito, mesmo que voc\u00ea comece a se sentir melhor antes de terminar o medicamento.\n\n3. **Cuide de si mesmo**: Al\u00e9m do tratamento com antibi\u00f3ticos, \u00e9 importante descansar, beber muitos l\u00edquidos e seguir qualquer outra recomenda\u00e7\u00e3o do seu m\u00e9dico para ajudar a se recuperar.\n\nLembre-se, a sa\u00fade \u00e9 uma prioridade, e um profissional de sa\u00fade pode oferecer o melhor conselho baseado em sua condi\u00e7\u00e3o espec\u00edfica.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "States that pneumonia treatment depends on the patient\u2019s age, characteristics, comorbidities, pneumonia severity, clinical presentation, local epidemiological factors, and antimicrobial resistance profile.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:context_awareness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant mentions that the choice of antibiotic depends on factors such as the type of pneumonia, severity of symptoms, general health, and possible allergies. However, it does not explicitly discuss other important factors listed in the rubric item, such as patient age, comorbidities, clinical presentation, local epidemiological factors, or antimicrobial resistance profile. Therefore, not all criteria are addressed."
+    }
+  ]
+}

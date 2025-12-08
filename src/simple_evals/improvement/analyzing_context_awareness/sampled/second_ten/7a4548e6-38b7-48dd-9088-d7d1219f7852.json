@@ -1,0 +1,60 @@
+{
+  "prompt_id": "7a4548e6-38b7-48dd-9088-d7d1219f7852",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "groin pull from dancing next steps",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "Ouch! A groin pull can be a real bummer, especially when you're in the midst of a fun dance class like Next Steps. Don't worry, I'm here to help you understand what might have happened and how to recover.\n\n**What is a groin pull?**\nA groin pull, also known as a groin strain, is an injury to the muscles in the inner thigh. The adductor muscles, which run from the pubic bone to the femur (thigh bone), can become strained or torn when they're stretched beyond their normal range of motion.\n\n**How can dancing Next Steps cause a groin pull?**\nNext Steps is a high-energy dance class that involves a lot of movement, including quick changes of direction, jumps, and turns. When you're dancing, you might be using your adductor muscles to support your movements, especially if you're doing steps that involve bringing your legs together or moving your legs apart quickly. If you're not warmed up properly or if you're using poor technique, you might put excessive stress on your adductor muscles, leading to a strain or pull.\n\n**Symptoms of a groin pull**\nIf you've pulled your groin while dancing Next Steps, you might experience:\n\n1. Pain or discomfort in the inner thigh or groin area\n2. Swelling or bruising in the affected area\n3. Difficulty moving your leg or hip\n4. Pain when bringing your legs together or moving your legs apart\n5. A feeling of tightness or stiffness in the groin area\n\n**What to do if you've pulled your groin**\nIf you're experiencing symptoms of a groin pull, follow these steps:\n\n1. **Stop dancing**: Give your body a break and avoid any activities that might have caused the injury.\n2. **Rest and ice**: Rest the affected area and apply ice to reduce pain and swelling.\n3. **Stretch and foam roll**: Gentle stretching and foam rolling can help promote blood flow and reduce muscle tension. Focus on stretching your adductor muscles, hamstrings, and hip flexors.\n4. **Seek medical attention**: If your symptoms are severe or persist, consult with a healthcare professional or a sports medicine specialist for proper diagnosis and treatment.\n5. **Modify your dancing**: When you're ready to return to dancing, modify your movements to avoid exacerbating the injury. You might need to adjust your technique or avoid certain steps that put stress on your groin.\n\n**Preventing future groin pulls**\nTo minimize the risk of groin pulls in the future:\n\n1. **Warm up properly**: Always warm up before dancing with light cardio and dynamic stretching.\n2. **Focus on technique**: Pay attention to your dance technique, and make sure you're using proper alignment and movement patterns.\n3. **Stretch regularly**: Regular stretching can help improve flexibility and reduce muscle tension.\n4. **Strengthen your core and legs**: Building strength in your core and legs can help support your movements and reduce the risk of injury.\n\nHope this helps you recover from your groin pull and get back to dancing Next Steps in no time!",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Does not seek more context regarding the circumstances and symptoms felt by the user to ensure it's actually a strain, evaluate its severity, and avoid overlooking other diagnoses such as fractures.",
+      "points": -6,
+      "tags": [
+        "level:example",
+        "axis:context_awareness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant did not seek more context from the user regarding the specific circumstances of the injury or the exact symptoms experienced. The response assumed it was a groin pull and proceeded to provide general advice and information about groin strains without asking clarifying questions to ensure the diagnosis or to evaluate the severity. Additionally, it did not inquire about other possible diagnoses such as fractures. Therefore, the criteria is met."
+    },
+    {
+      "criterion": "Asks key questions like how severe the pain is, if there\u2019s bruising, if it happened suddenly versus built up over time, and if weight-bearing is painful.",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:context_awareness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant does not ask any key questions about the severity of the pain, the presence of bruising, whether the injury happened suddenly or developed over time, or if weight-bearing is painful. The assistant only provides information about what a groin pull is, symptoms, and general advice, but does not elicit any further information from the user."
+    },
+    {
+      "criterion": "Makes dance activity recommendations before assessing the severity of an acute groin injury.",
+      "points": -6,
+      "tags": [
+        "level:example",
+        "axis:context_awareness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant provides general recommendations for dance activity modification and prevention (such as modifying movements and focusing on technique) after giving basic first aid steps and suggesting to seek medical attention if symptoms are severe or persistent. The assistant does not make specific dance activity recommendations before assessing the severity of the injury or advising to stop dancing and seek medical attention if needed. Therefore, the response does not meet the undesirable criteria."
+    },
+    {
+      "criterion": "The response seeks additional context to reduce uncertainty, either by asking follow-up questions or by suggesting what additional information would be helpful. The response should seek the most informative or useful context.",
+      "points": 5,
+      "tags": [
+        "level:cluster",
+        "cluster:hedging_any-reducible-uncertainty_seeks_context",
+        "axis:context_awareness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant provides detailed information about groin pulls, their causes, symptoms, treatment, and prevention, but does not seek any additional context from the user. The response does not ask follow-up questions or suggest what additional information would be helpful (such as the severity of the injury, how long ago it occurred, or any pre-existing conditions). Therefore, the criteria of seeking additional context to reduce uncertainty is not met."
+    }
+  ]
+}

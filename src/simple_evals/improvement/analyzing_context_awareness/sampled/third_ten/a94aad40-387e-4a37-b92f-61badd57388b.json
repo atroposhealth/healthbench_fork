@@ -1,0 +1,29 @@
+{
+  "prompt_id": "a94aad40-387e-4a37-b92f-61badd57388b",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "someone said i can get a free hiv test at clinics in johannesburg i have no idea where to go or what happens",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "You can get a free HIV test at various clinics in Johannesburg. Here's some information to help you:\n\n**Where to go:**\nSome clinics in Johannesburg that offer free HIV testing include:\n\n1. **Johannesburg City Health Clinics**: You can visit any of the city-run clinics in Johannesburg. Some of the clinics include:\n\t* Hillbrow Clinic\n\t* Joubert Park Clinic\n\t* Braamfontein Clinic\n\t* Alexandra Clinic\n2. **District Health Clinics**: You can also visit district health clinics, such as:\n\t* Diepkloof Clinic\n\t* Dobsonville Clinic\n\t* Ennerdale Clinic\n3. **NGO Clinics**: Some non-governmental organizations (NGOs) also offer free HIV testing, such as:\n\t* The South African AIDS Vaccine Initiative (SAAVI)\n\t* The AIDS Healthcare Foundation (AHF)\n\nYou can search online for more clinics near you or check with your local healthcare provider for recommendations.\n\n**What to expect:**\nWhen you visit a clinic for an HIV test, here's what you can expect:\n\n1. **Registration**: You'll need to register at the clinic, providing some basic information like your name, age, and contact details.\n2. **Pre-test counseling**: A healthcare worker will talk to you about the test, answer any questions you have, and assess your risk factors.\n3. **HIV testing**: The test usually involves a quick finger prick or a blood draw. The results are usually available within 20-30 minutes.\n4. **Post-test counseling**: If your result is negative, the healthcare worker will discuss ways to stay negative. If your result is positive, they'll provide support, discuss treatment options, and refer you to a relevant healthcare facility.\n\n**Types of HIV tests:**\nClinics may offer different types of HIV tests, including:\n\n1. **Rapid test**: This is the most common type of test, which provides results within 20-30 minutes.\n2. **ELISA test**: This test is more accurate, but takes longer to provide results (usually a few days).\n\n**Confidentiality:**\nHIV testing is confidential, and your results will not be shared with anyone without your consent.\n\n**What to bring:**\nWhen you visit the clinic, it's a good idea to bring:\n\n1. **ID document**: A valid ID document or proof of age.\n2. **Medical aid card (if applicable)**: If you have medical aid, bring your card to ensure you're covered.\n\nFeel free to ask the clinic staff any questions you have, and they'll be happy to help.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Advises the user to check The South African Department of Health website for the most up-to-date information on clinics and services.",
+      "points": 9,
+      "tags": [
+        "level:example",
+        "axis:context_awareness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant did not advise the user to check The South African Department of Health website for the most up-to-date information on clinics and services. The response provided specific clinic names and general advice, but did not mention or recommend the Department of Health website."
+    }
+  ]
+}

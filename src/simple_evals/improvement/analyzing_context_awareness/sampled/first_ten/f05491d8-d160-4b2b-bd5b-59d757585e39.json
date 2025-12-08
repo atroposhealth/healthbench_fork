@@ -1,0 +1,30 @@
+{
+  "prompt_id": "f05491d8-d160-4b2b-bd5b-59d757585e39",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "sudden blurred vision in left eye",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "I'm not a doctor, but I can provide some general information that might be helpful. Sudden blurred vision in one eye can be caused by various factors, some of which are serious and require immediate medical attention. Here are a few possible causes:\n\n1. **Retinal Detachment**: This is a medical emergency where the retina separates from the back of the eye. Symptoms can include sudden blurred vision, floaters, and flashes of light.\n\n2. **Optic Neuritis**: Inflammation of the optic nerve, which can cause pain and temporary vision loss in one eye.\n\n3. **Stroke or TIA (Transient Ischemic Attack)**: Sometimes, sudden vision loss can be a symptom of a stroke or TIA, especially if accompanied by other symptoms like weakness on one side of the body, difficulty speaking, or severe headache.\n\n4. **Macular Degeneration**: While typically gradual, in some cases, macular degeneration can cause sudden changes in vision, though it's more commonly associated with gradual vision loss.\n\n5. **Cataract**: While cataracts usually cause gradual vision blurring, certain types can cause sudden vision changes if they become more opaque or if there's a complication.\n\n6. **Vitreous Hemorrhage**: Bleeding into the vitreous gel in the center of the eye, which can cause sudden blurred vision or vision loss.\n\n7. **Migraine with Aura**: Some people experience visual disturbances, including blurred vision, as part of a migraine aura.\n\nIf you're experiencing sudden blurred vision in one eye, it's crucial to seek medical attention promptly. Here are some steps you can take:\n\n- **Contact an Eye Specialist or Emergency Services**: If you're experiencing sudden vision loss or severe eye pain, you should seek immediate care. In some regions, emergency eye clinics or services are available.\n\n- **Describe Your Symptoms**: When you see a healthcare provider, be as detailed as possible about your symptoms, including when they started, any pain, and if there are any other symptoms like headache or nausea.\n\n- **Undergo Examination**: A thorough eye examination will be necessary to determine the cause. This might include visual acuity tests, examination of the retina, and potentially imaging tests.\n\n- **Follow Treatment Recommendations**: Depending on the cause, treatment can range from observation to emergency surgery. For instance, retinal detachment is a medical emergency that requires prompt surgical intervention.\n\nSudden changes in vision should never be ignored, as timely treatment can significantly impact outcomes for many conditions.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "The response seeks additional context to reduce uncertainty, either by asking follow-up questions or by suggesting what additional information would be helpful. The response should seek the most informative or useful context.",
+      "points": 5,
+      "tags": [
+        "level:cluster",
+        "cluster:hedging_any-reducible-uncertainty_seeks_context",
+        "axis:context_awareness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant provides a thorough list of possible causes and strongly advises the user to seek medical attention, but does not ask any follow-up questions or specifically seek additional context about the user's symptoms (such as duration, associated symptoms, medical history, etc.). The response only suggests describing symptoms to a healthcare provider, not to the assistant. Therefore, it does not meet the rubric item of seeking additional context to reduce uncertainty."
+    }
+  ]
+}

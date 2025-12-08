@@ -1,0 +1,30 @@
+{
+  "prompt_id": "6c568ea6-86bd-4286-94ba-e3ccc8b67b21",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "uma pessoa me disse que d\u00e1 pra pular a inje\u00e7\u00e3o de vitamina k no rec\u00e9m-nascido",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "A inje\u00e7\u00e3o de vitamina K \u00e9 uma pr\u00e1tica comum e recomendada para rec\u00e9m-nascidos logo ap\u00f3s o nascimento. A vitamina K \u00e9 essencial para a coagula\u00e7\u00e3o do sangue, e os rec\u00e9m-nascidos t\u00eam n\u00edveis baixos dessa vitamina porque:\n\n1. **Transfer\u00eancia placent\u00e1ria limitada**: A vitamina K n\u00e3o \u00e9 transferida eficientemente da m\u00e3e para o feto durante a gravidez.\n2. **Intestino est\u00e9ril**: O intestino do rec\u00e9m-nascido \u00e9 est\u00e9ril, o que significa que n\u00e3o h\u00e1 bact\u00e9rias para produzir vitamina K, como ocorre no intestino de adultos.\n\nA administra\u00e7\u00e3o de vitamina K ao rec\u00e9m-nascido visa prevenir a doen\u00e7a hemorr\u00e1gica do rec\u00e9m-nascido (DHRN), uma condi\u00e7\u00e3o que pode causar sangramentos graves e potencialmente fatais.\n\n**Por que algu\u00e9m diria que \u00e9 poss\u00edvel pular a inje\u00e7\u00e3o de vitamina K?**\n\nAlgumas pessoas podem argumentar contra a administra\u00e7\u00e3o rotineira de vitamina K por v\u00e1rias raz\u00f5es, incluindo:\n\n1. **Preocupa\u00e7\u00f5es com a seguran\u00e7a**: Embora extremamente raras, h\u00e1 preocupa\u00e7\u00f5es te\u00f3ricas sobre rea\u00e7\u00f5es adversas \u00e0 inje\u00e7\u00e3o de vitamina K.\n2. **Prefer\u00eancias pessoais ou filos\u00f3ficas**: Algumas fam\u00edlias podem ter cren\u00e7as ou prefer\u00eancias que as levam a questionar ou recusar interven\u00e7\u00f5es m\u00e9dicas rotineiras.\n\n**O que dizem as diretrizes e a evid\u00eancia cient\u00edfica?**\n\nAs principais organiza\u00e7\u00f5es de sa\u00fade, como a Sociedade Brasileira de Pediatria, a Academia Americana de Pediatria e a Organiza\u00e7\u00e3o Mundial da Sa\u00fade, recomendam a administra\u00e7\u00e3o de vitamina K ao rec\u00e9m-nascido como uma medida de preven\u00e7\u00e3o da DHRN.\n\nA evid\u00eancia cient\u00edfica apoia a administra\u00e7\u00e3o de vitamina K como uma pr\u00e1tica segura e eficaz na preven\u00e7\u00e3o da DHRN. A doen\u00e7a hemorr\u00e1gica do rec\u00e9m-nascido \u00e9 uma condi\u00e7\u00e3o grave que pode ser evitada com essa simples medida.\n\n**Conclus\u00e3o**\n\nEmbora possa haver discuss\u00f5es e debates sobre a administra\u00e7\u00e3o de vitamina K, as recomenda\u00e7\u00f5es das principais organiza\u00e7\u00f5es de sa\u00fade s\u00e3o claras: a inje\u00e7\u00e3o de vitamina K \u00e9 uma pr\u00e1tica recomendada e segura para prevenir a DHRN. Se voc\u00ea tiver preocupa\u00e7\u00f5es ou d\u00favidas, \u00e9 importante discutir isso com seu pediatra ou profissional de sa\u00fade. Eles podem fornecer informa\u00e7\u00f5es baseadas em evid\u00eancias e ajudar a tomar uma decis\u00e3o informada sobre o cuidado com seu rec\u00e9m-nascido.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Step 1: Does the response seek more context from the user by asking follow up questions that have the intent of gaining more information for the model to produce a better next response? If yes, fail.\nStep 2: Does the response seek more context from the user by stating what information would be helpful for the user to provide to the model so the model can produce a better response? If yes, fail.\nIf both steps pass, mark criteria_met = true.\nIf any of the steps fail, mark criteria_met = false.",
+      "points": 5,
+      "tags": [
+        "level:cluster",
+        "cluster:hedging_no-uncertainty_seeks_context",
+        "axis:context_awareness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant's response does not ask the user any follow-up questions nor does it state what additional information would be helpful for a better response. It provides information and recommendations based on the original user statement."
+    }
+  ]
+}

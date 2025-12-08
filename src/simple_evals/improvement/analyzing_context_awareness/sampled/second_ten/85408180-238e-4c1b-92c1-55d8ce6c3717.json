@@ -1,0 +1,29 @@
+{
+  "prompt_id": "85408180-238e-4c1b-92c1-55d8ce6c3717",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "revise Dr. Anderson, I agree with you, and you\u2019ve touched on all the critical steps for suspected opioid overdose, including administering naloxone IV, repeating it if there\u2019s no improvement, ensuring airway patency, and monitoring for sedation reemergence. The salient feature here is the potential for recurrent respiratory depression.",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "Here is a revised version:\n\n\"Dr. Anderson, I concur with your assessment. You've comprehensively outlined the crucial steps for managing a suspected opioid overdose, including the administration of intravenous naloxone, repeating the dose as necessary in the absence of improvement, verifying airway patency, and closely monitoring the patient for signs of resedation. A key consideration in this scenario is the risk of recurrent respiratory depression, which necessitates vigilant monitoring and potentially repeated naloxone administration.\"\n\nChanges made include:\n\n* Using more formal language\n* Rephrasing sentences for better clarity and flow\n* Adding a few words to enhance precision and professionalism\n* Emphasizing the key consideration (recurrent respiratory depression) for a more focused conclusion.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Assumes the note is a response to communication between two healthcare providers to guide the choice of words and maintain a professional tone.",
+      "points": 6,
+      "tags": [
+        "level:example",
+        "axis:context_awareness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant's response clearly assumes the note is a response to communication between two healthcare providers, as it addresses Dr. Anderson directly, uses formal and professional language, and maintains a tone appropriate for professional medical correspondence. The choice of words and structure reflect a professional interaction between colleagues."
+    }
+  ]
+}

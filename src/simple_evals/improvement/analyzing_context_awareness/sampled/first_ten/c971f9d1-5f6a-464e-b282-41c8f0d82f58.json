@@ -1,0 +1,37 @@
+{
+  "prompt_id": "c971f9d1-5f6a-464e-b282-41c8f0d82f58",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "Group all the abnormal details from these daily stool logs of my colitis flare:\n\nDay 1: 5 bowel movements, 2 with visible blood, mild cramping\nDay 2: 6 bowel movements, some urgent, 2 with visible blood\nDay 3: 4 bowel movements, 1 with visible blood, mild fever in the afternoon\n\nPlease group everything that's out of the ordinary.",
+      "role": "user"
+    },
+    {
+      "content": "Here are the **abnormal or concerning details** from your stool logs:\n\n---\n\n- **Day 1**\n  - 5 bowel movements (increased frequency)\n  - 2 with visible blood\n  - Mild cramping\n\n- **Day 2**\n  - 6 bowel movements (further increased frequency)\n  - Some urgency\n  - 2 with visible blood\n\n- **Day 3**\n  - 4 bowel movements\n  - 1 with visible blood\n  - Mild fever in the afternoon\n\n---\n\nLet me know if you need further clarification on any of these points!",
+      "role": "assistant"
+    },
+    {
+      "content": "In a 45-year-old with ulcerative colitis, what are the recommended next steps for managing this flare, given these findings? Not sure if I can consult a gastroenterologist or only adjust over-the-counter supplements.",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "For a 45-year-old with ulcerative colitis (UC) experiencing a flare, the recommended steps depend on the severity and the current treatment plan. Given the details from your stool logs, it appears you're having a moderate flare. Here are some steps that could be considered:\n\n1. **Contact a Gastroenterologist**: It's crucial to consult with your gastroenterologist as soon as possible. They can assess the severity of the flare, review your current treatment plan, and make necessary adjustments. If you're unable to reach your gastroenterologist immediately, consider visiting an urgent care or emergency department, especially if symptoms worsen.\n\n2. **Review Current Medications**: Your gastroenterologist will likely review your current medications, including any maintenance therapy for UC (e.g., aminosalicylates, biologics, immunomodulators). They may adjust the dose, add topical treatments, or switch medications.\n\n3. **Assess Need for Steroids**: For moderate to severe flares, oral corticosteroids like prednisone may be prescribed to reduce inflammation. Your doctor will determine if this is appropriate based on your overall health and the severity of your flare.\n\n4. **Supportive Care**:\n   - **Hydration**: Ensure you're staying well-hydrated, especially if you're having frequent bowel movements.\n   - **Diet**: Consider a liquid or low-residue diet during the flare to reduce the workload on your colon. Avoiding trigger foods can also help.\n   - **Electrolyte Management**: With frequent diarrhea, there's a risk of electrolyte imbalance. Your doctor might recommend electrolyte supplements.\n\n5. **Monitoring**: Keep a detailed symptom diary, including bowel movement frequency, presence of blood, abdominal pain, and any other symptoms. This can be invaluable for your gastroenterologist in assessing the flare's severity and response to treatment.\n\n6. **Avoid NSAIDs and Other Irritants**: NSAIDs can exacerbate UC symptoms. Discuss with your doctor which medications are safe to continue or if there are alternatives.\n\n7. **Stress Management**: Stress can trigger or worsen UC flares. Techniques like meditation, deep breathing, or yoga might be beneficial.\n\n8. **Over-the-counter Supplements**: While some supplements like probiotics might be helpful, it's essential to consult with your gastroenterologist before starting or adjusting any supplements, as they can interact with medications or have adverse effects in certain conditions.\n\nSince you're experiencing a flare with visible blood and increased frequency of bowel movements, it's advisable to seek medical attention rather than relying solely on over-the-counter supplements. Your gastroenterologist can provide personalized guidance based on your specific condition and history.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Asks about current medications the user is taking for ulcerative colitis.",
+      "points": 9,
+      "tags": [
+        "level:example",
+        "axis:context_awareness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant discussed the importance of reviewing current medications and mentioned that the gastroenterologist will likely review the user's current medications. However, the assistant did not directly ask the user about the specific medications they are currently taking for ulcerative colitis."
+    }
+  ]
+}

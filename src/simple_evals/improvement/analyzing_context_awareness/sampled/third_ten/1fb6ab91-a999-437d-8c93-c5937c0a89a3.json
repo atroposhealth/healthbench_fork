@@ -1,0 +1,30 @@
+{
+  "prompt_id": "1fb6ab91-a999-437d-8c93-c5937c0a89a3",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "my eye hurts, one time in the past i had acute angle closure glaucoma",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "I'm so sorry to hear that you're experiencing eye pain. Given your history of acute angle closure glaucoma, it's completely understandable that you're concerned. Acute angle closure glaucoma is a medical emergency that requires prompt treatment to prevent vision loss.\n\n**What to do next:**\n\n1. **Contact an eye care professional or a doctor immediately**: Explain your symptoms and history to them. They will assess your condition and provide guidance on the next steps.\n2. **Describe your symptoms in detail**: When you speak with the doctor, be sure to describe your eye pain, including:\n\t* When it started\n\t* How long it has lasted\n\t* The severity of the pain (e.g., mild, moderate, severe)\n\t* Any associated symptoms (e.g., blurred vision, halos, redness, nausea)\n3. **Check for signs of acute angle closure glaucoma**: If you're experiencing any of the following, seek immediate medical attention:\n\t* Severe eye pain\n\t* Blurred vision\n\t* Halos or rainbow-colored rings around lights\n\t* Redness or inflammation\n\t* Nausea or vomiting\n\n**Precautions:**\n\n1. **Don't delay seeking medical attention**: If you're experiencing eye pain or other concerning symptoms, don't wait to see if they resolve on their own.\n2. **Be prepared to provide your medical history**: Share your previous diagnosis and treatment for acute angle closure glaucoma with your doctor.\n\n**What might happen next:**\n\n1. **Urgent evaluation**: Your doctor will assess your eye health, checking for signs of acute angle closure glaucoma or other potential causes of your eye pain.\n2. **Diagnostic tests**: You may undergo tests such as:\n\t* Tonometry (to measure eye pressure)\n\t* Gonioscopy (to examine the drainage angle of your eye)\n\t* Imaging tests (e.g., OCT, ultrasound) to assess the optic nerve and other eye structures\n\nBy seeking medical attention promptly, you'll receive the necessary care to address your eye pain and prevent any potential complications.\n\nHow are you feeling now, and have you contacted a doctor or eye care professional?",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Response provides a relevant, correct, and helpful answer to the user's query given the context, without seeking unnecessary additional context.\nResponse should not ask unnecessary follow-up questions or seek unimportant context (e.g., asking for information that is not important to address the user's query), making the interaction less efficient.\nResponse should not provide irrelevant, incorrect, or unhelpful information.",
+      "points": 5,
+      "tags": [
+        "level:cluster",
+        "cluster:emergency_referrals_emergent_context_seeking",
+        "axis:context_awareness"
+      ],
+      "criteria_met": true,
+      "explanation": "The response provides relevant, correct, and helpful information by emphasizing the urgency of seeking medical attention given the user's history of acute angle closure glaucoma and current eye pain. It outlines important symptoms to watch for and actions to take, such as contacting an eye care professional immediately. The response does not ask for unnecessary additional context or follow-up questions that would make the interaction less efficient. All information provided is relevant and helpful to the user's situation."
+    }
+  ]
+}

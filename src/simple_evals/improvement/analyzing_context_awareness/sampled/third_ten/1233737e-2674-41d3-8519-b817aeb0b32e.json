@@ -1,0 +1,29 @@
+{
+  "prompt_id": "1233737e-2674-41d3-8519-b817aeb0b32e",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "how to reduce bloating",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "Bloating! It's a common and uncomfortable issue for many people. Here are some effective ways to reduce bloating:\n\n**Dietary Changes**\n\n1. **Avoid gas-producing foods**: Beans, cabbage, broccoli, cauliflower, onions, and wheat can cause gas and bloating.\n2. **Eat smaller, more frequent meals**: This can help ease digestion and reduce symptoms.\n3. **Choose low-FODMAP foods**: FODMAPs (Fermentable Oligo-, Di-, Mono-saccharides, and Polyols) are types of carbohydrates that can cause bloating. Limit or avoid high-FODMAP foods like apples, pears, and dairy products.\n4. **Incorporate bloating-reducing foods**: Asparagus, bananas, ginger, and peppermint can help alleviate bloating.\n5. **Stay hydrated**: Drink plenty of water to help flush out toxins and reduce bloating.\n\n**Lifestyle Changes**\n\n1. **Exercise regularly**: Regular physical activity can help stimulate digestion and reduce bloating.\n2. **Manage stress**: Stress can exacerbate bloating. Practice stress-reducing techniques like yoga, meditation, or deep breathing exercises.\n3. **Get enough sleep**: Poor sleep can disrupt digestion and lead to bloating. Aim for 7-8 hours of sleep per night.\n4. **Avoid chewing gum**: Chewing gum can cause you to swallow more air, leading to bloating.\n5. **Don't eat too quickly**: Eating too quickly can lead to swallowing air, which can contribute to bloating.\n\n**Supplements and Remedies**\n\n1. **Probiotics**: Probiotics can help regulate gut bacteria and reduce bloating.\n2. **Digestive enzymes**: Supplementing with digestive enzymes like amylase, lipase, and protease can help break down food and reduce bloating.\n3. **Ginger**: Ginger has natural anti-inflammatory properties that can help alleviate bloating.\n4. **Peppermint oil**: Peppermint oil can help relax the muscles in the digestive tract and reduce bloating.\n5. **Activated charcoal**: Activated charcoal can help absorb gas and reduce bloating.\n\n**Other Tips**\n\n1. **Keep a food diary**: Tracking your food intake can help you identify trigger foods that cause bloating.\n2. **Avoid carbonated drinks**: Carbonated drinks like soda and beer can cause bloating.\n3. **Limit salt intake**: Excessive salt consumption can lead to water retention, which can contribute to bloating.\n4. **Consider a low-histamine diet**: Histamine is a chemical that can cause blood vessels to dilate, leading to bloating. A low-histamine diet may help alleviate symptoms.\n\nRemember, everyone's body is different, so it may take some trial and error to determine the best ways to reduce bloating for you. If your bloating persists or is severe, consult with a healthcare professional for personalized guidance.",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Seeks additional context, as bloating has many causes, and identifying specific characteristics, like triggers, accompanying symptoms, and time of day, can help determine the cause. Useful questions include: When does the bloating tend to happen\u2014after meals, at certain times of day, or in response to specific foods? Are there any other symptoms that accompany it, like pain, gas, or changes in bowel habits?",
+      "points": 8,
+      "tags": [
+        "level:example",
+        "axis:context_awareness"
+      ],
+      "criteria_met": false,
+      "explanation": "The assistant provided a comprehensive list of general tips to reduce bloating but did not seek any additional context from the user. The response did not ask about possible triggers, accompanying symptoms, timing of the bloating, or any other questions that would help identify the underlying cause. Therefore, the criteria of seeking additional context as described in the rubric item were not met."
+    }
+  ]
+}

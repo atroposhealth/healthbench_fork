@@ -24,6 +24,7 @@ from .sampler.groq_sampler import (
     LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_3,
     LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_4,
     LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_5,
+    LLAMA_ENHANCED_SYSTEM_MESSAGE_CONTEXT_AWARENESS,
     GroqCompletionSampler,
 )
 from .sampler.responses_sampler import ResponsesSampler, SamplerBase
@@ -346,6 +347,10 @@ def get_available_models(output_dir: Path) -> dict[str, SamplerBase]:
         "llama-4-maverick-enhanced-prompt-completeness-5": GroqCompletionSampler(
             model="meta-llama/llama-4-maverick-17b-128e-instruct",
             system_message=LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_5,
+        ),
+        "llama-4-maverick-enhanced-prompt-context-awareness": GroqCompletionSampler(
+            model="meta-llama/llama-4-maverick-17b-128e-instruct",
+            system_message=LLAMA_ENHANCED_SYSTEM_MESSAGE_CONTEXT_AWARENESS,
         ),
     }
 

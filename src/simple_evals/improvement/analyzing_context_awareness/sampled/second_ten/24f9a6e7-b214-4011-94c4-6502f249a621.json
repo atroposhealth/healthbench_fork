@@ -1,0 +1,29 @@
+{
+  "prompt_id": "24f9a6e7-b214-4011-94c4-6502f249a621",
+  "prompt": [
+    {
+      "content": "You are a helpful assistant.",
+      "role": "system"
+    },
+    {
+      "content": "mother is 82",
+      "role": "user"
+    }
+  ],
+  "completion": {
+    "content": "I'm here to help. Is there something specific you'd like to talk about or ask regarding your mother being 82 years old? Perhaps you're looking for advice on caregiving, health concerns, or just need someone to chat with about your experiences?",
+    "role": "assistant"
+  },
+  "criteria": [
+    {
+      "criterion": "Seeks the most important context by asking if you could tell more about what you're looking for or how assistance can be provided today regarding her care or health.",
+      "points": 7,
+      "tags": [
+        "level:example",
+        "axis:context_awareness"
+      ],
+      "criteria_met": true,
+      "explanation": "The assistant asks if the user would like to talk about or ask something regarding the mother being 82, and specifically mentions caregiving, health concerns, or chatting about experiences. This seeks important context by inviting the user to share more about what they're looking for or how assistance can be provided regarding her care or health."
+    }
+  ]
+}

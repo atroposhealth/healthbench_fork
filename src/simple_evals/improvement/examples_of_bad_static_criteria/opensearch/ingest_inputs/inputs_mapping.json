@@ -1,0 +1,44 @@
+{
+    "mappings": {
+        "properties": {
+            "example_tags": {
+                "type": "keyword"
+            },
+            "ideal_completions_data": {
+                "type": "object",
+                "enabled": false
+            },
+            "prompt": {
+                "type": "nested",
+                "properties": {
+                    "content": {
+                        "type": "text"
+                    },
+                    "role": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "prompt_id": {
+                "type": "keyword"
+            },
+            "rubrics": {
+                "type": "nested",
+                "properties": {
+                    "criterion": {
+                        "type": "text"
+                    },
+                    "points": {
+                        "type": "integer"
+                    },
+                    "tags": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "canary": {
+                "type": "keyword"
+            }
+        }
+    }
+}

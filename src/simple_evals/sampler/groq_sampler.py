@@ -31,6 +31,13 @@ LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_5 = (
     COMPLETENESS_PROMPT_DIR / "5.md"
 ).read_text()
 
+CONTEXT_AWARENESS_PROMPT_DIR = Path(
+    dot_slash("../improvement/analyzing_context_awareness/prompts")
+)
+LLAMA_ENHANCED_SYSTEM_MESSAGE_CONTEXT_AWARENESS = (
+    CONTEXT_AWARENESS_PROMPT_DIR / "context_awareness.md"
+).read_text()
+
 
 class GroqCompletionSampler(SamplerBase):
     """
