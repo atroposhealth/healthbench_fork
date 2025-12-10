@@ -10,15 +10,22 @@ Each document's ID is set to the 'prompt_id' field from the JSON object.
 """
 
 import json
+import os
 import sys
+import traceback
 from pathlib import Path
 from typing import Any, Dict
 
 import requests
+from requests.auth import HTTPBasicAuth
 
 # Configuration
-OPENSEARCH_URL = "http://localhost:9200"
-INDEX_NAME = "inputs"
+# OPENSEARCH_URL = "http://localhost:9200"
+OPENSEARCH_URL = (
+    "https://vpc-ah-dev-chatrwd-ya7pyxliif4fjsh6jtsfkoiqga.us-west-2.es.amazonaws.com"
+)
+# INDEX_NAME = "inputs"
+INDEX_NAME = "health_bench"
 INPUT_FILE = (
     Path(__file__).parent.parent.parent.parent.parent.parent.parent
     / "results"
@@ -54,7 +61,7 @@ def read_jsonl_file(file_path: Path) -> list[Dict[str, Any]]:
 
 
 def upload_documents_bulk(
-    documents: list[Dict[str, Any]], batch_size: int = 1000
+    documents: list[Dict[str, Any]], batch_size: int = 500
 ) -> None:
     """Upload documents to OpenSearch using the bulk API in batches."""
 
@@ -98,7 +105,14 @@ def upload_documents_bulk(
         headers = {"Content-Type": "application/x-ndjson"}
 
         try:
-            response = requests.post(url, data=bulk_body, headers=headers)
+            response = requests.post(
+                url,
+                data=bulk_body,
+                headers=headers,
+                auth=HTTPBasicAuth(
+                    username="master", password=os.environ["OPENSEARCH_PASSWORD"]
+                ),
+            )
             response.raise_for_status()
 
             result = response.json()
@@ -141,7 +155,12 @@ def verify_upload() -> None:
     url = f"{OPENSEARCH_URL}/{INDEX_NAME}/_count"
 
     try:
-        response = requests.get(url)
+        response = requests.get(
+            url,
+            auth=HTTPBasicAuth(
+                username="master", password=os.environ["OPENSEARCH_PASSWORD"]
+            ),
+        )
         response.raise_for_status()
         result = response.json()
         count = result.get("count", 0)
@@ -159,7 +178,12 @@ def main():
     try:
         # Verify OpenSearch is accessible
         print("\nConnecting to OpenSearch...")
-        response = requests.get(OPENSEARCH_URL)
+        response = requests.get(
+            OPENSEARCH_URL,
+            auth=HTTPBasicAuth(
+                username="master", password=os.environ["OPENSEARCH_PASSWORD"]
+            ),
+        )
         response.raise_for_status()
         info = response.json()
         print(f"Connected to OpenSearch cluster: {info.get('cluster_name', 'unknown')}")
@@ -187,13 +211,14 @@ def main():
 
     except FileNotFoundError as e:
         print(f"\nError: {e}")
+        traceback.print_exc()
         sys.exit(1)
     except requests.exceptions.RequestException as e:
         print(f"\nHTTP Error: {e}")
+        traceback.print_exc()
         sys.exit(1)
     except Exception as e:
         print(f"\nUnexpected error: {e}")
-        import traceback
 
         traceback.print_exc()
         sys.exit(1)

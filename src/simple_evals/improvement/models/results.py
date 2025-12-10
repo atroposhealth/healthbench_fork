@@ -1,6 +1,6 @@
 from enum import Enum
 from pathlib import Path
-from typing import Self
+from typing import Any, Self
 
 from pydantic import BaseModel
 
@@ -35,7 +35,7 @@ class Metadata(BaseModel):
 
 class ExampleLevelMetadata(BaseModel):
     score: float
-    usage: dict[str, float | int]
+    usage: dict[str, Any]
     rubric_items: "list[RubricItem]"
     prompt: list[ConversationTurn]
     completion: list[ConversationTurn]

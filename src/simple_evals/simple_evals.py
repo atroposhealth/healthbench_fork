@@ -12,6 +12,7 @@ from .sampler.chat_completion_sampler import (
     ChatCompletionSampler,
 )
 from .sampler.claude_sampler import ClaudeCompletionSampler
+from .sampler.gemini_sampler import GEMINI_SYSTEM_MESSAGE, GeminiCompletionSampler
 from .sampler.groq_rag_sampler import (
     LLAMA_4_RAG_SYSTEM_MESSAGE,
     GroqRAGCompletionSampler,
@@ -27,6 +28,7 @@ from .sampler.groq_sampler import (
     LLAMA_ENHANCED_SYSTEM_MESSAGE_CONTEXT_AWARENESS,
     GroqCompletionSampler,
 )
+from .sampler.groq_two_pass_sampler import GroqTwoPassCompletionSampler
 from .sampler.responses_sampler import ResponsesSampler, SamplerBase
 
 
@@ -112,6 +114,7 @@ def main():
         model="gpt-4.1-2025-04-14",
         system_message=OPENAI_SYSTEM_MESSAGE_API,
         max_tokens=2048,
+        api_key_env_var_name="SINGLE_HEALTHBENCH_RUN",
     )
 
     # Get the evals that the user requested
@@ -273,13 +276,18 @@ def get_evaluation(
 
 def get_available_models(output_dir: Path) -> dict[str, SamplerBase]:
     return {
-        # # Reasoning Models
+        # Reasoning Models
         "o3": ResponsesSampler(
             model="o3-2025-04-16",
             reasoning_model=True,
         ),
         "claude-opus-4.1": ClaudeCompletionSampler(
             model="claude-opus-4-1-20250805",
+        ),
+        # Gemini
+        "gemini-3": GeminiCompletionSampler(
+            model="gemini-3-pro-preview",
+            system_message=GEMINI_SYSTEM_MESSAGE,
         ),
         # Llama models:
         "llama-3.1-8b": GroqCompletionSampler(
@@ -351,6 +359,31 @@ def get_available_models(output_dir: Path) -> dict[str, SamplerBase]:
         "llama-4-maverick-enhanced-prompt-context-awareness": GroqCompletionSampler(
             model="meta-llama/llama-4-maverick-17b-128e-instruct",
             system_message=LLAMA_ENHANCED_SYSTEM_MESSAGE_CONTEXT_AWARENESS,
+        ),
+        # Different Temperatures
+        "llama-4-maverick-temp0": GroqCompletionSampler(
+            model="meta-llama/llama-4-maverick-17b-128e-instruct",
+            system_message=LLAMA_4_SYSTEM_MESSAGE,
+            temperature=0.0,
+        ),
+        "llama-4-maverick-temp25": GroqCompletionSampler(
+            model="meta-llama/llama-4-maverick-17b-128e-instruct",
+            system_message=LLAMA_4_SYSTEM_MESSAGE,
+            temperature=0.25,
+        ),
+        "llama-4-maverick-temp75": GroqCompletionSampler(
+            model="meta-llama/llama-4-maverick-17b-128e-instruct",
+            system_message=LLAMA_4_SYSTEM_MESSAGE,
+            temperature=0.75,
+        ),
+        "llama-4-maverick-temp1": GroqCompletionSampler(
+            model="meta-llama/llama-4-maverick-17b-128e-instruct",
+            system_message=LLAMA_4_SYSTEM_MESSAGE,
+            temperature=1,
+        ),
+        # Two-pass
+        "llama-4-maverick-two-pass": GroqTwoPassCompletionSampler(
+            model="meta-llama/llama-4-maverick-17b-128e-instruct",
         ),
     }
 

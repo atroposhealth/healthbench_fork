@@ -1,35 +1,32 @@
 import os
 import time
+from pathlib import Path
 from typing import Any
 
-import openai
-from openai import OpenAI
+import groq
+from dot_slash import dot_slash
 
 from ..package_types import MessageList, SamplerBase, SamplerResponse
 
-OPENAI_SYSTEM_MESSAGE_API = "You are a helpful assistant."
-OPENAI_SYSTEM_MESSAGE_CHATGPT = (
-    "You are ChatGPT, a large language model trained by OpenAI, based on the GPT-4 architecture."
-    + "\nKnowledge cutoff: 2023-12\nCurrent date: 2024-04-01"
-)
+TWO_PASS_PROMPT_DIR = Path(dot_slash("two_pass_prompts"))
+FIRST_PASS_PROMPT = (TWO_PASS_PROMPT_DIR / "first_pass.md").read_text()
+SECOND_PASS_PROMPT = (TWO_PASS_PROMPT_DIR / "second_pass.md").read_text()
 
 
-class ChatCompletionSampler(SamplerBase):
+class GroqTwoPassCompletionSampler(SamplerBase):
     """
-    Sample from OpenAI's chat completion API
+    Sample from Groq's chat completion API
     """
 
     def __init__(
         self,
-        model: str = "gpt-3.5-turbo",
-        system_message: str | None = None,
+        model: str,
         temperature: float = 0.5,
         max_tokens: int = 1024,
-        api_key_env_var_name: str = "OPENAI_API_KEY",
     ):
-        self.client = OpenAI(api_key=os.environ[api_key_env_var_name])
+        api_key = os.environ["GROQ_API_KEY"]
+        self.client = groq.Groq(api_key=api_key)
         self.model = model
-        self.system_message = system_message
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.image_format = "url"
@@ -55,30 +52,47 @@ class ChatCompletionSampler(SamplerBase):
     def _pack_message(self, role: str, content: Any):
         return {"role": str(role), "content": content}
 
-    def __call__(self, message_list: MessageList) -> SamplerResponse:
-        if self.system_message:
-            message_list = [
-                self._pack_message("system", self.system_message)
-            ] + message_list
+    def __call__(self, message_list: MessageList, prompt_id: str) -> SamplerResponse:
         trial = 0
+        # Retry loop
         while True:
             try:
+                # First pass
+                first_pass_message_list = [
+                    self._pack_message("system", FIRST_PASS_PROMPT)
+                ] + message_list
                 response = self.client.chat.completions.create(
                     model=self.model,
-                    messages=message_list,
+                    messages=first_pass_message_list,
                     temperature=self.temperature,
                     max_tokens=self.max_tokens,
                 )
-                content = response.choices[0].message.content
-                if content is None:
+                first_pass_content = response.choices[0].message.content
+                if first_pass_content is None:
+                    raise ValueError("OpenAI API returned empty response; retrying")
+                # Second pass
+                rendered_second_pass_prompt = render_second_pass_template(
+                    first_pass_content
+                )
+                second_pass_message_list = [
+                    self._pack_message("system", rendered_second_pass_prompt)
+                ] + message_list
+                response = self.client.chat.completions.create(
+                    model=self.model,
+                    messages=second_pass_message_list,
+                    temperature=self.temperature,
+                    max_tokens=self.max_tokens,
+                )
+                second_pass_content = response.choices[0].message.content
+                if second_pass_content is None:
                     raise ValueError("OpenAI API returned empty response; retrying")
                 return SamplerResponse(
-                    response_text=content,
+                    response_text=second_pass_content,
                     response_metadata={"usage": response.usage},
                     actual_queried_message_list=message_list,
                 )
             # NOTE: BadRequestError is triggered once for MMMU, please uncomment if you are reruning MMMU
-            except openai.BadRequestError as e:
+            except groq.BadRequestError as e:
                 print("Bad Request Error", e)
                 return SamplerResponse(
                     response_text="No response (bad request).",
@@ -94,3 +108,7 @@ class ChatCompletionSampler(SamplerBase):
                 time.sleep(exception_backoff)
                 trial += 1
             # unknown error shall throw exception
+
+
+def render_second_pass_template(first_pass_output: str) -> str:
+    return SECOND_PASS_PROMPT.replace("{{ first_pass_output }}", first_pass_output)

@@ -17,19 +17,23 @@ import random
 import re
 from collections import defaultdict
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Literal
 
 import numpy as np
-import requests
+from dot_slash import dot_slash
 
 from . import common
 from .package_types import Eval, EvalResult, MessageList, SamplerBase, SingleEvalResult
+from .sampler.gemini_sampler import GeminiCompletionSampler
 from .sampler.groq_rag_sampler import GroqRAGCompletionSampler
 from .sampler.groq_sampler import GroqCompletionSampler
+from .sampler.groq_two_pass_sampler import GroqTwoPassCompletionSampler
 
-INPUT_PATH = "https://openaipublic.blob.core.windows.net/simple-evals/healthbench/2025-05-07-06-14-12_oss_eval.jsonl"
-INPUT_PATH_HARD = "https://openaipublic.blob.core.windows.net/simple-evals/healthbench/hard_2025-05-08-21-00-10.jsonl"
-INPUT_PATH_CONSENSUS = "https://openaipublic.blob.core.windows.net/simple-evals/healthbench/consensus_2025-05-09-20-00-46.jsonl"
+# INPUT_PATH = "https://openaipublic.blob.core.windows.net/simple-evals/healthbench/2025-05-07-06-14-12_oss_eval.jsonl"
+# INPUT_PATH_HARD = "https://openaipublic.blob.core.windows.net/simple-evals/healthbench/hard_2025-05-08-21-00-10.jsonl"
+# INPUT_PATH_CONSENSUS = "https://openaipublic.blob.core.windows.net/simple-evals/healthbench/consensus_2025-05-09-20-00-46.jsonl"
+INPUT_PATH = Path(dot_slash("../../results/inputs/2025-05-07-06-14-12_oss_eval.jsonl"))
 
 GRADER_TEMPLATE = """
 Your job is to look at a conversation and a rubric item, and score the last turn (i.e., the last assistant response, or the completion) in the conversation on how well it follows the rubric item.
@@ -162,6 +166,10 @@ def get_usage_dict(response_usage, sampler: SamplerBase) -> dict[str, int | None
         return response_usage.__dict__
     if isinstance(sampler, GroqRAGCompletionSampler):
         return response_usage.__dict__
+    if isinstance(sampler, GroqTwoPassCompletionSampler):
+        return response_usage.__dict__
+    if isinstance(sampler, GeminiCompletionSampler):
+        return response_usage
 
     # For other models, we need to do a little more massaging
     try:
@@ -281,17 +289,23 @@ class HealthBenchEval(Eval):
         subset_name: Literal["hard", "consensus"] | None = None,
     ):
         if subset_name == "hard":
+            raise NotImplementedError()
             input_path = INPUT_PATH_HARD
         elif subset_name == "consensus":
+            raise NotImplementedError()
             input_path = INPUT_PATH_CONSENSUS
         elif subset_name is None:
             input_path = INPUT_PATH
         else:
             assert False, f"Invalid subset name: {subset_name}"
-        response = requests.get(input_path)
-        response.raise_for_status()
+        response = INPUT_PATH.read_text()
+        # response = requests.get(INPUT_PATH)
+        # response.raise_for_status()
         all_examples = [
-            json.loads(line) for line in response.text.split("\n") if line != ""
+            json.loads(line)
+            for line in response.split("\n")
+            if line != ""
+            # json.loads(line) for line in response.text.split("\n") if line != ""
         ]
         for example in all_examples:
             example["rubrics"] = [RubricItem.from_dict(d) for d in example["rubrics"]]
