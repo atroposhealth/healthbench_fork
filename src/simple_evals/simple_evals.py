@@ -4,6 +4,7 @@ from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
+import requests
 
 from . import common
 from .healthbench_eval import HealthBenchEval, PreSampled, RandomSampler
@@ -12,6 +13,7 @@ from .sampler.chat_completion_sampler import (
     ChatCompletionSampler,
 )
 from .sampler.claude_sampler import ClaudeCompletionSampler
+from .sampler.fine_tuned_remote import FineTunedModelDetails, FineTunedSamplerFactory
 from .sampler.gemini_sampler import GEMINI_SYSTEM_MESSAGE, GeminiCompletionSampler
 from .sampler.groq_rag_sampler import (
     LLAMA_4_RAG_SYSTEM_MESSAGE,
@@ -76,6 +78,16 @@ def main():
         help="Directory to write the output results.",
         default="/tmp",
     )
+    # If this argument is passed and model is "fine-tuned-remote" then the model
+    # name will be pulled from the endpoint
+    parser.add_argument(
+        "--fine-tuned-endpoint", type=str, help="The fine-tuned endpoint to call."
+    )
+    parser.add_argument(
+        "--fine-tuned-system-message",
+        type=str,
+        help="The system message to use for the fine-tuned model call.",
+    )
 
     args = parser.parse_args()
     print(f"Running with args {args}")
@@ -93,14 +105,37 @@ def main():
         return
 
     # Get the models that the user requested
+    models_to_evaluate: dict[str, SamplerBase] = {}
     if args.model:
-        models_chosen = args.model.split(",")
-        for model_name in models_chosen:
-            if model_name not in available_models:
-                raise RuntimeError(f"Error: Model '{model_name}' not found.")
-        models_to_evaluate = {
-            model_name: available_models[model_name] for model_name in models_chosen
-        }
+        if args.model == "fine-tuned-remote":
+            # Get the model name from the endpoint and construct a sampler to
+            # hit that endpoint
+            assert isinstance(args.fine_tuned_endpoint, str)
+            response = requests.get(args.fine_tuned_endpoint)
+            response.raise_for_status()
+            model_details = FineTunedModelDetails.model_validate_json(response.text)
+            system_message = (
+                args.fine_tuned_system_message
+                if args.fine_tuned_system_message is not None
+                else ""
+            )
+            factory = available_models["fine-tuned-remote"]
+            assert isinstance(factory, FineTunedSamplerFactory)
+            sampler = factory.get_sampler(
+                model_name=model_details.name,
+                endpoint=args.fine_tuned_endpoint,
+                system_message=system_message,
+            )
+            models_to_evaluate = {model_details.name: sampler}
+        else:
+            models_chosen = args.model.split(",")
+            for model_name in models_chosen:
+                if model_name not in available_models:
+                    raise RuntimeError(f"Error: Model '{model_name}' not found.")
+            for model_name in models_chosen:
+                sampler = available_models[model_name]
+                assert isinstance(sampler, SamplerBase)
+                models_to_evaluate[model_name] = sampler
 
     # Only use 10 examples if debug mode is on
     n_examples: int | None = args.examples
@@ -114,7 +149,7 @@ def main():
         model="gpt-4.1-2025-04-14",
         system_message=OPENAI_SYSTEM_MESSAGE_API,
         max_tokens=2048,
-        api_key_env_var_name="SINGLE_HEALTHBENCH_RUN",
+        # api_key_env_var_name="SINGLE_HEALTHBENCH_RUN",
     )
 
     # Get the evals that the user requested
@@ -274,7 +309,9 @@ def get_evaluation(
             raise Exception(f"Unrecognized eval type: {eval_name}")
 
 
-def get_available_models(output_dir: Path) -> dict[str, SamplerBase]:
+def get_available_models(
+    output_dir: Path,
+) -> dict[str, SamplerBase | FineTunedSamplerFactory]:
     return {
         # Reasoning Models
         "o3": ResponsesSampler(
@@ -385,6 +422,8 @@ def get_available_models(output_dir: Path) -> dict[str, SamplerBase]:
         "llama-4-maverick-two-pass": GroqTwoPassCompletionSampler(
             model="meta-llama/llama-4-maverick-17b-128e-instruct",
         ),
+        # Fine-tuned model caller
+        "fine-tuned-remote": FineTunedSamplerFactory(),
     }
 
 
