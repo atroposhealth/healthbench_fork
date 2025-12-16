@@ -55,7 +55,7 @@ class ChatCompletionSampler(SamplerBase):
     def _pack_message(self, role: str, content: Any):
         return {"role": str(role), "content": content}
 
-    def __call__(self, message_list: MessageList) -> SamplerResponse:
+    def __call__(self, message_list: MessageList, prompt_id: str) -> SamplerResponse:
         if self.system_message:
             message_list = [
                 self._pack_message("system", self.system_message)
@@ -67,7 +67,7 @@ class ChatCompletionSampler(SamplerBase):
                     model=self.model,
                     messages=message_list,
                     temperature=self.temperature,
-                    max_tokens=self.max_tokens,
+                    max_completion_tokens=self.max_tokens,
                 )
                 content = response.choices[0].message.content
                 if content is None:

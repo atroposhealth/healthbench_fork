@@ -45,11 +45,10 @@ class FineTunedSamplerFactory:
     """
 
     def get_sampler(
-        self, model_name: str, endpoint: str, system_message: str | None = None
+        self, model_name: str, system_message: str | None = None
     ) -> "FineTunedRemoteSampler":
         return FineTunedRemoteSampler(
             model=model_name,
-            endpoint=endpoint,
             system_message=system_message,
         )
 
@@ -62,12 +61,11 @@ class FineTunedRemoteSampler(SamplerBase):
     def __init__(
         self,
         model: str,
-        endpoint: str,
         system_message: str | None = None,
     ):
         self.model = model
         self.system_message = system_message
-        self.endpoint = endpoint
+        self.endpoint = f"http://localhost:5000/blather/{model}"
 
     def _handle_text(self, text: str):
         return {"type": "text", "text": text}

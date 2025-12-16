@@ -357,7 +357,7 @@ class HealthBenchEval(Eval):
             ).replace("<<rubric_item>>", str(rubric_item))
             messages: MessageList = [dict(content=grader_prompt, role="user")]
             while True:
-                sampler_response = self.grader_model(messages)
+                sampler_response = self.grader_model(messages, "")
                 grading_response = sampler_response.response_text
                 grading_response_dict = parse_json_to_dict(grading_response)
                 if "criteria_met" in grading_response_dict:

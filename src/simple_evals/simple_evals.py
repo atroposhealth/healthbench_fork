@@ -4,7 +4,6 @@ from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
-import requests
 
 from . import common
 from .healthbench_eval import HealthBenchEval, PreSampled, RandomSampler
@@ -13,7 +12,7 @@ from .sampler.chat_completion_sampler import (
     ChatCompletionSampler,
 )
 from .sampler.claude_sampler import ClaudeCompletionSampler
-from .sampler.fine_tuned_remote import FineTunedModelDetails, FineTunedSamplerFactory
+from .sampler.fine_tuned_remote import FineTunedSamplerFactory
 from .sampler.gemini_sampler import GEMINI_SYSTEM_MESSAGE, GeminiCompletionSampler
 from .sampler.groq_rag_sampler import (
     LLAMA_4_RAG_SYSTEM_MESSAGE,
@@ -81,7 +80,10 @@ def main():
     # If this argument is passed and model is "fine-tuned-remote" then the model
     # name will be pulled from the endpoint
     parser.add_argument(
-        "--fine-tuned-endpoint", type=str, help="The fine-tuned endpoint to call."
+        "--fine-tuned-remote",
+        type=bool,
+        default=False,
+        help="Use the fine-tuned-remote sampler.",
     )
     parser.add_argument(
         "--fine-tuned-system-message",
@@ -107,13 +109,7 @@ def main():
     # Get the models that the user requested
     models_to_evaluate: dict[str, SamplerBase] = {}
     if args.model:
-        if args.model == "fine-tuned-remote":
-            # Get the model name from the endpoint and construct a sampler to
-            # hit that endpoint
-            assert isinstance(args.fine_tuned_endpoint, str)
-            response = requests.get(args.fine_tuned_endpoint)
-            response.raise_for_status()
-            model_details = FineTunedModelDetails.model_validate_json(response.text)
+        if args.fine_tuned_remote:
             system_message = (
                 args.fine_tuned_system_message
                 if args.fine_tuned_system_message is not None
@@ -122,11 +118,10 @@ def main():
             factory = available_models["fine-tuned-remote"]
             assert isinstance(factory, FineTunedSamplerFactory)
             sampler = factory.get_sampler(
-                model_name=model_details.name,
-                endpoint=args.fine_tuned_endpoint,
+                model_name=args.model,
                 system_message=system_message,
             )
-            models_to_evaluate = {model_details.name: sampler}
+            models_to_evaluate = {args.model: sampler}
         else:
             models_chosen = args.model.split(",")
             for model_name in models_chosen:
@@ -318,6 +313,16 @@ def get_available_models(
             model="o3-2025-04-16",
             reasoning_model=True,
         ),
+        "gpt-5.1": ChatCompletionSampler(
+            model="gpt-5.1-2025-11-13",
+            system_message=OPENAI_SYSTEM_MESSAGE_API,
+            max_tokens=2048,
+        ),
+        "gpt-5.2-pro": ChatCompletionSampler(
+            model="gpt-5.2-pro-2025-12-11",
+            system_message=OPENAI_SYSTEM_MESSAGE_API,
+            max_tokens=2048,
+        ),
         "claude-opus-4.1": ClaudeCompletionSampler(
             model="claude-opus-4-1-20250805",
         ),
@@ -330,6 +335,11 @@ def get_available_models(
         "llama-3.1-8b": GroqCompletionSampler(
             model="llama-3.1-8b-instant",
             system_message=LLAMA_4_SYSTEM_MESSAGE,
+        ),
+        "llama-3.1-8b-temp-0": GroqCompletionSampler(
+            model="llama-3.1-8b-instant",
+            system_message=LLAMA_4_SYSTEM_MESSAGE,
+            temperature=0.0,
         ),
         "llama-3.1-8b-enhanced-prompt-completeness-3": GroqCompletionSampler(
             model="llama-3.1-8b-instant",
