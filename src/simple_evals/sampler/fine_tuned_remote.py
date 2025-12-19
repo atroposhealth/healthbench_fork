@@ -22,6 +22,8 @@ class FineTunedModelCompletionRequest(BaseModel):
 
 class FineTunedModelOutputSuccess(BaseModel):
     completion: str
+    input_tokens: int
+    output_tokens: int
 
 
 class FineTunedModelFailure(BaseModel):
@@ -66,6 +68,7 @@ class FineTunedRemoteSampler(SamplerBase):
         self.model = model
         self.system_message = system_message
         self.endpoint = f"http://localhost:5000/blather/{model}"
+        # self.endpoint = "http://localhost:5000/generate"
 
     def _handle_text(self, text: str):
         return {"type": "text", "text": text}
@@ -86,10 +89,19 @@ class FineTunedRemoteSampler(SamplerBase):
                 response.raise_for_status()
                 model_response = FineTunedModelOutput.model_validate_json(response.text)
                 match model_response.result:
-                    case FineTunedModelOutputSuccess(completion=completion):
+                    case FineTunedModelOutputSuccess(
+                        completion=completion,
+                        input_tokens=input_tokens,
+                        output_tokens=output_tokens,
+                    ):
                         return SamplerResponse(
                             response_text=completion,
-                            response_metadata={"usage": {}},
+                            response_metadata={
+                                "usage": {
+                                    "input_tokens": input_tokens,
+                                    "output_tokens": output_tokens,
+                                }
+                            },
                             actual_queried_message_list=message_list,
                         )
                     case FineTunedModelFailure(error=error):

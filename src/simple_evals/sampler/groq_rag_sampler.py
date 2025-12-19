@@ -37,7 +37,6 @@ class GroqRAGCompletionSampler(SamplerBase):
         self.system_message = system_message
         self.temperature = temperature
         self.max_tokens = max_tokens
-        self.image_format = "url"
         vector_search_client = VectorSearchClient(
             workspace_url="https://dbc-7a32c3d1-0aa9.cloud.databricks.com",
             personal_access_token=os.environ["DATABRICKS_API_KEY"],

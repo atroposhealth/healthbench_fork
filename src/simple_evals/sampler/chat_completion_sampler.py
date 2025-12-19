@@ -26,8 +26,14 @@ class ChatCompletionSampler(SamplerBase):
         temperature: float = 0.5,
         max_tokens: int = 1024,
         api_key_env_var_name: str = "OPENAI_API_KEY",
+        base_url: str | None = None,
     ):
-        self.client = OpenAI(api_key=os.environ[api_key_env_var_name])
+        timeout = 60 * 60  # 1 hour
+        self.client = OpenAI(
+            api_key=os.environ[api_key_env_var_name],
+            base_url=base_url,
+            timeout=timeout,
+        )
         self.model = model
         self.system_message = system_message
         self.temperature = temperature
@@ -94,3 +100,7 @@ class ChatCompletionSampler(SamplerBase):
                 time.sleep(exception_backoff)
                 trial += 1
             # unknown error shall throw exception
+
+
+class SelfHostedChatCompletionSampler(ChatCompletionSampler):
+    pass

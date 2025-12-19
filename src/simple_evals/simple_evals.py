@@ -10,6 +10,7 @@ from .healthbench_eval import HealthBenchEval, PreSampled, RandomSampler
 from .sampler.chat_completion_sampler import (
     OPENAI_SYSTEM_MESSAGE_API,
     ChatCompletionSampler,
+    SelfHostedChatCompletionSampler,
 )
 from .sampler.claude_sampler import ClaudeCompletionSampler
 from .sampler.fine_tuned_remote import FineTunedSamplerFactory
@@ -17,6 +18,10 @@ from .sampler.gemini_sampler import GEMINI_SYSTEM_MESSAGE, GeminiCompletionSampl
 from .sampler.groq_rag_sampler import (
     LLAMA_4_RAG_SYSTEM_MESSAGE,
     GroqRAGCompletionSampler,
+)
+from .sampler.groq_rag_system_sampler import (
+    LLAMA_4_SYSTEM_RAG_SYSTEM_MESSAGE,
+    GroqRAGSystemCompletionSampler,
 )
 from .sampler.groq_sampler import (
     LLAMA_4_SYSTEM_MESSAGE,
@@ -90,6 +95,11 @@ def main():
         type=str,
         help="The system message to use for the fine-tuned model call.",
     )
+    parser.add_argument(
+        "--fine-tuned-system-message-path",
+        type=str,
+        help="The path to the system message to use for the fine-tuned model call.",
+    )
 
     args = parser.parse_args()
     print(f"Running with args {args}")
@@ -110,11 +120,12 @@ def main():
     models_to_evaluate: dict[str, SamplerBase] = {}
     if args.model:
         if args.fine_tuned_remote:
-            system_message = (
-                args.fine_tuned_system_message
-                if args.fine_tuned_system_message is not None
-                else ""
-            )
+            system_message = ""
+            if args.fine_tuned_system_message is not None:
+                system_message = args.fine_tuned_system_message
+            if args.fine_tuned_system_message_path is not None:
+                system_message = Path(args.fine_tuned_system_message_path).read_text()
+            print(f"Using system message: {system_message}")
             factory = available_models["fine-tuned-remote"]
             assert isinstance(factory, FineTunedSamplerFactory)
             sampler = factory.get_sampler(
@@ -434,6 +445,17 @@ def get_available_models(
         ),
         # Fine-tuned model caller
         "fine-tuned-remote": FineTunedSamplerFactory(),
+        "llama-4-maverick-self-hosted-lora": SelfHostedChatCompletionSampler(
+            model="llama-4-fine-tune-lora",
+            system_message=LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_3,
+            base_url="http://127.0.0.1:5000",
+        ),
+        # RAG with new VSI
+        "llama-4-maverick-rag-2": GroqRAGSystemCompletionSampler(
+            model="meta-llama/llama-4-maverick-17b-128e-instruct",
+            system_message=LLAMA_4_SYSTEM_RAG_SYSTEM_MESSAGE,
+            results_dir=output_dir,
+        ),
     }
 
 

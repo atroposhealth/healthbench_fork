@@ -25,9 +25,11 @@ from dot_slash import dot_slash
 
 from . import common
 from .package_types import Eval, EvalResult, MessageList, SamplerBase, SingleEvalResult
+from .sampler.chat_completion_sampler import SelfHostedChatCompletionSampler
 from .sampler.fine_tuned_remote import FineTunedRemoteSampler
 from .sampler.gemini_sampler import GeminiCompletionSampler
 from .sampler.groq_rag_sampler import GroqRAGCompletionSampler
+from .sampler.groq_rag_system_sampler import GroqRAGSystemCompletionSampler
 from .sampler.groq_sampler import GroqCompletionSampler
 from .sampler.groq_two_pass_sampler import GroqTwoPassCompletionSampler
 
@@ -167,12 +169,16 @@ def get_usage_dict(response_usage, sampler: SamplerBase) -> dict[str, int | None
         return response_usage.__dict__
     if isinstance(sampler, GroqRAGCompletionSampler):
         return response_usage.__dict__
+    if isinstance(sampler, GroqRAGSystemCompletionSampler):
+        return response_usage.__dict__
     if isinstance(sampler, GroqTwoPassCompletionSampler):
         return response_usage.__dict__
     if isinstance(sampler, GeminiCompletionSampler):
         return response_usage
     if isinstance(sampler, FineTunedRemoteSampler):
         return response_usage
+    if isinstance(sampler, SelfHostedChatCompletionSampler):
+        return response_usage.__dict__
 
     # For other models, we need to do a little more massaging
     try:
