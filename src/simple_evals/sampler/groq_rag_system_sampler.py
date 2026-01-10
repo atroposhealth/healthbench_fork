@@ -42,7 +42,7 @@ class GroqRAGSystemCompletionSampler(SamplerBase):
         )
         self.vector_search_index = vector_search_client.get_index(
             endpoint_name="dbdemos_vs_endpoint",
-            index_name="test_uc_yen.dbdemos_rag_chatbot_julian.atropos_cases_6_vs_index",
+            index_name="test_uc_yen.meta_vsi_content.meta_vsi_v1",
         )
 
     def _pack_message(self, role: str, content: Any):
