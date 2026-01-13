@@ -57,16 +57,29 @@ class GroqRAGSystemCompletionSampler(SamplerBase):
 
         # Retrieve the top response from our vector-search index
         results = self.vector_search_index.similarity_search(
-            columns=["id", "case_id", "content"],
+            columns=[
+                "id",
+                "organization_id",
+                "document_uri",
+                "content_source",
+                "subject",
+                "content",
+            ],
             query_text=vector_search_input,
             num_results=1,
             disable_notice=True,
         )
         documents_and_scores = results["result"]["data_array"]
         # We are only asking for one result, so we don't need to sort by score
-        vector_search_row_id, atropos_case_id, content, similarity_score = (
-            documents_and_scores[0]
-        )
+        (
+            vector_search_row_id,
+            organization_id,
+            document_uri,
+            content_source,
+            subject,
+            content,
+            similarity_score,
+        ) = documents_and_scores[0]
 
         # Build the system message with study content included
         base_system_message = self.system_message or ""
@@ -93,7 +106,11 @@ Here are the findings of a recent research study that may be relevant to the use
             prompt_id,
             message_list,
             vector_search_row_id,
-            atropos_case_id,
+            organization_id,
+            document_uri,
+            content_source,
+            subject,
+            content,
             similarity_score,
         )
 
@@ -136,9 +153,13 @@ Here are the findings of a recent research study that may be relevant to the use
         self,
         prompt_id: str,
         messages: MessageList,
-        vector_search_row_id: str,
-        atropos_case_id: str,
-        similarity_score: float,
+        vector_search_row_id,
+        organization_id: str,
+        document_uri: str,
+        content_source: str,
+        subject: str,
+        content: str,
+        similarity_score: str,
     ):
         """
         Logs which atropos case was used in each conversation for later analysis.
@@ -149,7 +170,11 @@ Here are the findings of a recent research study that may be relevant to the use
         log_info = {
             "prompt_id": prompt_id,
             "vector_search_row_id": vector_search_row_id,
-            "atropos_case_id": atropos_case_id,
+            "organization_id": organization_id,
+            "document_uri": document_uri,
+            "content_source": content_source,
+            "subject": subject,
+            "content": content,
             "similarity_score": similarity_score,
             "conversation": messages,
         }

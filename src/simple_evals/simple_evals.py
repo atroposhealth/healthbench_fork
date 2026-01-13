@@ -35,6 +35,7 @@ from .sampler.groq_sampler import (
     GroqCompletionSampler,
 )
 from .sampler.groq_two_pass_sampler import GroqTwoPassCompletionSampler
+from .sampler.groq_upper_bound import GroqUpperBoundSampler
 from .sampler.responses_sampler import ResponsesSampler, SamplerBase
 
 
@@ -452,6 +453,11 @@ def get_available_models(
         ),
         # RAG with new VSI
         "llama-4-maverick-rag-2": GroqRAGSystemCompletionSampler(
+            model="meta-llama/llama-4-maverick-17b-128e-instruct",
+            system_message=LLAMA_4_SYSTEM_RAG_SYSTEM_MESSAGE,
+            results_dir=output_dir,
+        ),
+        "llama-4-maverick-upper-bound": GroqUpperBoundSampler(
             model="meta-llama/llama-4-maverick-17b-128e-instruct",
             system_message=LLAMA_4_SYSTEM_RAG_SYSTEM_MESSAGE,
             results_dir=output_dir,
