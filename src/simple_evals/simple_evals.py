@@ -32,6 +32,7 @@ from .sampler.groq_sampler import (
     LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_4,
     LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_5,
     LLAMA_ENHANCED_SYSTEM_MESSAGE_CONTEXT_AWARENESS,
+    TOP_100_MEDICAL_GUIDELINES,
     GroqCompletionSampler,
 )
 from .sampler.groq_two_pass_sampler import GroqTwoPassCompletionSampler
@@ -461,6 +462,11 @@ def get_available_models(
             model="meta-llama/llama-4-maverick-17b-128e-instruct",
             system_message=LLAMA_4_SYSTEM_RAG_SYSTEM_MESSAGE,
             results_dir=output_dir,
+        ),
+        # Neil's rubrics and prompts - added Thursday, Jan. 15
+        "llama-4-maverick-top-100-guidelines": GroqCompletionSampler(
+            model="meta-llama/llama-4-maverick-17b-128e-instruct",
+            system_message=TOP_100_MEDICAL_GUIDELINES,
         ),
     }
 

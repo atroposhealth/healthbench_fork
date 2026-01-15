@@ -38,6 +38,10 @@ LLAMA_ENHANCED_SYSTEM_MESSAGE_CONTEXT_AWARENESS = (
     CONTEXT_AWARENESS_PROMPT_DIR / "context_awareness.md"
 ).read_text()
 
+TOP_100_MEDICAL_GUIDELINES = Path(
+    dot_slash("top_100_medical_guidelines.md")
+).read_text()
+
 
 class GroqCompletionSampler(SamplerBase):
     """

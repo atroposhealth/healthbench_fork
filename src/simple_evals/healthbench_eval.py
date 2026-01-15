@@ -32,6 +32,7 @@ from .sampler.groq_rag_sampler import GroqRAGCompletionSampler
 from .sampler.groq_rag_system_sampler import GroqRAGSystemCompletionSampler
 from .sampler.groq_sampler import GroqCompletionSampler
 from .sampler.groq_two_pass_sampler import GroqTwoPassCompletionSampler
+from .sampler.groq_upper_bound import GroqUpperBoundSampler
 
 # INPUT_PATH = "https://openaipublic.blob.core.windows.net/simple-evals/healthbench/2025-05-07-06-14-12_oss_eval.jsonl"
 # INPUT_PATH_HARD = "https://openaipublic.blob.core.windows.net/simple-evals/healthbench/hard_2025-05-08-21-00-10.jsonl"
@@ -172,6 +173,8 @@ def get_usage_dict(response_usage, sampler: SamplerBase) -> dict[str, int | None
     if isinstance(sampler, GroqRAGSystemCompletionSampler):
         return response_usage.__dict__
     if isinstance(sampler, GroqTwoPassCompletionSampler):
+        return response_usage.__dict__
+    if isinstance(sampler, GroqUpperBoundSampler):
         return response_usage.__dict__
     if isinstance(sampler, GeminiCompletionSampler):
         return response_usage
@@ -322,7 +325,7 @@ class HealthBenchEval(Eval):
         examples_to_run = []
         match sampler:
             case RandomSampler(n_examples):
-                rng = random.Random(0)
+                rng = random.Random(472976)
 
                 if n_examples < len(all_examples):
                     examples_to_run = rng.sample(
@@ -346,6 +349,7 @@ class HealthBenchEval(Eval):
 
     def grade_sample(
         self,
+        prompt_id: str,
         prompt: list[dict[str, str]],
         response_text: str,
         example_tags: list[str],
@@ -361,6 +365,18 @@ class HealthBenchEval(Eval):
             grader_prompt = GRADER_TEMPLATE.replace(
                 "<<conversation>>", convo_str
             ).replace("<<rubric_item>>", str(rubric_item))
+            # filename = f"/Users/max/Developer/Meta/HealthBench/results/grader_prompts/{prompt_id}.txt"
+            # with open(filename, "w") as file:
+            #     file.write(grader_prompt)
+            # filename_json = f"/Users/max/Developer/Meta/HealthBench/results/grader_prompts/{prompt_id}.json"
+            # with open(filename_json, "w") as file:
+            #     file.write(json.dumps(convo_with_response, indent=2))
+            # filename_rubric = f"/Users/max/Developer/Meta/HealthBench/results/grader_prompts/{prompt_id}_rubric.json"
+            # rubric_updated = rubric_item.to_dict()
+            # rubric_updated["criterion_id"] = "dummy"
+            # rubric_updated["tags"] = []
+            # with open(filename_rubric, "w") as file:
+            #     file.write(json.dumps(rubric_updated, indent=2))
             messages: MessageList = [dict(content=grader_prompt, role="user")]
             while True:
                 sampler_response = self.grader_model(messages, "")
@@ -376,6 +392,7 @@ class HealthBenchEval(Eval):
         grading_response_list = common.map_with_progress(
             grade_rubric_item,
             rubric_items,
+            # num_threads=1,
             pbar=False,
         )
 
@@ -448,6 +465,7 @@ class HealthBenchEval(Eval):
 
             metrics, readable_explanation_str, rubric_items_with_grades = (
                 self.grade_sample(
+                    prompt_id=row["prompt_id"],
                     prompt=actual_queried_prompt_messages,
                     response_text=response_text,
                     rubric_items=row["rubrics"],
