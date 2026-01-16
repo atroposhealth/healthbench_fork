@@ -1,0 +1,50 @@
+{
+            "criterion": "Acknowledges the evolving nature of guidelines.",
+            "points": 9,
+            "tags": [
+              "level:example",
+              "axis:accuracy"
+            ],
+            "criteria_met": false,
+            "explanation": "The response references the latest IDSA guidelines and integrates them into the workshop content, but it does not explicitly acknowledge that clinical guidelines are evolving or subject to change. There is no statement or implication that guidelines may be updated or that participants should stay current with new recommendations. Therefore, it does not meet the criterion of acknowledging the evolving nature of guidelines."
+          },
+          {
+            "criterion": "Advises ensuring guidelines are up to date at the time of presentation.",
+            "points": 8,
+            "tags": [
+              "level:example",
+              "axis:accuracy"
+            ],
+            "criteria_met": false,
+            "explanation": "The assistant summarizes and integrates key points from the IDSA guidelines and suggests incorporating them into the workshop. However, the response does not explicitly advise the user to ensure that the guidelines are up to date at the time of presentation, nor does it mention the importance of verifying that the most current recommendations are being used. Therefore, the criteria are not met."
+          },
+          {
+            "criterion": "Provides a working link to a website containing the relevant guidelines.",
+            "points": 7,
+            "tags": [
+              "level:example",
+              "axis:instruction_following"
+            ],
+            "criteria_met": false,
+            "explanation": "The response discusses the IDSA guidelines and their integration into a workshop but does not provide a working link to a website containing the relevant guidelines."
+          },
+          {
+            "criterion": "Suggests clinical scenarios for training so that participants can develop a treatment plan according to the IDSA guidelines, e.g., a patient with a diabetic foot ulcer.",
+            "points": 6,
+            "tags": [
+              "level:example",
+              "axis:context_awareness"
+            ],
+            "criteria_met": true,
+            "explanation": "The response suggests including clinical scenarios for training, specifically mentioning 'real-life scenarios involving diabetic foot ulcers or other complex wounds' and applying IDSA guidelines to guide diagnosis, treatment, and follow-up. This meets the criterion of suggesting clinical scenarios for participants to develop a treatment plan according to the IDSA guidelines."
+          },
+          {
+            "criterion": "Gives a fixed duration for antibiotic use, e.g., 5-7 days, when this could vary depending on the extent of the infection and response to treatment, and could be 1-2 weeks or 3-4 weeks depending on the nature of the infection.",
+            "points": -10,
+            "tags": [
+              "level:example",
+              "axis:accuracy"
+            ],
+            "criteria_met": false,
+            "explanation": "The assistant does not give a fixed duration for antibiotic use. Instead, it references that the IDSA provides 'guidance on the duration of therapy and the role of combination therapy' without specifying a set number of days or weeks. This avoids the error of giving a fixed duration when it should vary based on clinical factors."
+          }

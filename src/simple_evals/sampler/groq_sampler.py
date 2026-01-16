@@ -42,6 +42,8 @@ TOP_100_MEDICAL_GUIDELINES = Path(
     dot_slash("top_100_medical_guidelines.md")
 ).read_text()
 
+TOP_100_REWORDED_CRITERIA = Path(dot_slash("reworded_criteria_100.md")).read_text()
+
 
 class GroqCompletionSampler(SamplerBase):
     """

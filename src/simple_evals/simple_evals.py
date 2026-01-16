@@ -33,6 +33,7 @@ from .sampler.groq_sampler import (
     LLAMA_ENHANCED_SYSTEM_MESSAGE_COMPLETENESS_5,
     LLAMA_ENHANCED_SYSTEM_MESSAGE_CONTEXT_AWARENESS,
     TOP_100_MEDICAL_GUIDELINES,
+    TOP_100_REWORDED_CRITERIA,
     GroqCompletionSampler,
 )
 from .sampler.groq_two_pass_sampler import GroqTwoPassCompletionSampler
@@ -467,6 +468,10 @@ def get_available_models(
         "llama-4-maverick-top-100-guidelines": GroqCompletionSampler(
             model="meta-llama/llama-4-maverick-17b-128e-instruct",
             system_message=TOP_100_MEDICAL_GUIDELINES,
+        ),
+        "llama-4-maverick-top-100-reworded-criteria": GroqCompletionSampler(
+            model="meta-llama/llama-4-maverick-17b-128e-instruct",
+            system_message=TOP_100_REWORDED_CRITERIA,
         ),
     }
 
